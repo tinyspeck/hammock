@@ -38,3 +38,37 @@
 	class SlackPlugin {
 	}
 
+
+	function load_data(){
+		$data = array();
+		$path = dirname(__FILE__)."/../data/data.php";
+		if (!file_exists($path)){
+			die("Unable find Slackware data storage");
+		}
+		include($path);
+		$GLOBALS['data'] = $data;
+	}
+
+	function save_data(){
+		$path = dirname(__FILE__)."/../data/data.php";
+
+		$fh = fopen($path, 'c');
+		if (!$fh) die("Failed to open data file for writing");
+
+		$retries = 5;
+
+		for ($i=0; $i<$retries; $i++){
+			$flag = 0;
+			$ok = flock($fh, LOCK_EX | LOCK_NB, $flag);
+			if ($ok) break;
+			if (!$flag) die("Failed to lock data file");
+			sleep(1);
+		}
+		if (!$ok) die("Failed to lock data file");
+
+		ftruncate($fh, 0);
+		fwrite($fh, "<"."?php \$data = ".var_export($GLOBALS['data'], true).';');
+
+		flock($fh, LOCK_UN);
+		fclose($fh);
+	}
