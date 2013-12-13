@@ -1,0 +1,3 @@
+<?php
+	$cfg = array();
+	$cfg['root_url'] = 'http://myserver.com/slackware/';

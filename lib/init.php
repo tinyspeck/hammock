@@ -1,4 +1,5 @@
 <?php
+	include(dirname(__FILE__)."/config.php");
 
 	function load_plugins(){
 
