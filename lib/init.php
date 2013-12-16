@@ -36,6 +36,17 @@
 
 
 	class SlackPlugin {
+
+		public $id;
+
+		function createId(){
+			$this->id = uniqid();
+		}
+
+		function setConfig($id, $cfg){
+			$this->id = $id;
+			$this->cfg = $cfg;
+		}
 	}
 
 
