@@ -98,7 +98,7 @@
 
 	function load_data(){
 		$data = array();
-		$path = dirname(__FILE__)."/../data/data.php";
+		$path = SLACKWARE_ROOT."/data/data.php";
 		if (!file_exists($path)){
 			die("Unable find Slackware data storage");
 		}
@@ -107,7 +107,7 @@
 	}
 
 	function save_data(){
-		$path = dirname(__FILE__)."/../data/data.php";
+		$path = SLACKWARE_ROOT."/data/data.php";
 
 		$fh = fopen($path, 'c');
 		if (!$fh) die("Failed to open data file for writing");
