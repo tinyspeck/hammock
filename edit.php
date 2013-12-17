@@ -16,3 +16,4 @@
 <b>Edit service</b>
 
 <?php dumper($instance); ?>
+<?php $instance->editConfig(); ?>

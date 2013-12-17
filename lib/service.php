@@ -25,5 +25,10 @@
 				if (!$auth->isUserAuthed()) die("You need to authenticate before continuing");
 			}
 		}
+
+		function getHookUrl(){
+
+			return $GLOBALS['cfg']['root_url'] . 'hook.php?id=' . $this->iid;
+		}
 	}
 
