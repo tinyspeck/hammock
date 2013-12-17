@@ -9,11 +9,9 @@
 	if (!is_object($instance)) die("instance not found");
 
 	$instance->checkRequirements();
-?>
 
-<h1>Slackware</h1>
 
-<b>Edit service</b>
+	$smarty->assign('html', $instance->editConfig());
 
-<?php dumper($instance); ?>
-<?php $instance->editConfig(); ?>
+	$smarty->display('page_edit.txt');
+

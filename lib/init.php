@@ -1,14 +1,26 @@
 <?php
-	$dir = dirname(__FILE__);
-	include("{$dir}/config.php");
-	include("{$dir}/service.php");
-	include("{$dir}/auth.php");
+	define('SLACKWARE_ROOT', realpath(dirname(__FILE__)."/.."));
+
+	include(SLACKWARE_ROOT."/lib/config.php");
+	include(SLACKWARE_ROOT."/lib/service.php");
+	include(SLACKWARE_ROOT."/lib/auth.php");
+
+	include(SLACKWARE_ROOT."/lib/smarty/Smarty.class.php");
+
+	if (!file_exists(SLACKWARE_ROOT."/data/templates_c")){
+		mkdir(SLACKWARE_ROOT."/data/templates_c");
+	}
+
+	$smarty = new Smarty();
+	$smarty->template_dir = SLACKWARE_ROOT."/templates";
+	$smarty->compile_dir = SLACKWARE_ROOT."/data/templates_c";
+
 
 	function load_plugins(){
 
 		$GLOBALS['plugins'] = array();
 
-		$dir = dirname(__FILE__)."/../plugins";
+		$dir = SLACKWARE_ROOT."/plugins";
 
 		if ($dh = opendir($dir)){
 			while (($file = readdir($dh)) !== false){
@@ -36,6 +48,12 @@
 	function createPluginInstance($class_name){
 		$obj = new $class_name();
 		$obj->id = $class_name;
+
+		$obj->smarty = new Smarty();
+		$obj->smarty->template_dir = SLACKWARE_ROOT."/plugins/{$class_name}/templates";
+		$obj->smarty->compile_dir = SLACKWARE_ROOT."/data/templates_c";
+		$obj->smarty->assign_by_ref('this', $obj);
+
 		return $obj;
 	}
 

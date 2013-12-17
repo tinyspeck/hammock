@@ -1,0 +1,7 @@
+{include file='inc_head.txt'}
+
+<h2>Edit Service</h2>
+
+{$html}
+
+{include file='inc_foot.txt'}

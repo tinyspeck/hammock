@@ -30,5 +30,12 @@
 
 			return $GLOBALS['cfg']['root_url'] . 'hook.php?id=' . $this->iid;
 		}
+
+		function dump(){
+			$s = $this->smarty;
+			unset($this->smarty);
+			dumper($this);
+			$this->smarty = $s;
+		}
 	}
 

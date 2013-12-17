@@ -9,7 +9,6 @@
 
 		function editConfig(){
 
-			echo "Go to your repo's settings page and add this hook URL:<br />";
-			echo "<code>{$this->getHookUrl()}</code>";
+			return $this->smarty->fetch('edit.txt');
 		}
 	}
