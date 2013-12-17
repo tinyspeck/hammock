@@ -21,8 +21,8 @@
 			if ($this->cfg['requires_auth']){
 				$auth_plugin = $this->cfg['requires_auth'];
 				$auth = getAuthPlugin($auth_plugin);
-				if (!$auth->IsConfigured()) die("This plugin requires auth be configured - {$auth_plugin}");
-				if (!$auth->UserIsAuthed()) die("You need to authenticate before continuing");
+				if (!$auth->isConfigured()) die("This plugin requires auth be configured - {$auth_plugin}");
+				if (!$auth->isUserAuthed()) die("You need to authenticate before continuing");
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 
 		public $cfg = array();
 
-		function IsConfigured(){
+		function isConfigured(){
 
 			return !!$this->cfg['client_id'];
 		}

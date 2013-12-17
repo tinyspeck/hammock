@@ -2,6 +2,7 @@
 	$dir = dirname(__FILE__);
 	include("{$dir}/config.php");
 	include("{$dir}/service.php");
+	include("{$dir}/auth.php");
 
 	function load_plugins(){
 
@@ -75,15 +76,6 @@
 			echo HtmlSpecialChars(var_export($foo, 1));
 		}
 		echo "</pre>\n";
-	}
-
-	class SlackAuthPlugin {
-
-		function saveConfig(){
-			load_data();
-			$GLOBALS['data']['auth'][$this->id] = $this->cfg;
-			save_data();
-		}
 	}
 
 	function load_data(){
