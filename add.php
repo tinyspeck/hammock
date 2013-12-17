@@ -32,7 +32,7 @@
 
 <b>Add new service</b>
 
-<?php dumper($instance); ?>
+<?php $instance->dump(); ?>
 
 <form action="add.php" method="post">
 <input type="hidden" name="done" value="1" />
