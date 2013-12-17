@@ -26,19 +26,7 @@
 	$instance->createInstanceId();
 
 	$instance->checkRequirements();
-?>
 
-<h1>Slackware</h1>
+	$smarty->assign('instance', $instance);
 
-<b>Add new service</b>
-
-<?php $instance->dump(); ?>
-
-<form action="add.php" method="post">
-<input type="hidden" name="done" value="1" />
-<input type="hidden" name="plugin" value="<?php echo $instance->id; ?>" />
-<input type="hidden" name="uid" value="<?php echo $instance->iid; ?>" />
-
-<input type="submit" value="Create" />
-</form>
-
+	$smarty->display('page_add.txt');

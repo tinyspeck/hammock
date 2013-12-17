@@ -1,0 +1,15 @@
+{include file='inc_head.txt'}
+
+<h2>Add new service</h2>
+
+{$instance->dump()}
+
+<form action="add.php" method="post">
+<input type="hidden" name="done" value="1" />
+<input type="hidden" name="plugin" value="{$instance->id}" />
+<input type="hidden" name="uid" value="{$instance->iid}" />
+
+<input type="submit" value="Create" />
+</form>
+
+{include file='inc_foot.txt'}
