@@ -1,0 +1,27 @@
+{include file='inc_head.txt}
+
+<b>Add a new service</b>
+
+<ul>
+{foreach from=$services item='k'}
+	<li><a href="add.php?id={$k->id|urlencode}">{$k->name|escape}</a> - {$k->desc|escape} </li>
+{/foreach}
+</ul>
+
+<b>Existing services</b>
+
+<ul>
+{foreach from=$instances item='obj'}
+	<li><a href="edit.php?id={$obj.iid|urlencode}">{$obj.class} {$obj.iid}</a></li>
+{/foreach}
+</ul>
+
+<b>Things to configure</b>
+
+<ul>
+{foreach from=$auth item='k'}
+	<li><a href="auth.php?id={$k->id|urlencode}">{$k->name|escape}</a> - {$k->desc|escape} </li>
+{/foreach}
+</ul>
+
+{include file='inc_foot.txt}
