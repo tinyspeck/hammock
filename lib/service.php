@@ -1,6 +1,9 @@
 <?php
 	class SlackServicePlugin {
 
+		public $name = "NO NAME";
+		public $desc = "NO DESC";
+
 		public $id;	# class ID
 		public $iid;	# instance ID
 

@@ -11,7 +11,7 @@
 <b>Add a new service</b>
 
 <ul>
-<?php foreach ($plugins_services as $k => $plugin){ ?>
+<?php foreach (array_keys($plugins_services) as $k){ $plugin = new $k(); ?>
 	<li><a href="add.php?id=<?php echo urlencode($k); ?>"><?php echo $plugin->name; ?></a> - <?php echo $plugin->desc; ?> </li>
 <?php } ?>
 </ul>
@@ -27,7 +27,7 @@
 <b>Things to configure</b>
 
 <ul>
-<?php foreach ($plugins_auth as $k => $plugin){ ?>
+<?php foreach (array_keys($plugins_auth) as $k){ $plugin = new $k(); ?>
 	<li><a href="auth.php?id=<?php echo urlencode($k); ?>"><?php echo $plugin->name; ?></a> - <?php echo $plugin->desc; ?> </li>
 <?php } ?>
 </ul>

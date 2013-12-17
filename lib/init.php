@@ -29,7 +29,7 @@
 
 					if ((include("{$dir}/{$file}/plugin.php"))){
 
-						$GLOBALS['plugins'][$file] = createPluginInstance($file);
+						$GLOBALS['plugins'][$file] = 1;
 					}
 				}
 			}
@@ -40,8 +40,8 @@
 		$GLOBALS['plugins_auth'    ] = array();
 
 		foreach ($GLOBALS['plugins'] as $k => $v){
-			if (is_a($v, 'SlackServicePlugin')) $GLOBALS['plugins_services'][$k] = $v;
-			if (is_a($v, 'SlackAuthPlugin'   )) $GLOBALS['plugins_auth'    ][$k] = $v;
+			if (is_subclass_of($k, 'SlackServicePlugin')) $GLOBALS['plugins_services'][$k] = 1;
+			if (is_subclass_of($k, 'SlackAuthPlugin'   )) $GLOBALS['plugins_auth'    ][$k] = 1;
 		}
 	}
 
@@ -74,11 +74,11 @@
 
 	function getAuthPlugin($id){
 
+		if (!isset($GLOBALS['plugins_auth'][$id])) return null;
+
+		$instance = createPluginInstance($id);
+
 		$cfg = $GLOBALS['data']['auth'][$id];
-
-		$instance = $GLOBALS['plugins_auth'][$id];
-		if (!is_object($instance)) return;
-
 		$instance->cfg = $cfg ? $cfg : array();
 
 		return $instance;
