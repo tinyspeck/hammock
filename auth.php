@@ -5,14 +5,13 @@
 	load_plugins();
 	load_data();
 
-	$instance = getPluginInstance($_GET['id']);
+	$instance = getAuthPlugin($_GET['id']);
 	if (!is_object($instance)) die("instance not found");
 
-	$instance->checkRequirements();
 ?>
 
 <h1>Slackware</h1>
 
-<b>Edit service</b>
+<h2>Auth Plugin - <?php echo $instance->name; ?></h2>
 
-<?php dumper($instance); ?>
+<?php $instance->configPage(); ?>

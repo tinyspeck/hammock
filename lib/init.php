@@ -1,5 +1,7 @@
 <?php
-	include(dirname(__FILE__)."/config.php");
+	$dir = dirname(__FILE__);
+	include("{$dir}/config.php");
+	include("{$dir}/service.php");
 
 	function load_plugins(){
 
@@ -14,12 +16,53 @@
 
 					if ((include("{$dir}/{$file}/plugin.php"))){
 
-						$GLOBALS['plugins'][$file] = new $file();
+						$GLOBALS['plugins'][$file] = createPluginInstance($file);
 					}
 				}
 			}
 			closedir($dh);
 		}
+
+		$GLOBALS['plugins_services'] = array();
+		$GLOBALS['plugins_auth'    ] = array();
+
+		foreach ($GLOBALS['plugins'] as $k => $v){
+			if (is_a($v, 'SlackServicePlugin')) $GLOBALS['plugins_services'][$k] = $v;
+			if (is_a($v, 'SlackAuthPlugin'   )) $GLOBALS['plugins_auth'    ][$k] = $v;
+		}
+	}
+
+	function createPluginInstance($class_name){
+		$obj = new $class_name();
+		$obj->id = $class_name;
+		return $obj;
+	}
+
+	function getPluginInstance($iid){
+
+		$icfg = $GLOBALS['data']['instances'][$iid];
+
+		if (!isset($icfg)) return null;
+
+		$plugin = $icfg['plugin'];
+		unset($icfg['plugin']);
+
+		$instance = createPluginInstance($plugin);
+		$instance->setInstanceConfig($iid, $icfg);
+
+		return $instance;
+	}
+
+	function getAuthPlugin($id){
+
+		$cfg = $GLOBALS['data']['auth'][$id];
+
+		$instance = $GLOBALS['plugins_auth'][$id];
+		if (!is_object($instance)) return;
+
+		$instance->cfg = $cfg ? $cfg : array();
+
+		return $instance;
 	}
 
 
@@ -34,21 +77,14 @@
 		echo "</pre>\n";
 	}
 
+	class SlackAuthPlugin {
 
-	class SlackPlugin {
-
-		public $id;
-
-		function createId(){
-			$this->id = uniqid();
-		}
-
-		function setConfig($id, $cfg){
-			$this->id = $id;
-			$this->cfg = $cfg;
+		function saveConfig(){
+			load_data();
+			$GLOBALS['data']['auth'][$this->id] = $this->cfg;
+			save_data();
 		}
 	}
-
 
 	function load_data(){
 		$data = array();

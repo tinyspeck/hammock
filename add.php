@@ -24,6 +24,8 @@
 
 	$instance = new $id();
 	$instance->createId();
+
+	$instance->checkRequirements();
 ?>
 
 <h1>Slackware</h1>
