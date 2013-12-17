@@ -12,4 +12,9 @@
 
 			return false;
 		}
+
+		function getConfigUrl(){
+
+			return $GLOBALS['cfg']['root_url'] . 'auth.php?id=' . $this->id;
+		}
 	}

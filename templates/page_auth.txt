@@ -1,0 +1,7 @@
+{include file='inc_head.txt'}
+
+<h2>Auth Plugin - {$instance->name}</h2>
+
+{$html}
+
+{include file='inc_foot.txt'}

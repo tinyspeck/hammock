@@ -8,10 +8,10 @@
 	$instance = getAuthPlugin($_GET['id']);
 	if (!is_object($instance)) die("instance not found");
 
-?>
 
-<h1>Slackware</h1>
+	$html = $instance->configPage();
 
-<h2>Auth Plugin - <?php echo $instance->name; ?></h2>
+	$smarty->assign('html', $html);
+	$smarty->assign('instance', $instance);
 
-<?php $instance->configPage(); ?>
+	$smarty->display('page_auth.txt');
