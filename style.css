@@ -1,0 +1,13 @@
+body {
+	font-family: helvetica, arial, sans-serif;
+}
+
+#page-wrap {
+	width: 800px;
+	margin: 20px auto 80px auto;
+}
+
+#page-inner {
+	border: 1px solid black;
+	padding: 1em;
+}
