@@ -40,5 +40,10 @@
 			dumper($this);
 			$this->smarty = $s;
 		}
+
+		function editConfig(){
+
+			return "<p>No config for this plugin.</p>";
+		}
 	}
 
