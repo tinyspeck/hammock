@@ -35,7 +35,6 @@ integrations for details. (Real documentation to come, later).
 * Include tokens in webhooks, not just IDs (and allow changing them)
 * Style config pages to match current slack.com
 * Log all incoming webhooks and what we sent as a result
-* Finish implementing github commits plugin
 * Add proper Slack user auth
 * Add 'Slackware' as a Slack service for bidi hooks
 
