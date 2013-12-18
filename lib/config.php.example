@@ -1,4 +1,13 @@
 <?php
 	$cfg = array();
+
+	# This URL should point to your Slackware install.
+	# It must end in a slash.
+
 	$cfg['root_url'] = 'http://myserver.com/slackware/';
+
+
+	# Create an incoming webhook in your Slack instance and
+	# put the URL here (this is temporary).
+
 	$cfg['webhook_url'] = 'https://foo.slack.com/services/hooks/incoming-webhook?token=xxxxx';
