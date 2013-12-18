@@ -8,9 +8,15 @@
 	$instance = getPluginInstance($_GET['id']);
 	if (!is_object($instance)) die("instance not found");
 
+	if ($_POST['delete-instance']){
+		$instance->deleteMe();
+		header("location: ./");
+		exit;
+	}
+
 	$instance->checkRequirements();
 
-
+	$smarty->assign('instance', $instance);
 	$smarty->assign('html', $instance->editConfig());
 
 	$smarty->display('page_edit.txt');

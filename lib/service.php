@@ -53,6 +53,13 @@
 			save_data();
 		}
 
+		function deleteMe(){
+			load_data();
+			$GLOBALS['data']['deleted_instances'][$this->iid] = $GLOBALS['data']['instances'][$this->iid];
+			unset($GLOBALS['data']['instances'][$this->iid]);
+			save_data();
+		}
+
 		function editConfig(){
 
 			return "<p>No config for this plugin.</p>";
