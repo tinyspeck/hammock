@@ -5,30 +5,29 @@
 		public $name = "Github Commits";
 		public $desc = "Source control and code management.";
 
-		public $cfg = array();
+		public $cfg = array(
+			'channel'	=> '#general',
+			'branch'	=> '',
+		);
 
 		function editConfig(){
 
-			$ret = $this->postToChannel("magic test", array(
-				'channel'	=> '#caltest',
-				'username'	=> 'edit-bot'
-			));
-dumper($ret);
+			if ($_GET['save']){
+
+				$this->icfg['channel'] = $_POST['channel'];
+				$this->icfg['branch'] = $_POST['branch'];
+				$this->saveConfig();
+
+				header("location: {$this->getEditUrl()}&saved=1");
+				exit;
+			}
 
 			return $this->smarty->fetch('edit.txt');
 		}
 
 		function onHook(){
 
-        $log = SLACKWARE_ROOT.'/data/github_'.uniqid().'.log';
-        $fh = fopen($log, 'w');
-        fwrite($fh, $_POST['payload']);
-        fclose($fh);
-
-	$this->cfg['channel'] = '#caltest';
-
-
-			if (!$this->cfg['channel']){
+			if (!$this->icfg['channel']){
 				return array(
 					'ok'	=> false,
 					'error'	=> "No channel configured",
@@ -49,7 +48,7 @@ dumper($ret);
 			# branch filtering
 			#
 
-			$filter_branches = $this->cfg['branch'] ? explode(',', $this->cfg['branch']) : array();
+			$filter_branches = $this->icfg['branch'] ? explode(',', $this->icfg['branch']) : array();
 
 			if ($github_payload['base_ref']){
 
@@ -64,7 +63,7 @@ dumper($ret);
 			if (count($filter_branches) && !in_array($branch, $filter_branches)){
 				return array(
 					'ok'		=> true,
-					'status'	=> "Commit not in tracked branch (in {$branch}, showing {$this->cfg['branch']})",
+					'status'	=> "Commit not in tracked branch (in {$branch}, showing {$this->icfg['branch']})",
 				);
 			}
 

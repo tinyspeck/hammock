@@ -34,11 +34,23 @@
 			return $GLOBALS['cfg']['root_url'] . 'hook.php?id=' . $this->iid;
 		}
 
+		function getEditUrl(){
+
+			return $GLOBALS['cfg']['root_url'] . 'edit.php?id=' . $this->iid;
+		}
+
 		function dump(){
 			$s = $this->smarty;
 			unset($this->smarty);
 			dumper($this);
 			$this->smarty = $s;
+		}
+
+                function saveConfig(){
+			load_data();
+			$GLOBALS['data']['instances'][$this->iid] = $this->icfg;
+			$GLOBALS['data']['instances'][$this->iid]['plugin'] = $this->id;
+			save_data();
 		}
 
 		function editConfig(){
