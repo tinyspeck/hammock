@@ -1,3 +1,4 @@
 <?php
 	$cfg = array();
 	$cfg['root_url'] = 'http://myserver.com/slackware/';
+	$cfg['webhook_url'] = 'https://foo.slack.com/services/hooks/incoming-webhook?token=xxxxx';

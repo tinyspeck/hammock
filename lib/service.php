@@ -45,5 +45,24 @@
 
 			return "<p>No config for this plugin.</p>";
 		}
+
+		function postToChannel($text, $extra){
+
+			$params = array(
+				'text'	=> $text,
+			);
+
+			if (isset($extra['channel' ])) $params['channel' ] = $extra['channel' ];
+			if (isset($extra['username'])) $params['username'] = $extra['username'];
+
+			$params = array(
+				'payload' => json_encode($params),
+			);
+
+			$ret = SlackHTTP::Post($GLOBALS['cfg']['webhook_url'], $params);
+
+			return $ret;
+		}
+
 	}
 
