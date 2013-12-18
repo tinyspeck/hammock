@@ -28,3 +28,14 @@ require polling, `cron` is also required (or `at`/`schtasks` on Windows).
 
 Each integration resides in its own folder inside `plugins/`. Take a look at existing
 integrations for details. (Real documentation to come, later).
+
+
+## TODO
+
+* Include tokens in webhooks, not just IDs (and allow changing them)
+* Style config pages to match current slack.com
+* Log all incoming webhooks and what we sent as a result
+* Finish implementing github commits plugin
+* Add proper Slack user auth
+* Add 'Slackware' as a Slack service for bidi hooks
+
