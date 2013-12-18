@@ -127,7 +127,7 @@
 		private function sendMessage($text){
 
 			$ret = $this->postToChannel($text, array(
-                                'channel'       => $this->cfg['channel'],
+                                'channel'       => $this->icfg['channel'],
                                 'username'      => 'edit-bot'
                         ));
 
