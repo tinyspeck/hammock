@@ -2,6 +2,7 @@
 	define('SLACKWARE_ROOT', realpath(dirname(__FILE__)."/.."));
 
 	include(SLACKWARE_ROOT."/lib/config.php");
+	include(SLACKWARE_ROOT."/lib/http.php");
 	include(SLACKWARE_ROOT."/lib/service.php");
 	include(SLACKWARE_ROOT."/lib/auth.php");
 
