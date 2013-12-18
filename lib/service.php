@@ -64,5 +64,24 @@
 			return $ret;
 		}
 
+		function escapeText($str){
+			return HtmlSpecialChars($str, ENT_NOQUOTES);
+		}
+
+		function escapeLink($url, $label=null){
+			$url = trim($url);
+
+			$url = $this->escapeText($url);
+			$url = str_replace('|', '%7C', $url);
+
+			if (strlen($label)){
+
+				$label = $this->escapeText($label);
+
+				return "<{$url}|{$label}>";
+			}
+
+			return "<{$url}>";
+		}
 	}
 
