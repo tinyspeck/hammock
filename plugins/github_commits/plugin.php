@@ -6,9 +6,21 @@
 		public $desc = "Source control and code management.";
 
 		public $cfg = array(
-			'channel'	=> '#general',
-			'branch'	=> '',
+			'has_token'	=> true,
 		);
+
+		function onInit(){
+
+			$channels = $this->getChannelsList();
+			foreach ($channels as $k => $v){
+				if ($v == '#general'){
+					$this->icfg['channel']  = $k;
+				}
+			}
+
+			$this->icfg['branch']	= '';
+			$this->icfg['botname']	= 'github';
+		}
 
 		function editConfig(){
 
@@ -22,14 +34,8 @@
 				exit;
 			}
 
-
-
-	$ret = api_call('channels.list');
-	$channels = array();
-	foreach ($ret['data']['channels'] as $row){
-		if (!$row['is_archived']) $channels[$row['id']] = '#'.$row['name'];
-	}
-	$this->smarty->assign('channels', $channels);
+			$channels = $this->getChannelsList();
+			$this->smarty->assign('channels', $channels);
 
 			return $this->smarty->fetch('edit.txt');
 		}

@@ -5,10 +5,15 @@
 
 <form action="{$this->getEditUrl()}&save=1" method="post">
 
-<p>Channel to post to: <input type="text" name="channel" value="{$this->icfg.channel|escape}" /></p>
-<p>Branches: <input type="text" name="branch" value="{$this->icfg.branch|escape}" /></p>
+<p>Current channel: {$this->icfg.channel|escape}</p>
 
-{$channels|@dumper}
+<p>Channel to post to: <select name="channel">
+{foreach from=$channels key='chan_id' item='chan_name'}
+	<option value="{$chan_id|escape}"{if $chan_id==$this->icfg.channel} selected{/if}>{$chan_name|escape}</option>
+{/foreach}
+</select></p>
+
+<p>Branches: <input type="text" name="branch" value="{$this->icfg.branch|escape}" /></p>
 
 <p><input type="submit" value="Save Changes" class="btn" /></p>
 </form>
