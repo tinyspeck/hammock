@@ -6,15 +6,14 @@
 
 
 	if ($_POST['done']){
-		$uid = $_POST['uid'];
-		$plugin = $_POST['plugin'];
 
-		load_data();
-		$data['instances'][$uid] = array();
-		$data['instances'][$uid]['plugin'] = $plugin;
-		save_data();
+		$instance = createPluginInstance($_POST['plugin']);
+		$instance->iid = $_POST['uid'];
+		$instance->onInit();
 
-		header("location: edit.php?id={$uid}");
+		$instance->saveConfig();
+
+		header("location: edit.php?id={$instance->iid}");
 		exit;
 	}
 
