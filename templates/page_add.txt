@@ -1,8 +1,8 @@
 {include file='inc_head.txt'}
 
-<h2>Add new service</h2>
+<h2>Add new service - {$instance->name}</h2>
 
-{$instance->dump()}
+<p>{$instance->desc}</p>
 
 <form action="add.php" method="post">
 <input type="hidden" name="done" value="1" />
