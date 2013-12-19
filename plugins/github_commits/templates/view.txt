@@ -1,0 +1,9 @@
+
+<p>Go to your repo's settings page and add this hook URL:</p>
+
+<p><code>{$this->getHookUrl()}</code></p>
+
+<p>Current channel: {$this->icfg.channel|escape}</p>
+<p>Branch filter: {$this->icfg.branch|escape}</p>
+
+<p><a href="{$this->getEditUrl()}">edit settings</a></p>

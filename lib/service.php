@@ -39,6 +39,11 @@
 			return $GLOBALS['cfg']['root_url'] . 'edit.php?id=' . $this->iid;
 		}
 
+		function getViewUrl(){
+
+			return $GLOBALS['cfg']['root_url'] . 'view.php?id=' . $this->iid;
+		}
+
 		function dump(){
 			$s = $this->smarty;
 			unset($this->smarty);
@@ -107,7 +112,12 @@
 
 		# things to override
 
-		function editConfig(){
+		function onView(){
+
+			return "<p>No information for this plugin.</p>";
+		}
+
+		function onEdit(){
 
 			return "<p>No config for this plugin.</p>";
 		}

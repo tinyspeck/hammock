@@ -22,7 +22,12 @@
 			$this->icfg['botname']	= 'github';
 		}
 
-		function editConfig(){
+		function onView(){
+
+			return $this->smarty->fetch('view.txt');
+		}
+
+		function onEdit(){
 
 			if ($_GET['save']){
 
@@ -30,7 +35,7 @@
 				$this->icfg['branch'] = $_POST['branch'];
 				$this->saveConfig();
 
-				header("location: {$this->getEditUrl()}&saved=1");
+				header("location: {$this->getViewUrl()}&saved=1");
 				exit;
 			}
 

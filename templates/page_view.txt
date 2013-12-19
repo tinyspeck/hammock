@@ -1,0 +1,12 @@
+{include file='inc_head.txt'}
+
+<h2>Service Instance</h2>
+
+{*<div class="alert">
+	<strong>This integration has been disabled.</strong><br />
+	It will not process messages or respond to events until it is re-enabled.
+</div>*}
+
+{$html}
+
+{include file='inc_foot.txt'}

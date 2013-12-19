@@ -12,7 +12,9 @@
 
 <ul>
 {foreach from=$instances item='obj'}
-	<li>{$obj->name} : <a href="edit.php?id={$obj->iid|urlencode}">{$obj->iid}</a></li>
+	<li>
+		<img src="plugins/{$obj->id}/icon_32.png" width="24" height="24" class="service_icon" style="margin: 4px 0.5rem 0 0; display: block; float: left; width: 18px; height: 18px;">
+		{$obj->name} : <a href="view.php?id={$obj->iid|urlencode}">{$obj->getLabel()}</a></li>
 {/foreach}
 </ul>
 
