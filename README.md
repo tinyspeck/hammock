@@ -37,4 +37,5 @@ integrations for details. (Real documentation to come, later).
 * Log all incoming webhooks and what we sent as a result
 * Add proper Slack user auth
 * Add 'Slackware' as a Slack service for bidi hooks
-
+* Fix UTF8
+* Plugins provide icons & default bot usernames
