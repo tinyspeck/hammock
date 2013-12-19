@@ -2,10 +2,10 @@
 
 <h2>Edit Service</h2>
 
-<div class="alert">
+{*<div class="alert">
 	<strong>This integration has been disabled.</strong><br />
 	It will not process messages or respond to events until it is re-enabled.
-</div>
+</div>*}
 
 {$html}
 
