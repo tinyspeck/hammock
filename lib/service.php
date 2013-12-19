@@ -103,6 +103,18 @@
 			return "<{$url}>";
 		}
 
+		function onParentInit(){
+
+			if ($this->cfg['has_token']){
+				$this->regenToken();
+			}
+		}
+
+		function regenToken(){
+
+			$this->icfg['token'] = substr(sha1(rand()), 1, 10);
+		}
+
 		function getChannelsList(){
 
 			return api_channels_list();

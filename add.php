@@ -9,6 +9,8 @@
 
 		$instance = createPluginInstance($_POST['plugin']);
 		$instance->iid = $_POST['uid'];
+
+		$instance->onParentInit();
 		$instance->onInit();
 
 		$instance->saveConfig();
