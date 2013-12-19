@@ -130,3 +130,21 @@
 		flock($fh, LOCK_UN);
 		fclose($fh);
 	}
+
+	function api_call($method, $args = array()){
+
+		$url = $GLOBALS['cfg']['api_base'].$method."?token=".$GLOBALS['cfg']['api_token'];
+
+		foreach ($args as $k => $v) $url .= '&'.urlencode($k).'='.urlencode($v);
+
+		$ret = SlackHTTP::get($url);
+
+		if ($ret['ok'] && $ret['code'] == '200'){
+			return array(
+				'ok'	=> true,
+				'data'	=> json_decode($ret['body'], true),
+			);
+		}
+
+		return $ret;
+	}

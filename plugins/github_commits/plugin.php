@@ -22,6 +22,15 @@
 				exit;
 			}
 
+
+
+	$ret = api_call('channels.list');
+	$channels = array();
+	foreach ($ret['data']['channels'] as $row){
+		if (!$row['is_archived']) $channels[$row['id']] = '#'.$row['name'];
+	}
+	$this->smarty->assign('channels', $channels);
+
 			return $this->smarty->fetch('edit.txt');
 		}
 

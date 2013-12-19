@@ -1,6 +1,24 @@
 <?php
 	class SlackHTTP {
 
+		function get($url, $headers=array()){
+
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, SlackHTTP::prepare_outgoing_headers($headers));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+			curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+			curl_setopt($ch, CURLOPT_HEADER, true);
+
+			$raw = curl_exec($ch);
+			$info = curl_getinfo($ch);
+
+			curl_close($ch);
+
+			return SlackHTTP::parse_response($raw, $info);
+		}
+
 		function post($url, $params=array(), $headers=array()){
 
 			$ch = curl_init();

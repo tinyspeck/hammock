@@ -8,5 +8,7 @@
 <p>Channel to post to: <input type="text" name="channel" value="{$this->icfg.channel|escape}" /></p>
 <p>Branches: <input type="text" name="branch" value="{$this->icfg.branch|escape}" /></p>
 
+{$channels|@dumper}
+
 <p><input type="submit" value="Save Changes" class="btn" /></p>
 </form>
