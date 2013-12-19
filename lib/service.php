@@ -60,11 +60,6 @@
 			save_data();
 		}
 
-		function editConfig(){
-
-			return "<p>No config for this plugin.</p>";
-		}
-
 		function postToChannel($text, $extra){
 
 			$params = array(
@@ -101,6 +96,33 @@
 			}
 
 			return "<{$url}>";
+		}
+
+		function getChannelsList(){
+
+			return api_channels_list();
+		}
+
+
+
+		# things to override
+
+		function editConfig(){
+
+			return "<p>No config for this plugin.</p>";
+		}
+
+		function getLabel(){
+
+			return "No label ({$this->iid})";
+		}
+
+		function onInit(){
+			# set default options in $this->icfg here
+		}
+
+		function onHook(){
+			# handle an incoming hook here
 		}
 	}
 
