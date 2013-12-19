@@ -1,13 +1,110 @@
 body {
-	font-family: helvetica, arial, sans-serif;
+	color: #555459;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.5rem;
 }
 
-#page-wrap {
+#header {
+position: fixed;
+top: 0;
+left: 0;
+padding: 0;
+background: white;
+height: 60px;
+width: 100%;
+margin-bottom: 2rem;
+font-size: 15px;
+z-index: 10;
+background: #fbfbfb;
+-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#header-inner {
 	width: 800px;
-	margin: 20px auto 80px auto;
+	margin: 16px auto 10px auto;
 }
 
 #page-inner {
-	border: 1px solid black;
-	padding: 1em;
+	width: 800px;
+	margin: 80px auto 80px auto;
+	xborder: 1px solid black;
+	xpadding: 1em;
+}
+
+#slack_icon {
+float: left;
+display: inline-block;
+margin-top: -3px;
+margin-right: 0.4rem;
+width: 32px;
+height: 32px;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 900;
+	font-family: 'Lato', sans-serif;
+	color: #555459;
+	-webkit-font-smoothing: antialiased;
+	margin: 0 0 1rem 0;
+}
+
+h2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+
+.alert {
+	font-size: 0.9rem;
+	color: #c09853;
+	padding: 8px 35px 8px 14px;
+	margin-bottom: 20px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.btn {
+background: #2a80b9;
+color: white !important;
+text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+-webkit-font-smoothing: antialiased;
+font-family: 'Lato', sans-serif;
+line-height: 1.2rem;
+font-weight: 900;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+text-decoration: none;
+border: none;
+-webkit-border-radius: 0.25rem;
+-moz-border-radius: 0.25rem;
+border-radius: 0.25rem;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+vertical-align: bottom;
+white-space: nowrap;
+padding: 7px 14px 8px;
+font-size: 15px;
+}
+
+.btn:hover, .btn:focus {
+background: #439fe0;
+color: white;
+outline: none;
+}
+
+.btn:active, .btn.active {
+background: #439fe0;
+color: white;
+-webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+-moz-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
 }

@@ -2,11 +2,17 @@
 <head>
 
 <link href="style.css" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<div id="page-wrap">
-
-<h1>Slackware</h1>
+<div id="header">
+<div id="header-inner">
+<h1>
+	<img src="./images/logo.png" id="slack_icon">
+	Slackware
+</h1>
+</div>
+</div>
 
 <div id="page-inner">
