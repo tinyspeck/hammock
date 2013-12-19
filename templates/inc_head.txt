@@ -1,6 +1,7 @@
-<html>
+{'Content-Type: text/html; charset=utf-8'|header}<html>
 <head>
-
+<meta charset="utf-8">
+<title>Slackware</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
 </head>
