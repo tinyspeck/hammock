@@ -20,7 +20,7 @@ require polling, `cron` is also required (or `at`/`schtasks` on Windows).
 * Make a clone of this git repository onto your web server
 * Copy `lib/config.php.example` to `lib/config.php`
 * Open `lib/config.php` in a text editor and follow the instructions inside
-* Make sure `data/data.php` is writable by your web server
+* Make sure `data/` is writable by your web server
 * Visit `index.php` in your browser and start configuring
 
 
