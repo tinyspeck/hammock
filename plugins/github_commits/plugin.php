@@ -14,7 +14,8 @@
 			$channels = $this->getChannelsList();
 			foreach ($channels as $k => $v){
 				if ($v == '#general'){
-					$this->icfg['channel']  = $k;
+					$this->icfg['channel'] = $k;
+					$this->icfg['channel_name'] = $v;
 				}
 			}
 
@@ -29,9 +30,12 @@
 
 		function onEdit(){
 
+			$channels = $this->getChannelsList();
+
 			if ($_GET['save']){
 
 				$this->icfg['channel'] = $_POST['channel'];
+				$this->icfg['channel_name'] = $channels[$_POST['channel']];
 				$this->icfg['branch'] = $_POST['branch'];
 				$this->saveConfig();
 
@@ -39,7 +43,6 @@
 				exit;
 			}
 
-			$channels = $this->getChannelsList();
 			$this->smarty->assign('channels', $channels);
 
 			return $this->smarty->fetch('edit.txt');
@@ -144,11 +147,15 @@
 			);
 		}
 
+		function getLabel(){
+			return "Post commits to {$this->icfg['channel_name']} as {$this->icfg['botname']}";
+		}
+
 		private function sendMessage($text){
 
 			$ret = $this->postToChannel($text, array(
                                 'channel'       => $this->icfg['channel'],
-                                'username'      => 'edit-bot'
+                                'username'      => $this->icfg['botname'],
                         ));
 
 			return array(
