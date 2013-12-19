@@ -12,7 +12,7 @@
 
 <ul>
 {foreach from=$instances item='obj'}
-	<li><a href="edit.php?id={$obj.iid|urlencode}">{$obj.class} {$obj.iid}</a></li>
+	<li>{$obj->name} : <a href="edit.php?id={$obj->iid|urlencode}">{$obj->iid}</a></li>
 {/foreach}
 </ul>
 

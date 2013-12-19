@@ -24,10 +24,7 @@
 
 	$instances = array();
 	foreach ($data['instances'] as $k => $instance){
-		$instances[] = array(
-			'iid' => $k,
-			'class' => $instance['plugin'],
-		);
+		$instances[] = getPluginInstance($k);
 	}
 	$smarty->assign('instances', $instances);
 
