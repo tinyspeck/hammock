@@ -6,15 +6,14 @@
 	# log request
 
 	$req = array(
-		'auth_user'	=> $_SERVER['PHP_AUTH_USER'],
-		'auth_pass'	=> $_SERVER['PHP_AUTH_PW'],
+		'server'	=> $_SERVER,
 		'get'		=> $_GET,
 		'post'		=> $_POST,
 	);
 
 	$log = SLACKWARE_ROOT.'/data/hook_'.uniqid().'.log';
 	$fh = fopen($log, 'w');
-	fwrite($fh, json_encode($data));
+	fwrite($fh, '<'.'? $req = '.var_export($req, true).';');
 	fclose($fh);
 
 
@@ -33,7 +32,7 @@
 			}
 		}
 
-		$instance->onHook();
+		$instance->onHook($req);
 	}	
 
 	echo "ok\n";

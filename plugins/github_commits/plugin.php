@@ -49,7 +49,7 @@
 			return $this->smarty->fetch('edit.txt');
 		}
 
-		function onHook(){
+		function onHook($req){
 
 			if (!$this->icfg['channel']){
 				return array(
@@ -58,7 +58,7 @@
 				);
 			}
 
-			$github_payload = json_decode($_POST['payload'], true);
+			$github_payload = json_decode($req['post']['payload'], true);
 
 			if (!$github_payload || !is_array($github_payload)){
 				return array(
