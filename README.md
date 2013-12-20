@@ -41,4 +41,3 @@ So much left to do!
 * Add proper Slack user auth
 * Add 'Slackware' as a Slack service for bidi hooks
 * Plugins provide icons & default bot usernames
-* Show tokens (where used) and allow invalidating them
