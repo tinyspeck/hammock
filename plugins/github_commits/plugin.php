@@ -37,6 +37,7 @@
 				$this->icfg['channel'] = $_POST['channel'];
 				$this->icfg['channel_name'] = $channels[$_POST['channel']];
 				$this->icfg['branch'] = $_POST['branch'];
+				$this->icfg['botname'] = $_POST['botname'];
 				$this->saveConfig();
 
 				header("location: {$this->getViewUrl()}&saved=1");

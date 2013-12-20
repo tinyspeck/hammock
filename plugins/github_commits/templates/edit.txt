@@ -1,11 +1,6 @@
 
-<p>Go to your repo's settings page and add this hook URL:</p>
-
-<p><code>{$this->getHookUrl()}</code></p>
 
 <form action="{$this->getEditUrl()}&save=1" method="post">
-
-<p>Current channel: {$this->icfg.channel|escape}</p>
 
 <p>Channel to post to: <select name="channel">
 {foreach from=$channels key='chan_id' item='chan_name'}
@@ -14,6 +9,8 @@
 </select></p>
 
 <p>Branches: <input type="text" name="branch" value="{$this->icfg.branch|escape}" /></p>
+
+<p>Bot name: <input type="text" name="botname" value="{$this->icfg.botname|escape}" /></p>
 
 <p><input type="submit" value="Save Changes" class="btn" /></p>
 </form>

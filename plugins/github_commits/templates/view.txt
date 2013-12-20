@@ -3,7 +3,8 @@
 
 <p><code>{$this->getHookUrl()}</code></p>
 
-<p>Current channel: {$this->icfg.channel|escape}</p>
-<p>Branch filter: {$this->icfg.branch|escape}</p>
+<p><b>Post to channel:</b> {$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</p>
+<p><b>Branch filter:</b> {$this->icfg.branch|escape|default:'<i>all</i>'}</p>
+<p><b>Bot name:</b> {$this->icfg.botname|escape}</p>
 
-<p><a href="{$this->getEditUrl()}">edit settings</a></p>
+<p><a href="{$this->getEditUrl()}">Edit settings</a></p>
