@@ -9,7 +9,7 @@
 <input type="hidden" name="plugin" value="{$instance->id}" />
 <input type="hidden" name="uid" value="{$instance->iid}" />
 
-<input type="submit" value="Create" />
+<input type="submit" value="Add Service" class="btn btn-success" />
 </form>
 
 {include file='inc_foot.txt'}

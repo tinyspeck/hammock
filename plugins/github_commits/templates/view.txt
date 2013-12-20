@@ -7,4 +7,4 @@
 <p><b>Branch filter:</b> {$this->icfg.branch|escape|default:'<i>all</i>'}</p>
 <p><b>Bot name:</b> {$this->icfg.botname|escape}</p>
 
-<p><a href="{$this->getEditUrl()}">Edit settings</a></p>
+<p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>

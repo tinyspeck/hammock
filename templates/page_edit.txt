@@ -9,13 +9,4 @@
 
 {$html}
 
-<hr />
-
-<form action="{$instance->getEditUrl()}" method="post">
-<input type="hidden" name="delete-instance" value="1" />
-
-<p style="background-color: pink; border: 2px solid red; padding: 8px"><input type="submit" value="Delete" /> Delete this integration.</p>
-
-</form>
-
 {include file='inc_foot.txt'}

@@ -15,7 +15,7 @@
 
 		$instance->saveConfig();
 
-		header("location: edit.php?id={$instance->iid}");
+		header("location: view.php?id={$instance->iid}");
 		exit;
 	}
 

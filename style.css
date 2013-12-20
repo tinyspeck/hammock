@@ -117,3 +117,41 @@ color: white;
 -moz-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
 box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
 }
+
+.btn-danger {
+	background: #d00000;
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active {
+	background: #e60000;
+}
+
+.btn-warning {
+	background: #daa038;
+}
+
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active {
+	background: #e8ac3c;
+}
+
+.btn-success {
+	background: #36a64f;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+	background: #3ebd5a;
+}
+
+.godblock {
+border: 1px solid #becccc;
+-moz-border-radius: 15px;
+border-radius: 15px;
+background-image: url(https://slack.global.ssl.fastly.net/5065/img/stripes_bg.gif);
+padding: 8px;
+position: relative;
+text-align: left;
+}
+
+.godblock pre {
+	margin: 0;
+}
