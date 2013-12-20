@@ -24,3 +24,10 @@
 	# In the future we'll use OAuth or soemthing.
 
         $cfg['api_token'] = 'abcd-123456789-abcdefhji-01234567';
+
+
+	# The details of your OAuth application.
+
+        $cfg['client_id'] = '123456.7890';
+        $cfg['client_secret'] = 'abcdefg';
+

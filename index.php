@@ -29,4 +29,9 @@
 	$smarty->assign('instances', $instances);
 
 
+	$oauth_url = "https://dev.slack.com/oauth/authorize";
+	$oauth_url .= "?client_id=".$cfg['client_id'];
+	$oauth_url .= "&redirect_uri={$cfg['root_url']}oauth.php";
+	$smarty->assign('oauth_url', $oauth_url);
+
 	$smarty->display('page_index.txt');
