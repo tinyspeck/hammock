@@ -14,6 +14,13 @@
 		exit;
 	}
 
+	if ($_POST['new-token']){
+		$instance->regenToken();
+		$instance->saveConfig();
+		header("location: {$instance->getViewUrl()}&newtoken=1");
+                exit;
+	}
+
 	$instance->checkRequirements();
 
 	$smarty->assign('instance', $instance);

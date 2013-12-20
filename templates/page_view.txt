@@ -9,21 +9,36 @@
 
 {$html}
 
-<hr />
+<p>&nbsp;</p>
+
 
 {* Change token *}
 
-<p><a href="#" class="btn btn-warning">Change token...</a></p>
+{if $instance->cfg.has_token}
+
+<div class="alert">
+	The current token for this service is <code>{$instance->icfg.token}</code>.<br />
+
+	<form action="{$instance->getViewUrl()}" method="post">
+	<input type="hidden" name="new-token" value="1" />
+	<p style="margin: 0"><input type="submit" value="Change token" class="btn btn-warning" /></p>
+	</form>
+
+</div>
+
+{/if}
 
 
 {* Delete *}
 
-<form action="{$instance->getViewUrl()}" method="post">
-<input type="hidden" name="delete-instance" value="1" />
+<div class="alert alert-error">
 
-<p><input type="submit" value="Delete Integration" class="btn btn-danger" /></p>
+	<form action="{$instance->getViewUrl()}" method="post">
+	<input type="hidden" name="delete-instance" value="1" />
+	<p style="margin: 0"><input type="submit" value="Delete Integration" class="btn btn-danger" /></p>
+	</form>
 
-</form>
+</div>
 
 <div class="godblock">
 	{$instance->icfg|@dumper}
