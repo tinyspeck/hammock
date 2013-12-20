@@ -15,7 +15,7 @@
 	$smarty = new Smarty();
 	$smarty->template_dir = SLACKWARE_ROOT."/templates";
 	$smarty->compile_dir = SLACKWARE_ROOT."/data/templates_c";
-
+	$smarty->assign_by_ref('cfg', $cfg);
 
 	function load_plugins(){
 
@@ -158,4 +158,32 @@
 		}
 
 		return $channels;
+	}
+
+
+	function verify_auth(){
+
+		$v = $_COOKIE[$GLOBALS['cfg']['cookie_name']];
+
+		if ($v){
+			list($id, $secret) = explode('-', $v);
+
+			load_data();
+
+			$u = $GLOBALS['data']['users'][$id];
+
+			if (is_array($u) && $u['secret'] == $secret){
+
+				$GLOBALS['cfg']['user'] = $u;
+				return;
+			}
+		}
+
+		$oauth_url = $GLOBALS['cfg']['slack_root']."/oauth/authorize";
+		$oauth_url .= "?client_id=".$GLOBALS['cfg']['client_id'];
+		$oauth_url .= "&redirect_uri={$GLOBALS['cfg']['root_url']}oauth.php";
+
+		$GLOBALS['smarty']->assign('oauth_url', $oauth_url);
+		$GLOBALS['smarty']->display('page_login.txt');
+		exit;
 	}

@@ -2,6 +2,11 @@
 	$dir = dirname(__FILE__);
 	include("$dir/lib/init.php");
 
+
+	#
+	# exchange the code for a token
+	#
+
 	$params = array(
 		'client_id'	=> $cfg['client_id'],
 		'client_secret'	=> $cfg['client_secret'],
@@ -9,8 +14,54 @@
 		'redirect_uri'	=> "{$cfg['root_url']}oauth.php",
 	);
 
-	$url = "https://dev.slack.com/api/oauth.access";
+	$url = $cfg['slack_root']."api/oauth.access";
 
 	$ret = SlackHTTP::post($url, $params);
 
-	dumper($ret);
+	if ($ret['ok'] && $ret['code'] == '200'){
+
+		$obj = json_decode($ret['body'], true);
+		$token = $obj['access_token'];
+
+	}else{
+		echo "problem with oauth.access call";
+		dumper($ret);
+		exit;
+	}
+
+
+	#
+	# fetch user info
+	#
+
+	$url = $cfg['slack_root']."api/auth.test?token={$token}";
+	$ret = SlackHTTP::get($url);
+
+	if ($ret['ok'] && $ret['code'] == '200'){
+
+		$obj = json_decode($ret['body'], true);
+
+	}else{
+		echo "problem with auth.test call";
+		dumper($ret);
+		exit;
+	}
+
+	$info = $obj;
+	unset($info['ok']);
+
+	$info['access_token'] = $token;
+	$info['secret'] = substr(md5(rand()), 0, 10);
+
+	$cookie = $info['user_id'].'-'.$info['secret'];
+	$expire = time() + (365 * 24 * 60 * 60);
+
+	setcookie($cfg['cookie_name'], $cookie, $expire, $cfg['cookie_path'], $cfg['cookie_domain']);
+
+	load_data();
+	$data['users'][$info['user_id']] = $info;
+	save_data();
+
+
+	header("location: ./");
+	exit;

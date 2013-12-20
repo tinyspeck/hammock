@@ -26,6 +26,4 @@
 {/foreach}
 </ul>
 
-<a href="{$oauth_url}">OAuth start</a>
-
 {include file='inc_foot.txt}

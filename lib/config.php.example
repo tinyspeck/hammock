@@ -31,3 +31,15 @@
         $cfg['client_id'] = '123456.7890';
         $cfg['client_secret'] = 'abcdefg';
 
+
+	# Where we should store cookies
+
+        $cfg['cookie_domain'] = 'myserver.com';
+        $cfg['cookie_path'] = '/slackware/';
+        $cfg['cookie_name'] = 'slackware-auth';
+
+
+	# Base URL for Slack.
+	# Leave this as-is unless you're using Slack-in-a-box
+
+	$cfg['slack_root'] = "https://slack.com/";

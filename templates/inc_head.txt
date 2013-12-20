@@ -10,6 +10,12 @@
 
 <div id="header">
 <div id="header-inner">
+{if $cfg.user.user_id}
+	<div style="float: right">
+		Logged in as <b>{$cfg.user.user|escape}</b>
+		[<a href="logout.php">logout</a>]
+	</div>
+{/if}
 <h1>
 	<a href="./"><img src="./images/logo.png" id="slack_icon"></a>
 	<a href="./">Slackware</a>
