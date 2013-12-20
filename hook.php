@@ -25,6 +25,14 @@
 
 	$instance = getPluginInstance($_GET['id']);
 	if (is_object($instance)){
+
+		if ($instance->cfg['has_token']){
+			if ($_GET['token'] != $instance->icfg['token']){
+				echo "bad token\n";
+				exit;
+			}
+		}
+
 		$instance->onHook();
 	}	
 

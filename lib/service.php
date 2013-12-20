@@ -31,7 +31,11 @@
 
 		function getHookUrl(){
 
-			return $GLOBALS['cfg']['root_url'] . 'hook.php?id=' . $this->iid;
+			$url =  $GLOBALS['cfg']['root_url'] . 'hook.php?id=' . $this->iid;
+
+			if ($this->cfg['has_token']) $url .= "&token={$this->icfg['token']}";
+
+			return $url;
 		}
 
 		function getEditUrl(){

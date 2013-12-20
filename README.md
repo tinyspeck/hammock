@@ -36,9 +36,9 @@ For a simple webhook-to-message plugin, look at `github_commits`.
 
 So much left to do!
 
-* Include tokens in webhooks, not just IDs (and allow changing them)
 * Style config pages to match current slack.com (somewhat done)
 * Log all incoming webhooks and what we sent as a result (and allow replays)
 * Add proper Slack user auth
 * Add 'Slackware' as a Slack service for bidi hooks
 * Plugins provide icons & default bot usernames
+* Show tokens (where used) and allow invalidating them
