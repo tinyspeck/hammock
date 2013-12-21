@@ -1,8 +1,8 @@
 {include file='inc_head.txt}
 
-<p>You'll need to log into your Slack account to continue.</p>
+<p style="text-align: center; padding: 2em 0 2em 0">You'll need to log into your Slack account to continue.</p>
 
-<p><a href="{$oauth_url}" class="btn">Authenticate</a></p>
+<p style="text-align: center"><a href="{$oauth_url}" class="btn">Authenticate</a></p>
 
 
 {include file='inc_foot.txt}
