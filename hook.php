@@ -20,7 +20,6 @@
 	# see if we can find a plugin to handle it
 
 	load_plugins();
-	load_data();
 
 	$instance = getPluginInstance($_GET['id']);
 	if (is_object($instance)){

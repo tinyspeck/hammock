@@ -3,7 +3,6 @@
 	include("$dir/lib/init.php");
 
 	load_plugins();
-	load_data();
 
 	$instance = getAuthPlugin($_GET['id']);
 	if (!is_object($instance)) die("instance not found");

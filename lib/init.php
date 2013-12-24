@@ -1,6 +1,9 @@
 <?php
 	define('SLACKWARE_ROOT', realpath(dirname(__FILE__)."/.."));
 
+	include(SLACKWARE_ROOT."/lib/data.php");
+	include(SLACKWARE_ROOT."/lib/data_files.php");
+
 	include(SLACKWARE_ROOT."/lib/config.php");
 	include(SLACKWARE_ROOT."/lib/http.php");
 	include(SLACKWARE_ROOT."/lib/service.php");
@@ -60,7 +63,7 @@
 
 	function getPluginInstance($iid){
 
-		$icfg = $GLOBALS['data']['instances'][$iid];
+		$icfg = $GLOBALS['data']->get('instances', $iid);
 
 		if (!isset($icfg)) return null;
 
@@ -79,7 +82,7 @@
 
 		$instance = createPluginInstance($id);
 
-		$cfg = $GLOBALS['data']['auth'][$id];
+		$cfg = $GLOBALS['data']->get('auth', $id);
 		$instance->cfg = $cfg ? $cfg : array();
 
 		return $instance;
@@ -97,45 +100,11 @@
 		echo "</pre>\n";
 	}
 
-	function load_data(){
-		$data = array();
-		$path = SLACKWARE_ROOT."/data/data.php";
-		if (!file_exists($path)){
-			touch($path);
-		}
-		include($path);
-		$GLOBALS['data'] = $data;
-	}
-
-	function save_data(){
-		$path = SLACKWARE_ROOT."/data/data.php";
-
-		$fh = fopen($path, 'c');
-		if (!$fh) die("Failed to open data file for writing");
-
-		$retries = 5;
-
-		for ($i=0; $i<$retries; $i++){
-			$flag = 0;
-			$ok = flock($fh, LOCK_EX | LOCK_NB, $flag);
-			if ($ok) break;
-			if (!$flag) die("Failed to lock data file");
-			sleep(1);
-		}
-		if (!$ok) die("Failed to lock data file");
-
-		ftruncate($fh, 0);
-		fwrite($fh, "<"."?php \$data = ".var_export($GLOBALS['data'], true).';');
-
-		flock($fh, LOCK_UN);
-		fclose($fh);
-	}
-
 	function api_call($method, $args = array()){
 
-		load_data();
+		$team = $GLOBALS['data']->get('metadata', 'team');
 
-		$url = $GLOBALS['cfg']['slack_root']."api/".$method."?token=".$GLOBALS['data']['team']['token'];
+		$url = $GLOBALS['cfg']['slack_root']."api/".$method."?token=".$team['token'];
 
 		foreach ($args as $k => $v) $url .= '&'.urlencode($k).'='.urlencode($v);
 
@@ -170,9 +139,7 @@
 		if ($v){
 			list($id, $secret) = explode('-', $v);
 
-			load_data();
-
-			$u = $GLOBALS['data']['users'][$id];
+			$u = $GLOBALS['data']->get('users', $id);
 
 			if (is_array($u) && $u['secret'] == $secret){
 
@@ -185,9 +152,10 @@
 		$oauth_url .= "?client_id=".$GLOBALS['cfg']['client_id'];
 		$oauth_url .= "&redirect_uri={$GLOBALS['cfg']['root_url']}oauth.php";
 
-		if ($GLOBALS['data']['team']['id']){
+		$team = $GLOBALS['data']->get('metadata', 'team');
+		if ($team['id']){
 
-			$oauth_url .= "&team={$GLOBALS['data']['team']['id']}";
+			$oauth_url .= "&team={$team['id']}";
 		}else{
 			$GLOBALS['smarty']->assign('first_time', 1);
 		}

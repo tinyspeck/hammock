@@ -56,17 +56,15 @@
 		}
 
                 function saveConfig(){
-			load_data();
-			$GLOBALS['data']['instances'][$this->iid] = $this->icfg;
-			$GLOBALS['data']['instances'][$this->iid]['plugin'] = $this->id;
-			save_data();
+			$cfg = $this->icfg;
+			$cfg['plugin'] = $this->id;
+			$GLOBALS['data']->set('instances', $this->iid, $cfg);
 		}
 
 		function deleteMe(){
-			load_data();
-			$GLOBALS['data']['deleted_instances'][$this->iid] = $GLOBALS['data']['instances'][$this->iid];
-			unset($GLOBALS['data']['instances'][$this->iid]);
-			save_data();
+			$cfg = $GLOBALS['data']->get('instances', $this->iid);
+			$GLOBALS['data']->set('deleted_instances', $this->iid, $cfg);
+			$GLOBALS['data']->del('instances', $this->iid); 
 		}
 
 		function postToChannel($text, $extra){

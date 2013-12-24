@@ -3,9 +3,7 @@
 	class SlackAuthPlugin {
 
 		function saveConfig(){
-			load_data();
-			$GLOBALS['data']['auth'][$this->id] = $this->cfg;
-			save_data();
+			$GLOBALS['data']->set('auth', $this->id, $this->cfg);
 		}
 
 		function isUserAuthed(){

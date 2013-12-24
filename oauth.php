@@ -58,19 +58,23 @@
 
 	setcookie($cfg['cookie_name'], $cookie, $expire, $cfg['cookie_path'], $cfg['cookie_domain']);
 
-	load_data();
-	$data['users'][$info['user_id']] = $info;
+	$data->set('users', $info['user_id'], $info);
 
+
+
+	#
 	# is this the first use?
-	if (!$GLOBALS['data']['team']['id']){
-		$GLOBALS['data']['team'] = array(
+	#
+
+	$team = $data->get('metadata', 'team');
+
+	if (!$team['id']){
+		$data->set('metadata', 'team', array(
 			'id'	=> $info['team_id'],
 			'name'	=> $info['team'],
 			'token'	=> $info['access_token'],
-		);
+		));
 	}
-
-	save_data();
 
 
 	header("location: ./");

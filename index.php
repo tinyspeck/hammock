@@ -5,7 +5,6 @@
 	verify_auth();
 
 	load_plugins();
-	load_data();
 
 
 	$services = array();
@@ -24,11 +23,10 @@
 	}
 	$smarty->assign('auth', $auth);
 
+	$instance_data = $data->get_all('instances');
 	$instances = array();
-	if (isset($data['instances']) && is_array($data['instances'])){
-		foreach ($data['instances'] as $k => $instance){
-			$instances[] = getPluginInstance($k);
-		}
+	foreach ($instance_data as $k => $instance){
+		$instances[] = getPluginInstance($k);
 	}
 	$smarty->assign('instances', $instances);
 
