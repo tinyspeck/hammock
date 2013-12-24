@@ -133,6 +133,8 @@
 
 	function api_call($method, $args = array()){
 
+		load_data();
+
 		$url = $GLOBALS['cfg']['slack_root']."api/".$method."?token=".$GLOBALS['data']['team']['token'];
 
 		foreach ($args as $k => $v) $url .= '&'.urlencode($k).'='.urlencode($v);
