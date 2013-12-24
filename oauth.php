@@ -60,6 +60,16 @@
 
 	load_data();
 	$data['users'][$info['user_id']] = $info;
+
+	# is this the first use?
+	if (!$GLOBALS['data']['team']['id']){
+		$GLOBALS['data']['team'] = array(
+			'id'	=> $info['team_id'],
+			'name'	=> $info['team'],
+			'token'	=> $info['access_token'],
+		);
+	}
+
 	save_data();
 
 

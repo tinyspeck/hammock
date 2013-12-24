@@ -101,7 +101,7 @@
 		$data = array();
 		$path = SLACKWARE_ROOT."/data/data.php";
 		if (!file_exists($path)){
-			die("Unable find Slackware data storage");
+			touch($path);
 		}
 		include($path);
 		$GLOBALS['data'] = $data;
@@ -182,6 +182,13 @@
 		$oauth_url = $GLOBALS['cfg']['slack_root']."/oauth/authorize";
 		$oauth_url .= "?client_id=".$GLOBALS['cfg']['client_id'];
 		$oauth_url .= "&redirect_uri={$GLOBALS['cfg']['root_url']}oauth.php";
+
+		if ($GLOBALS['data']['team']['id']){
+
+			$oauth_url .= "&team={$GLOBALS['data']['team']['id']}";
+		}else{
+			$GLOBALS['smarty']->assign('first_time', 1);
+		}
 
 		$GLOBALS['smarty']->assign('oauth_url', $oauth_url);
 		$GLOBALS['smarty']->display('page_login.txt');
