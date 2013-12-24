@@ -13,14 +13,9 @@
 	$cfg['webhook_url'] = 'https://foo.slack.com/services/hooks/incoming-webhook?token=xxxxx';
 
 
-	# An API token for your team.
-	# You can generate this at https://slack.com/api/ for now.
-	# In the future we'll use OAuth or soemthing.
-
-        $cfg['api_token'] = 'abcd-123456789-abcdefhji-01234567';
-
-
 	# The details of your OAuth application.
+	# You can create it here: https://api.slack.com/applications
+	# Make sure to set the OAuth URL to the same as 'root_url' above
 
         $cfg['client_id'] = '123456.7890';
         $cfg['client_secret'] = 'abcdefg';
