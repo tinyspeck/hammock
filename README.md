@@ -43,3 +43,4 @@ So much left to do!
 * Add 'Slackware' as a Slack service for bidi hooks
 * Switch from using a webhook to an API method (needs to be implemented first)
 * Tab the service config pages probably (Summary, Settings, plugin-defined)
+* Do the cron stuff
