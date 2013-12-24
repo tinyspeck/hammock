@@ -2,12 +2,17 @@
 
 <b>Add a new service</b>
 
+{if $services|@count}
 <ul>
 {foreach from=$services item='k'}
 	<li><a href="add.php?id={$k->id|urlencode}">{$k->name|escape}</a> - {$k->desc|escape} </li>
 {/foreach}
 </ul>
+{else}
+<p>You don't have any service plugins installed.</p>
+{/if}
 
+{if $instances|@count}
 <b>Existing services</b>
 
 <ul>
@@ -17,7 +22,9 @@
 		{$obj->name} : <a href="view.php?id={$obj->iid|urlencode}">{$obj->getLabel()}</a></li>
 {/foreach}
 </ul>
+{/if}
 
+{if $auth|@count}
 <b>Things to configure</b>
 
 <ul>
@@ -25,5 +32,6 @@
 	<li><a href="auth.php?id={$k->id|urlencode}">{$k->name|escape}</a> - {$k->desc|escape} </li>
 {/foreach}
 </ul>
+{/if}
 
 {include file='inc_foot.txt}
