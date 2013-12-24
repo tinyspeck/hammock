@@ -36,8 +36,11 @@ For a simple webhook-to-message plugin, look at `github_commits`.
 
 So much left to do!
 
+* Change OAuth to allow team selection at first login, then scope to team
+* Overhaul storage to provide general k/v tables
 * Style config pages to match current slack.com (somewhat done)
 * Log all incoming webhooks and what we sent as a result (and allow replays)
-* Add proper Slack user auth
-* Add 'Slackware' as a Slack service for bidi hooks
 * Plugins provide icons & default bot usernames
+* Add 'Slackware' as a Slack service for bidi hooks
+* Switch from using a webhook to an API method (needs to be implemented first)
+* Tab the service config pages probably (Summary, Settings, plugin-defined)
