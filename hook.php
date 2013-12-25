@@ -3,13 +3,35 @@
 	include("$dir/lib/init.php");
 
 
-	# log request
+	#
+	# build request object
+	#
+
+	$headers = array();
+	foreach ($_SERVER as $k => $v){
+		if (substr($k, 0, 5) == 'HTTP_'){
+			$k = substr($k, 5);
+			$k = StrToLower($k);
+			$k = preg_replace_callback('!(^|_)([a-z])!', 'local_replace_header', $k);
+			$k = str_replace('_', '-', $k);
+			$headers[$k] = $v;
+		}
+	}
+
+	function local_replace_header($m){
+		return $m[1].StrToUpper($m[2]);
+	}
 
 	$req = array(
-		'server'	=> $_SERVER,
+		'headers'	=> $headers,
 		'get'		=> $_GET,
 		'post'		=> $_POST,
 	);
+
+
+	#
+	# log to a file (this is temporary)
+	#
 
 	$log = SLACKWARE_ROOT.'/data/hook_'.uniqid().'.log';
 	$fh = fopen($log, 'w');
@@ -17,21 +39,30 @@
 	fclose($fh);
 
 
+	#
 	# see if we can find a plugin to handle it
+	#
 
 	load_plugins();
 
 	$instance = getPluginInstance($_GET['id']);
 	if (is_object($instance)){
 
-		if ($instance->cfg['has_token']){
-			if ($_GET['token'] != $instance->icfg['token']){
-				echo "bad token\n";
-				exit;
-			}
-		}
+		$ret = $instance->onLiveHook($req);
+		$out = $instance->getLog();
 
-		$instance->onHook($req);
-	}	
+		$uid = uniqid('', true);
+
+		$data->set('hooks', $uid, array(
+			'ts' => time(),
+			'req' => $req,
+			'ret' => $ret,
+			'out' => $out,
+		));
+
+		$list = $data->get('hook_lists', $instance->iid);
+		$list[] = $uid;
+		$data->set('hook_lists', $instance->iid, $list);
+	}
 
 	echo "ok\n";

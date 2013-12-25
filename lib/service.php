@@ -10,6 +10,8 @@
 		public $cfg;	# class config
 		public $icfg;	# instance config
 
+		private $log = array();
+
 		function createInstanceId(){
 			$this->iid = uniqid();
 		}
@@ -69,6 +71,12 @@
 
 		function postToChannel($text, $extra){
 
+			$this->log[] = array(
+				'type' => 'message_post',
+				'text' => $text,
+				'extra' => $extra,
+			);
+
 			$params = array(
 				'text'	=> $text,
 			);
@@ -83,6 +91,10 @@
 			$ret = SlackHTTP::Post($GLOBALS['cfg']['webhook_url'], $params);
 
 			return $ret;
+		}
+
+		function getLog(){
+			return $this->log;
 		}
 
 		function escapeText($str){
@@ -122,6 +134,21 @@
 			return api_channels_list();
 		}
 
+		function onLiveHook($req){
+
+			if ($this->cfg['has_token']){
+				if ($req['get']['token'] != $this->icfg['token']){
+					return array(
+						'ok'		=> false,
+						'error'		=> 'bad_token',
+						'sent'		=> $req['get']['token'],
+						'expected'	=> $this->icfg['token'],
+					);
+				}
+			}
+
+			return $this->onHook($req);
+		}
 
 
 		# things to override
@@ -147,6 +174,10 @@
 
 		function onHook(){
 			# handle an incoming hook here
+			return array(
+				'ok'	=> false,
+				'error'	=> 'onHook not implemented',
+			);
 		}
 	}
 
