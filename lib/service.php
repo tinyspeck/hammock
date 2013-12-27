@@ -12,6 +12,13 @@
 
 		private $log = array();
 
+		function SlackServicePlugin(){
+			if ($this->name == "NO NAME"){
+				$cn = get_class($this);
+				$this->name = "Unnamed ({$cn})";
+			}
+		}
+
 		function createInstanceId(){
 			$this->iid = uniqid();
 		}
