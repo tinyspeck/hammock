@@ -148,7 +148,7 @@
 			}
 		}
 
-		$oauth_url = $GLOBALS['cfg']['slack_root']."/oauth/authorize";
+		$oauth_url = $GLOBALS['cfg']['slack_root']."oauth/authorize";
 		$oauth_url .= "?client_id=".$GLOBALS['cfg']['client_id'];
 		$oauth_url .= "&redirect_uri={$GLOBALS['cfg']['root_url']}oauth.php";
 
