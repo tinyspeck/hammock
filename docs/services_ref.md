@@ -12,7 +12,7 @@ There are 6 core properties for services:
 	$this->iid;  # unique instance ID 
 
 	$this->cfg;  # static class config
-        $this->icfg  # instance config
+        $this->icfg; # instance config
 
 	$this->name; # service name
 	$this->desc; # service description
