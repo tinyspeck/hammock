@@ -26,10 +26,9 @@ require polling, `cron` is also required (or `at`/`schtasks` on Windows).
 
 ## Adding integrations
 
-Each integration resides in its own folder inside `plugins/`. Take a look at existing
-integrations for details. (Real documentation to come, later).
+To create your own intergrations [read the service docs](docs/services.md).
 
-For a simple webhook-to-message plugin, look at `github_commits`.
+You can also check the [full service reference documentation](services_ref.md).
 
 
 ## TODO
