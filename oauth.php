@@ -21,7 +21,14 @@
 	if ($ret['ok'] && $ret['code'] == '200'){
 
 		$obj = json_decode($ret['body'], true);
-		$token = $obj['access_token'];
+		if ($obj['ok']){
+
+			$token = $obj['access_token'];
+		}else{
+			echo "problem with oauth.access call";
+			dumper($obj);
+			exit;
+		}
 
 	}else{
 		echo "problem with oauth.access call";
