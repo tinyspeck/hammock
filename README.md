@@ -35,11 +35,9 @@ You can also check the [full service reference documentation](services_ref.md).
 
 So much left to do!
 
-* Change OAuth to allow team selection at first login, then scope to team
 * Style config pages to match current slack.com (somewhat done)
 * Log all incoming webhooks and what we sent as a result (and allow replays)
 * Plugins provide icons & default bot usernames
 * Add 'Slackware' as a Slack service for bidi hooks
-* Switch from using a webhook to an API method (needs to be implemented first)
 * Tab the service config pages probably (Summary, Settings, plugin-defined)
 * Do the cron stuff
