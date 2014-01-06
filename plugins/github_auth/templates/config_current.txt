@@ -1,7 +1,0 @@
-
-<p>Current config:<p>
-<p>
-	<b>Client ID:</b> {$this->cfg.client_id}<br />
-	<b>Client Secret:</b> {$this->cfg.client_secret}<br />
-</p>
-<p><a href="{$this->getConfigUrl()}&config=1">Update settings</a></p>
