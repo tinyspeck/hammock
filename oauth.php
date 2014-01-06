@@ -14,6 +14,8 @@
 		'redirect_uri'	=> "{$cfg['root_url']}oauth.php",
 	);
 
+	if ($_GET['debug']) $params['redirect_uri'] .= '?debug=1';
+
 	$url = $cfg['slack_root']."api/oauth.access";
 
 	$ret = SlackHTTP::post($url, $params);
@@ -33,6 +35,12 @@
 	}else{
 		echo "problem with oauth.access call";
 		dumper($ret);
+		exit;
+	}
+
+	if ($_GET['debug']){
+		echo "debug mode:";
+		dumper($obj);
 		exit;
 	}
 
