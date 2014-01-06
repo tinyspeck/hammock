@@ -7,12 +7,6 @@
 	$cfg['root_url'] = 'http://myserver.com/slackware/';
 
 
-	# Create an incoming webhook in your Slack instance and
-	# put the URL here (this is temporary).
-
-	$cfg['webhook_url'] = 'https://foo.slack.com/services/hooks/incoming-webhook?token=xxxxx';
-
-
 	# The details of your OAuth application.
 	# You can create it here: https://api.slack.com/applications
 	# Make sure to set the OAuth URL to the same as 'root_url' above

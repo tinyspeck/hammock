@@ -85,17 +85,15 @@
 			);
 
 			$params = array(
-				'text'	=> $text,
+				'text'		=> $text,
+				'parse'		=> 'none',
+				'channel'	=> '#general',
 			);
 
 			if (isset($extra['channel' ])) $params['channel' ] = $extra['channel' ];
 			if (isset($extra['username'])) $params['username'] = $extra['username'];
 
-			$params = array(
-				'payload' => json_encode($params),
-			);
-
-			$ret = SlackHTTP::Post($GLOBALS['cfg']['webhook_url'], $params);
+			$ret = api_call('chat.postMessage', $params);
 
 			return $ret;
 		}
