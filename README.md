@@ -31,13 +31,25 @@ To create your own intergrations [read the service docs](docs/services.md).
 You can also check the [full service reference documentation](services_ref.md).
 
 
-## TODO
+## Roadmap
 
-So much left to do!
+This version of Slackware is pretty barebones, designed to support simple webhook-to-slack
+style integrations first. To better support this, we'll be adding a replay-debugger for 
+capturing incoming webhooks and being able to replay them in a read-only mode while 
+developing.
 
-* Style config pages to match current slack.com (somewhat done)
-* Log all incoming webhooks and what we sent as a result (and allow replays)
-* Plugins provide icons & default bot usernames
-* Add 'Slackware' as a Slack service for bidi hooks
-* Tab the service config pages probably (Summary, Settings, plugin-defined)
-* Do the cron stuff
+Future plugins will be able to provide cross-plugin authentication, so that e.g. a GitHub
+integration can auth you against GitHub once and then allow you to add multiple different
+integrations for code, issues, gists, etc. and share the credentials. This will be supported
+by a different subclass of plugins.
+
+The visual appearance of Slackware somewhat matches the Slack services pages, but this will
+be changed to more closely match, have building blocks for commmon UI elements, and switch
+the the planned tabbed interface for integration config.
+
+For integrations that require some kind of polling, Slackware will support polling callbacks
+and handle some API call diffing behavior automatically. Using this mechanism, an integration
+can register a method to be called when the results of an external API call change.
+
+We also plan to support integrations that are triggered from within Slack, via slash commands
+and other user-initiated actions.
