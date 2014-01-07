@@ -11,8 +11,9 @@ new Integrations here will allow them to be added so the main Slack integrations
 
 ## Requirements
 
-Slackware requires a webserver running a recent version of PHP. For integrations that
-require polling, `cron` is also required (or `at`/`schtasks` on Windows).
+Slackware requires a webserver running a recent version of PHP.  
+Ror integrations that require polling, `cron` is also required
+(or `at`/`schtasks` on Windows).
 
 
 ## Installation
