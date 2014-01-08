@@ -7,8 +7,8 @@ directory.
 If reading docs isn't your thing, take a look at the `github_commits` for a
 simple webhook-to-message example.
 
-The full [full reference documentation](services_ref.md) lists everything your
-plugin can take advantage of.
+The [full reference documentation](services_ref.md) lists everything your plugin 
+can take advantage of.
 
 
 ## Bare bones
@@ -39,7 +39,7 @@ information, instructions or settings you'll need to start providing some method
 		return "<p>this is my service</p>";
 	}
 
-Building HTML in code is tedious and fragile, so Hammock include Smarty for 
+Building HTML in code is tedious and fragile, so Hammock includes Smarty for 
 templating. Create a sub-directory in your plugin called `templates` and then create
 `view.txt` inside that:
 
