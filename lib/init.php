@@ -1,4 +1,6 @@
 <?php
+	error_reporting((E_ALL | E_STRICT) ^ E_NOTICE);
+	
 	define('HAMMOCK_ROOT', realpath(dirname(__FILE__)."/.."));
 
 	include(HAMMOCK_ROOT."/lib/data.php");
