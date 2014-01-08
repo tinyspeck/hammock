@@ -12,7 +12,7 @@ new Integrations here will allow them to be added so the main Slack integrations
 ## Requirements
 
 Hammock requires a webserver running a recent version of PHP.  
-Ror integrations that require polling, `cron` is also required
+For integrations that require polling, `cron` is also required
 (or `at`/`schtasks` on Windows).
 
 
