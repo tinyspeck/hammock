@@ -1,6 +1,8 @@
 <?php
 	$dir = dirname(__FILE__);
 	include("$dir/lib/init.php");
+	
+	verify_auth();
 
 	load_plugins();
 
