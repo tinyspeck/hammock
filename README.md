@@ -27,14 +27,14 @@ For integrations that require polling, `cron` is also required
 
 ## Adding integrations
 
-To create your own intergrations [read the service docs](docs/services.md).
+To create your own integrations [read the service docs](docs/services.md).
 
 You can also check the [full service reference documentation](services_ref.md).
 
 
 ## Roadmap
 
-This version of Hammock is pretty barebones, designed to support simple webhook-to-slack
+This version of Hammock is pretty barebones, designed to support simple webhook-to-Slack
 style integrations first. To better support this, we'll be adding a replay-debugger for 
 capturing incoming webhooks and being able to replay them in a read-only mode while 
 developing.
