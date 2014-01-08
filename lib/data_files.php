@@ -9,7 +9,7 @@
 				$this->cache[$table] = $this->load($table);
 			}
 
-			return $this->cache[$table][$key];
+			return $this->cache[$table] ? $this->cache[$table][$key] : null;
 		}
 
 		function get_all($table){
