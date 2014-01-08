@@ -29,7 +29,7 @@ For integrations that require polling, `cron` is also required
 
 To create your own integrations [read the service docs](docs/services.md).
 
-You can also check the [full service reference documentation](services_ref.md).
+You can also check the [full service reference documentation](docs/services_ref.md).
 
 
 ## Roadmap
