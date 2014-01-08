@@ -33,7 +33,7 @@
 	# log to a file (this is temporary)
 	#
 
-	$log = SLACKWARE_ROOT.'/data/hook_'.uniqid().'.log';
+	$log = HAMMOCK_ROOT.'/data/hook_'.uniqid().'.log';
 	$fh = fopen($log, 'w');
 	fwrite($fh, '<'.'? $req = '.var_export($req, true).';');
 	fclose($fh);

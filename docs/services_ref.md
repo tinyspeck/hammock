@@ -65,7 +65,7 @@ Called when the service's webhook URL is requested, or by the replay-debugger.
 Should return a user-friendly description of the service instance, based on config 
 information. For example, a service that posts Github commits to a channel might 
 return a line of text describing the source repo and the target channel (e.g. "Post 
-commits from Slackware to #slackware").
+commits from Hammock to #hammock").
 
 
 ## Methods to call
