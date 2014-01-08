@@ -3,7 +3,7 @@
 {if $first_time}
 
 <p style="text-align: center; padding: 2em 0 1em 0">
-	It looks like you're setting up Slackware for the first time.
+	It looks like you're setting up Hammock for the first time.
 	You'll need to authenticate against a Slack account to start adding integrations.
 </p>
 

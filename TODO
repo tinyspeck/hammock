@@ -1,6 +1,6 @@
 * Style config pages to match current slack.com (somewhat done)
 * Log all incoming webhooks and what we sent as a result (and allow replays)
 * Plugins provide icons & default bot usernames
-* Add 'Slackware' as a Slack service for bidi hooks
+* Add 'Hammock' as a Slack service for bidi hooks
 * Tab the service config pages probably (Summary, Settings, plugin-defined)
 * Do the cron stuff

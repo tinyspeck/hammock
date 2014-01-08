@@ -1,7 +1,7 @@
 {'Content-Type: text/html; charset=utf-8'|header}<html>
 <head>
 <meta charset="utf-8">
-<title>Slackware</title>
+<title>Hammock</title>
 <link id="favicon" rel="shortcut icon" href="images/favicon_32.png" sizes="16x16 32x32 48x48" type="image/png" />
 <link href="style.css" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
@@ -18,7 +18,7 @@
 {/if}
 <h1>
 	<a href="./"><img src="./images/logo.png" id="slack_icon"></a>
-	<a href="./">Slackware</a>
+	<a href="./">Hammock</a>
 </h1>
 </div>
 </div>

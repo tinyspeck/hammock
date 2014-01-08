@@ -22,7 +22,7 @@ create a file called `plugin.php` and enter some code:
 	class my_service extends SlackServicePlugin {
 	}
 
-This is the simplest service you can build. Load up the index page of your Slackware
+This is the simplest service you can build. Load up the index page of your Hammock
 install and you should see your new service listed. For now, it doesn't have a name
 or description, so we'll fix that first:
 
@@ -39,7 +39,7 @@ information, instructions or settings you'll need to start providing some method
 		return "<p>this is my service</p>";
 	}
 
-Building HTML in code is tedious and fragile, so Slackware include Smarty for 
+Building HTML in code is tedious and fragile, so Hammock include Smarty for 
 templating. Create a sub-directory in your plugin called `templates` and then create
 `view.txt` inside that:
 
