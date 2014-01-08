@@ -1,10 +1,10 @@
 <?php
 	$cfg = array();
 
-	# This URL should point to your Slackware install.
+	# This URL should point to your Hammock install.
 	# It must end in a slash.
 
-	$cfg['root_url'] = 'http://myserver.com/slackware/';
+	$cfg['root_url'] = 'http://myserver.com/hammock/';
 
 
 	# The details of your OAuth application.
@@ -18,8 +18,8 @@
 	# Where we should store cookies
 
         $cfg['cookie_domain'] = 'myserver.com';
-        $cfg['cookie_path'] = '/slackware/';
-        $cfg['cookie_name'] = 'slackware-auth';
+        $cfg['cookie_path'] = '/hammock/';
+        $cfg['cookie_name'] = 'hammock-auth';
 
 
 	# Base URL for Slack.

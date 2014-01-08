@@ -48,7 +48,7 @@
 		private function load($table){
 
 			$table_enc = urlencode($table);
-			$path = SLACKWARE_ROOT."/data/data_{$table_enc}.php";
+			$path = HAMMOCK_ROOT."/data/data_{$table_enc}.php";
 
 			$data = array();
 			if (file_exists($path)){
@@ -61,7 +61,7 @@
 		private function save($table, $data){
 
 			$table_enc = urlencode($table);
-			$path = SLACKWARE_ROOT."/data/data_{$table_enc}.php";
+			$path = HAMMOCK_ROOT."/data/data_{$table_enc}.php";
 
 			$fh = fopen($path, 'c');
 			if (!$fh) die("Failed to open data file for writing");

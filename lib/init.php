@@ -1,30 +1,30 @@
 <?php
-	define('SLACKWARE_ROOT', realpath(dirname(__FILE__)."/.."));
+	define('HAMMOCK_ROOT', realpath(dirname(__FILE__)."/.."));
 
-	include(SLACKWARE_ROOT."/lib/data.php");
-	include(SLACKWARE_ROOT."/lib/data_files.php");
+	include(HAMMOCK_ROOT."/lib/data.php");
+	include(HAMMOCK_ROOT."/lib/data_files.php");
 
-	include(SLACKWARE_ROOT."/lib/config.php");
-	include(SLACKWARE_ROOT."/lib/http.php");
-	include(SLACKWARE_ROOT."/lib/service.php");
-	include(SLACKWARE_ROOT."/lib/auth.php");
+	include(HAMMOCK_ROOT."/lib/config.php");
+	include(HAMMOCK_ROOT."/lib/http.php");
+	include(HAMMOCK_ROOT."/lib/service.php");
+	include(HAMMOCK_ROOT."/lib/auth.php");
 
-	include(SLACKWARE_ROOT."/lib/smarty/Smarty.class.php");
+	include(HAMMOCK_ROOT."/lib/smarty/Smarty.class.php");
 
-	if (!file_exists(SLACKWARE_ROOT."/data/templates_c")){
-		mkdir(SLACKWARE_ROOT."/data/templates_c");
+	if (!file_exists(HAMMOCK_ROOT."/data/templates_c")){
+		mkdir(HAMMOCK_ROOT."/data/templates_c");
 	}
 
 	$smarty = new Smarty();
-	$smarty->template_dir = SLACKWARE_ROOT."/templates";
-	$smarty->compile_dir = SLACKWARE_ROOT."/data/templates_c";
+	$smarty->template_dir = HAMMOCK_ROOT."/templates";
+	$smarty->compile_dir = HAMMOCK_ROOT."/data/templates_c";
 	$smarty->assign_by_ref('cfg', $cfg);
 
 	function load_plugins(){
 
 		$GLOBALS['plugins'] = array();
 
-		$dir = SLACKWARE_ROOT."/plugins";
+		$dir = HAMMOCK_ROOT."/plugins";
 
 		if ($dh = opendir($dir)){
 			while (($file = readdir($dh)) !== false){
@@ -54,8 +54,8 @@
 		$obj->id = $class_name;
 
 		$obj->smarty = new Smarty();
-		$obj->smarty->template_dir = SLACKWARE_ROOT."/plugins/{$class_name}/templates";
-		$obj->smarty->compile_dir = SLACKWARE_ROOT."/data/templates_c";
+		$obj->smarty->template_dir = HAMMOCK_ROOT."/plugins/{$class_name}/templates";
+		$obj->smarty->compile_dir = HAMMOCK_ROOT."/data/templates_c";
 		$obj->smarty->assign_by_ref('this', $obj);
 
 		return $obj;
