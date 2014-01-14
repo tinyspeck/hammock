@@ -73,7 +73,7 @@
 		function deleteMe(){
 			$cfg = $GLOBALS['data']->get('instances', $this->iid);
 			$GLOBALS['data']->set('deleted_instances', $this->iid, $cfg);
-			$GLOBALS['data']->del('instances', $this->iid); 
+			$GLOBALS['data']->del('instances', $this->iid);
 		}
 
 		function postToChannel($text, $extra){
@@ -177,7 +177,7 @@
 			# set default options in $this->icfg here
 		}
 
-		function onHook(){
+		function onHook($request){
 			# handle an incoming hook here
 			return array(
 				'ok'	=> false,
