@@ -1,15 +1,17 @@
 <?php
 	class SlackHTTP {
 
-		function get($url, $headers=array()){
+		public static function get($url, $headers=array()){
 
 			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, SlackHTTP::prepare_outgoing_headers($headers));
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-			curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-			curl_setopt($ch, CURLOPT_HEADER, true);
+			curl_setopt_array($ch, array(
+				CURLOPT_URL            => $url,
+				CURLOPT_HTTPHEADER     => SlackHTTP::prepare_outgoing_headers($headers),
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_SSL_VERIFYPEER => false,
+				CURLINFO_HEADER_OUT    => true,
+				CURLOPT_HEADER         => true
+			));
 
 			$raw = curl_exec($ch);
 			$info = curl_getinfo($ch);
@@ -19,17 +21,19 @@
 			return SlackHTTP::parse_response($raw, $info);
 		}
 
-		function post($url, $params=array(), $headers=array()){
+		public static function post($url, $params=array(), $headers=array()){
 
 			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, SlackHTTP::prepare_outgoing_headers($headers));
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-			curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-			curl_setopt($ch, CURLOPT_HEADER, true);
-			curl_setopt($ch, CURLOPT_POST, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+			curl_setopt_array($ch, array(
+				CURLOPT_URL            => $url,
+				CURLOPT_HTTPHEADER     => SlackHTTP::prepare_outgoing_headers($headers),
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_SSL_VERIFYPEER => false,
+				CURLINFO_HEADER_OUT    => true,
+				CURLOPT_HEADER         => true,
+				CURLOPT_POST           => true,
+				CURLOPT_POSTFIELDS     => $params
+			));
 
 			$raw = curl_exec($ch);
 			$info = curl_getinfo($ch);
@@ -39,7 +43,7 @@
 			return SlackHTTP::parse_response($raw, $info);
 		}
 
-		private function parse_response($raw, $info){
+		private static function parse_response($raw, $info){
 
 			list($head, $body) = explode("\r\n\r\n", $raw, 2);
 			list($head_out, $body_out) = explode("\r\n\r\n", $info['request_header'], 2);
@@ -85,7 +89,7 @@
 			);
 		}
 
-		private function parse_headers($raw, $first){
+		private static function parse_headers($raw, $first){
 
 			#
 			# first, deal with folded lines
@@ -121,7 +125,7 @@
 			return $out;
 		}
 
-		private function prepare_outgoing_headers($headers=array()){
+		private static function prepare_outgoing_headers($headers=array()){
 
 			$prepped = array();
 
@@ -137,4 +141,3 @@
 		}
 
 	}
-
