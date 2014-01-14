@@ -65,7 +65,7 @@ class kiln extends SlackServicePlugin
     }
 
     public function onHook($req) {
-        $payload        = json_decode($_POST['payload'], true);
+        $payload        = json_decode($req['post']['payload'], true);
         $repositoryName = $payload['repository']['name'];
         $pusherName     = $payload['pusher']['fullName'];
 
