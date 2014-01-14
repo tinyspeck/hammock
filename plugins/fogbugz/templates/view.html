@@ -1,0 +1,26 @@
+
+{if $smarty.get.newtoken}
+<p class="alert">Your token has been updated - the webhook URL has changed!</p>
+{/if}
+
+<p>Your FogBugz Hook URL:</p>
+<p><code>{$this->getHookUrl()}&CaseNumber={literal}{CaseNumber}&Title={Title}&AreaName={AreaName}{/literal}</code></p>
+
+<p>
+    <b>Setting up FogBugz:</b><br>
+    <ol>
+        <li>Open FogBugz Admin tools and select 'URL Trigger'</li>
+        <li>Add New Trigger</li>
+        <li>Select the 'CaseOpened' event type</li>
+        <li>Use the hook url above</li>
+        <li>Select 'POST'</li>
+        <li>Name the hook and click 'OK'</li>
+    </ol>
+</p>
+
+
+<p><b>Post to channel:</b> {$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</p>
+<p><b>Bot name:</b> {$this->icfg.botname|escape}</p>
+<p><b>Bot icon:</b> <img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon"></p>
+
+<p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>

@@ -1,0 +1,30 @@
+
+{if $smarty.get.newtoken}
+<p class="alert">Your token has been updated - the webhook URL has changed!</p>
+{/if}
+
+<p>Your Kiln Hook URL:</p>
+<p><code>{$this->getHookUrl()}</code></p>
+
+<p>
+    <b>Setting up Kiln:</b><br>
+    <ol>
+        <li>Open Kiln Administration tools and select 'Web Hooks'</li>
+        <li>Select 'Create a new web hook'</li>
+        <li>Select the 'CaseOpened' event type</li>
+        <li>Name the hook, and select 'A custom hook'</li>
+        <li>Provide the URL above</li>
+        <li>Select the repositories for this hook, or select 'All repositories'</li>
+        <li>Click 'Create web hook'</li>
+    </ol>
+</p>
+
+
+<p><b>Post to channel:</b> {$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</p>
+<p><b>Maximum Messages:</b> {$this->icfg.max_messages|escape}</p>
+
+<p><b>Bot name:</b> {$this->icfg.botname|escape}</p>
+<p><b>Bot icon:</b> <img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon"></p>
+
+
+<p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
