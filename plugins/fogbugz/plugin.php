@@ -11,7 +11,7 @@
 //
 class fogbugz extends SlackServicePlugin
 {
-    public $name = 'FogBugz Case Integration';
+    public $name = 'FogBugz Cases';
     public $desc = 'Provide case open notifications';
 
     public $cfg = array(

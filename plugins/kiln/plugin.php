@@ -16,7 +16,7 @@
 //
 class kiln extends SlackServicePlugin
 {
-    public $name = 'Kiln Commit Integration';
+    public $name = 'Kiln Commits';
     public $desc = 'Provide commit summaries from Kiln';
 
     public $cfg = array(
