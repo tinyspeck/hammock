@@ -23,6 +23,13 @@
         $cfg['cookie_name']	= 'hammock-auth';
 	$cfg['slack_root']	= "https://slack.com/";
 
+	# Heroku specific
+
+	if ($_ENV['REDISTOGO_URL']){
+		$cfg['data_provider'] = 'redis';
+		$cfg['redis_url'] = $_ENV['REDISTOGO_URL'];
+	}
+
 
 	# Allow some settings to be overridden
 

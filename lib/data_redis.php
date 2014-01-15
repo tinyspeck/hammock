@@ -5,7 +5,7 @@
 
 			$this->redis = new Redis();
 
-			$url = parse_url($_ENV['REDISTOGO_URL']);
+			$url = parse_url($GLOBALS['cfg']['redis_url']);
 
 			$this->redis->connect($url['host'], $url['port']);
 

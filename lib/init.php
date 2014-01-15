@@ -3,17 +3,17 @@
 	
 	define('HAMMOCK_ROOT', realpath(dirname(__FILE__)."/.."));
 
-	include(HAMMOCK_ROOT."/lib/data.php");
-	if ($_ENV['REDISTOGO_URL']){
-		include(HAMMOCK_ROOT."/lib/data_redis.php");
-	}else{
-		include(HAMMOCK_ROOT."/lib/data_files.php");
-	}
-
 	if ($_ENV['HAMMOCK_ROOT']){
 		include(HAMMOCK_ROOT."/lib/config_env.php");
 	}else{
 		include(HAMMOCK_ROOT."/lib/config.php");
+	}
+
+	include(HAMMOCK_ROOT."/lib/data.php");
+	if ($cfg['data_provider'] == 'redis'){
+		include(HAMMOCK_ROOT."/lib/data_redis.php");
+	}else{
+		include(HAMMOCK_ROOT."/lib/data_files.php");
 	}
 
 	include(HAMMOCK_ROOT."/lib/http.php");
