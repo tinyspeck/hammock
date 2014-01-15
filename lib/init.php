@@ -6,7 +6,12 @@
 	include(HAMMOCK_ROOT."/lib/data.php");
 	include(HAMMOCK_ROOT."/lib/data_files.php");
 
-	include(HAMMOCK_ROOT."/lib/config.php");
+	if ($_ENV['HAMMOCK_ROOT']){
+		include(HAMMOCK_ROOT."/lib/config_env.php");
+	}else{
+		include(HAMMOCK_ROOT."/lib/config.php");
+	}
+
 	include(HAMMOCK_ROOT."/lib/http.php");
 	include(HAMMOCK_ROOT."/lib/service.php");
 	include(HAMMOCK_ROOT."/lib/auth.php");
