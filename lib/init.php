@@ -19,7 +19,7 @@
 	include(HAMMOCK_ROOT."/lib/smarty/Smarty.class.php");
 
 	if (!file_exists(HAMMOCK_ROOT."/data/templates_c")){
-		mkdir(HAMMOCK_ROOT."/data/templates_c");
+		mkdir(HAMMOCK_ROOT."/data/templates_c", 0777, true);
 	}
 
 	$smarty = new Smarty();
