@@ -4,7 +4,11 @@
 	define('HAMMOCK_ROOT', realpath(dirname(__FILE__)."/.."));
 
 	include(HAMMOCK_ROOT."/lib/data.php");
-	include(HAMMOCK_ROOT."/lib/data_files.php");
+	if ($_ENV['REDISTOGO_URL']){
+		include(HAMMOCK_ROOT."/lib/data_redis.php");
+	}else{
+		include(HAMMOCK_ROOT."/lib/data_files.php");
+	}
 
 	if ($_ENV['HAMMOCK_ROOT']){
 		include(HAMMOCK_ROOT."/lib/config_env.php");
