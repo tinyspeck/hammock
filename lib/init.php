@@ -3,10 +3,19 @@
 	
 	define('HAMMOCK_ROOT', realpath(dirname(__FILE__)."/.."));
 
-	include(HAMMOCK_ROOT."/lib/data.php");
-	include(HAMMOCK_ROOT."/lib/data_files.php");
+	if ($_ENV['HAMMOCK_ROOT']){
+		include(HAMMOCK_ROOT."/lib/config_env.php");
+	}else{
+		include(HAMMOCK_ROOT."/lib/config.php");
+	}
 
-	include(HAMMOCK_ROOT."/lib/config.php");
+	include(HAMMOCK_ROOT."/lib/data.php");
+	if ($cfg['data_provider'] == 'redis'){
+		include(HAMMOCK_ROOT."/lib/data_redis.php");
+	}else{
+		include(HAMMOCK_ROOT."/lib/data_files.php");
+	}
+
 	include(HAMMOCK_ROOT."/lib/http.php");
 	include(HAMMOCK_ROOT."/lib/service.php");
 	include(HAMMOCK_ROOT."/lib/auth.php");
@@ -14,7 +23,7 @@
 	include(HAMMOCK_ROOT."/lib/smarty/Smarty.class.php");
 
 	if (!file_exists(HAMMOCK_ROOT."/data/templates_c")){
-		mkdir(HAMMOCK_ROOT."/data/templates_c");
+		mkdir(HAMMOCK_ROOT."/data/templates_c", 0777, true);
 	}
 
 	$smarty = new Smarty();

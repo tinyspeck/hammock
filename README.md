@@ -25,6 +25,23 @@ For integrations that require polling, `cron` is also required
 * Visit `index.php` in your browser and start configuring
 
 
+## Heroku
+
+You can run Hammock on Heroku using the following commands (you'll need  to have installed
+the Heroku toolbelt already):
+
+    cd hammock
+    heroku create
+    heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git#redis
+    heroku config:set HAMMOCK_ROOT=http://{URL-TO-APP}/
+    heroku config:set HAMMOCK_CLIENT_ID={YOUR-CLIENT-ID}
+    heroku config:set HAMMOCK_CLIENT_SECRET={YOUR-CLIENT-SECRET}
+    heroku addons:add redistogo
+    git push heroku master
+
+All config options are loaded from the environment variables and data is stored in Redis.
+
+
 ## Adding integrations
 
 To create your own integrations [read the service docs](docs/services.md).
