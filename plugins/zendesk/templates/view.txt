@@ -1,0 +1,14 @@
+
+{if $smarty.get.newtoken}
+
+	<p class="alert">Your token has been updated - the webhook URL has changed!</p>
+{/if}
+
+<p>Go to your Zendesk target page and update your token.</p>
+
+<p><code>{$this->getHookUrl()}</code></p>
+
+<p><b>Post to channel:</b> {$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</p>
+<p><b>Bot name:</b> {$this->icfg.botname|escape}</p>
+
+<p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
