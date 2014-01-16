@@ -10,17 +10,17 @@
 
 	# OAuth config
 
-        $cfg['client_id']	= $_ENV['HAMMOCK_CLIENT_ID'];
-        $cfg['client_secret']	= $_ENV['HAMMOCK_CLIENT_SECRET'];
+	$cfg['client_id']	= $_ENV['HAMMOCK_CLIENT_ID'];
+	$cfg['client_secret']	= $_ENV['HAMMOCK_CLIENT_SECRET'];
 
 
 	# Defaults
 
 	$url_bits = parse_url($cfg['root_url']);
 
-        $cfg['cookie_domain']	= $url_bits['host'];
-        $cfg['cookie_path']	= $url_bits['path'];
-        $cfg['cookie_name']	= 'hammock-auth';
+	$cfg['cookie_domain']	= $url_bits['host'];
+	$cfg['cookie_path']	= $url_bits['path'];
+	$cfg['cookie_name']	= 'hammock-auth';
 	$cfg['slack_root']	= "https://slack.com/";
 
 	# Heroku specific
