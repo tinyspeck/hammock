@@ -1,6 +1,6 @@
 <?php
 	error_reporting((E_ALL | E_STRICT) ^ E_NOTICE);
-	
+
 	define('HAMMOCK_ROOT', realpath(dirname(__FILE__)."/.."));
 
 	if ($_ENV['HAMMOCK_ROOT']){
@@ -65,6 +65,7 @@
 		$obj->id = $class_name;
 
 		$obj->smarty = new Smarty();
+		$obj->smarty->compile_id = "plugins|{$class_name}";
 		$obj->smarty->template_dir = HAMMOCK_ROOT."/plugins/{$class_name}/templates";
 		$obj->smarty->compile_dir = HAMMOCK_ROOT."/data/templates_c";
 		$obj->smarty->assign_by_ref('this', $obj);
@@ -101,7 +102,7 @@
 
 
 	function dumper($foo){
-		
+
 		echo "<pre style=\"text-align: left;\">";
 		if (is_resource($foo)){
 			var_dump($foo);
