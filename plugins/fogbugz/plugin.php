@@ -26,8 +26,9 @@ class fogbugz extends SlackServicePlugin
                 $this->icfg['channel_name'] = $name;
             }
         }
-        $this->icfg['botname']  = 'fogbugz';
-        $this->icfg['icon_url'] = $GLOBALS['cfg']['root_url'] . '/plugins/fogbugz/icon_48.png';
+        $this->icfg['botname']      = 'fogbugz';
+        $this->icfg['fogbugz_host'] = $_POST['fogbugz_host'];
+        $this->icfg['icon_url']     = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/fogbugz/icon_48.png';
     }
 
     public function onView() {
@@ -43,9 +44,10 @@ class fogbugz extends SlackServicePlugin
         $channels = $this->getChannelsList();
 
         if ($_GET['save']) {
-            $this->icfg['channel']      = $_POST['channel'];
-            $this->icfg['channel_name'] = $channels[$_POST['channel']];
-            $this->icfg['botname']      = $_POST['botname'];
+            $this->icfg['channel']       = $_POST['channel'];
+            $this->icfg['channel_name']  = $channels[$_POST['channel']];
+            $this->icfg['botname']       = $_POST['botname'];
+            $this->icfg['fogbugz_host']  = $_POST['fogbugz_host'];
             $this->icfg['icon_url']      = $_POST['icon_url'];
             $this->saveConfig();
 
@@ -58,11 +60,14 @@ class fogbugz extends SlackServicePlugin
     }
 
     public function onHook($req) {
-        $chatMessage = sprintf(
-            'Opened <https://learningstation.fogbugz.com/default.asp?%1$d|Case %1$d>: %2$s',
-            $req['get']['CaseNumber'],
-            $req['get']['Title']
-        );
+        $chatMessage = '';
+        $linkHref    = trim($this->icfg['fogbugz_host'], '/') . '/default.asp?' . $req['get']['CaseNumber'];
+        $linkText    = $req['get']['CaseNumber'];
+
+        $chatMessage .= $this->escapeText('Opened ');
+        $chatMessage .= $this->escapeLink($linkHref, $linkText);
+        $chatMessage .= $this->escapeText(': ' . $req['get']['Title']);
+
         $logMessage = sprintf('Opened Case %d', $req['get']['CaseNumber']);
         $this->sendMessage($chatMessage);
 

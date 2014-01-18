@@ -82,16 +82,13 @@ class kiln extends SlackServicePlugin
             $commit->url = str_replace(":81", "", $commit->url);
 
             // TODO: Handle commit messages with newlines
-            $message = sprintf(
-                '%s pushed to <%s|%s>: %s',
-                $pusherName,
-                $commit->url,
-                $repositoryName,
-                $commit->message
-            );
+            $message = '';
+            $message .= $this->escapeText("$pusherName pushed to ");
+            $message .= $this->escapeLink($commit->url, $repositoryName);
+            $message .= $this->escapeText(': ' . $commit->message);
             $this->sendMessage($message);
 
-            // If this is a merge, just show the first message
+            // If this is a merge/merging, just show the first message
             if (stripos($commit->message, 'merg') !== false) {
                 break;
             }

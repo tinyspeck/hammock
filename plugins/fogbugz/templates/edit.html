@@ -8,11 +8,12 @@
         </select>
     </p>
 
+    <p>FogBugz host: <input type="text" name="fogbugz_host" value="{$this->icfg.fogbugz_host|escape}"></p>
     <p>Bot name: <input type="text" name="botname" value="{$this->icfg.botname|escape}"></p>
     <p>Bot icon: <input type="text" name="icon_url" size="55" value="{$this->icfg.icon_url|escape}"></p>
 
     <p>
-        <input type="submit" value="Save Changes" class="btn" />
+        <input type="submit" value="Save Changes" class="btn">
     </p>
 
 </form>
