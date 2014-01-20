@@ -70,7 +70,7 @@ commits from Hammock to #hammock").
 
 ## Methods to call
 
-### getViewUrl() / geteditUrl() / getHookUrl()
+### getViewUrl() / getEditUrl() / getHookUrl()
 
 Returns the various URLs for the service instance. Never try and build these yourself.
 

@@ -3,24 +3,32 @@
 <p class="alert">Your token has been updated - the webhook URL has changed!</p>
 {/if}
 
-<p>Your FogBugz Hook URL:</p>
+<h3>Your FogBugz Hook URL</h3>
 <p><code>{$this->getHookUrl()}&CaseNumber={literal}{CaseNumber}&Title={Title}&AreaName={AreaName}{/literal}</code></p>
 
-<p>
-    <b>Setting up FogBugz:</b><br>
-    <ol>
-        <li>Open FogBugz Admin tools and select 'URL Trigger'</li>
-        <li>Add New Trigger</li>
-        <li>Select the 'CaseOpened' event type</li>
-        <li>Use the hook url above</li>
-        <li>Select 'POST'</li>
-        <li>Name the hook and click 'OK'</li>
-    </ol>
-</p>
+<h3>Setting up FogBugz</h3>
+<ol>
+    <li>Open FogBugz Admin tools and select 'URL Trigger'</li>
+    <li>Add New Trigger</li>
+    <li>Select the 'CaseOpened' event type</li>
+    <li>Use the hook url above</li>
+    <li>Select 'POST'</li>
+    <li>Name the hook and click 'OK'</li>
+</ol>
 
+<h3>Current Configuration</h3>
+<dl>
+    <dt><strong>Post to channel:</strong></dt>
+    <dd>{$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</dd>
 
-<p><b>Post to channel:</b> {$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</p>
-<p><b>Bot name:</b> {$this->icfg.botname|escape}</p>
-<p><b>Bot icon:</b> <img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon"></p>
+    <dt><strong>FogBugz host:</strong></dt>
+    <dd>{$this->icfg.fogbugz_host|escape}</dd>
+
+    <dt><strong>Bot name:</strong></dt>
+    <dd>{$this->icfg.botname|escape}</dd>
+
+    <dt><strong>Bot icon:</strong></dt>
+    <dd><img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon"></dd>
+</dl>
 
 <p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
