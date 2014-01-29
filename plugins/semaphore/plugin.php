@@ -68,8 +68,8 @@ class semaphore extends SlackServicePlugin
 		}
 
     $chatMessage = '';
-    $chatMessage .= $this->escapeText($payload['result'] === 'failed' ? ':x:' : ':white_check_mark');
-    $chatMessage .= $this->escapeText($payload['result'] . ': ');
+    $chatMessage .= $this->escapeText($payload['result'] === 'failed' ? ':x:' : ':white_check_mark:');
+    $chatMessage .= $this->escapeText('[' . $payload['project_name'] . '] ' . $payload['result'] . ': ');
     $chatMessage .= $this->escapeText($payload['commit']['message']);
     $chatMessage .= $this->escapeText(' - ' . $payload['commit']['author_name'] . ' (');
     $chatMessage .= $this->escapeLink($payload['build_url']);
