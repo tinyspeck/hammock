@@ -1,11 +1,11 @@
 <?php
 //
-// FogBugz Case Events Web Hook
+// Semaphore Build Statuses Web Hook
 // =============================================================================
 //
-// Post case opening events from FogBugz to a Slack chat room.
+// Post Semaphore build status events to a Slack chat room.
 //
-// Author: [Craig Davis](craig@there4development.com)
+// Author: [Brandon Valentine](brandon@brandonvalentine.com)
 //
 // -----------------------------------------------------------------------------
 //
