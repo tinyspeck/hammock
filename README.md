@@ -6,7 +6,7 @@ This allows you to modify existing integrations, write new custom integrations, 
 certain integrations inside your firewall.
 
 Integrations written for Hammock use the same API as Slack itself, so contributing
-new Integrations here will allow them to be added so the main Slack integrations list.
+new Integrations here will allow them to be added to the main Slack integrations list.
 
 
 ## Requirements
