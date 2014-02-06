@@ -3,7 +3,7 @@
 class sentry extends SlackServicePlugin {
 
     public $name = "Sentry";
-    public $desc = "yes, Yes Y'all";
+    public $desc = "Track code exceptions";
 
     function onView(){
         return $this->smarty->fetch('view.html');
