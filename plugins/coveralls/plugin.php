@@ -3,7 +3,7 @@
 class coveralls extends SlackServicePlugin {
 
     public $name = "Coveralls";
-    public $desc = "yes, Yes Y'all";
+    public $desc = "Code coverage history and stats";
 
     function onView(){
         return $this->smarty->fetch('view.html');

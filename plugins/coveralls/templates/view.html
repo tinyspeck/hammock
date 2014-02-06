@@ -1,5 +1,8 @@
-<p>This is the Coveralls service!</p>
+<p>In your Coveralls repo, choose "Notifications" -&gt; "Webhook" and add the following URL:</p>
 
 <p><code>{$this->getHookUrl()}</code></p>
+
+<p><b>Post to channel:</b> {$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</p>
+<p><b>Bot name:</b> {$this->icfg.botname|escape}</p>
 
 <p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
