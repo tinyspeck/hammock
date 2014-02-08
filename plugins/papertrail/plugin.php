@@ -74,6 +74,8 @@
 			# send some messages
 			#
 
+			$search = $payload['saved_search'];
+
 			$events = $payload['events'];
 			$num_events = count($events);
 
@@ -88,7 +90,7 @@
 
 			if ($num_events > 1) {
 
-				$text = $this->escapeText("[{$payload['name']}] {$num_events} new events");
+				$text = $this->escapeText("[{$search['name']}] {$num_events} new events");
 				if ($sample) {
 					$text .= $this->escapeText(" (showing the latest {$sample})");
 				}
@@ -107,7 +109,9 @@
 			}
 
 			if ($commit_count) {
-				$text = $this->escapeText("[{$payload['name']}] ") . $this->renderEvent($events[0]);
+				$text = $this->escapeText("[");
+				$text .= $this->escapeLink($search['html_search_url'], $search['name']);
+				$text .= $this->escapeText("] ") . $this->renderEvent($events[0]);
 				return $this->sendMessage($text);
 			}
 
@@ -118,8 +122,10 @@
 		}
 
 		private function renderEvent($e) {
-			$text = $this->escapeText("[{$e['display_received_at']}] ");
-			$text .= $this->escapeText(" ", implode($e['hostname'], $e['program'], $e['message']));
+			$text = $this->escapeText("[");
+			$text .= $this->escapeLink("https://papertrailapp.com/systems/{$e['source_name']}/events?centered_on_id={$e['id']}", $e['display_received_at']);
+			$text .= $this->escapeText("] ");
+			$text .= $this->escapeText(implode(" ", array($e['hostname'], $e['program'], $e['message'])));
 			return $text;
 		}
 
