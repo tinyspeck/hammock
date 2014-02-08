@@ -90,7 +90,7 @@
 
 			if ($num_events > 1) {
 
-				$text = $this->escapeText("[{$search['name']}] {$num_events} new events");
+				$text = $this->searchLink($search) . $this->escapeText("{$num_events} new events");
 				if ($sample) {
 					$text .= $this->escapeText(" (showing the latest {$sample})");
 				}
@@ -102,16 +102,14 @@
 
 				$num_diff = $num_events - $num_sample;
 				if ($num_diff) {
-					$text .= $this->escapeText("\nAnd {$num_diff}  others");
+					$text .= $this->escapeText("\nAnd {$num_diff} others");
 				}
 
 				return $this->sendMessage($text);
 			}
 
 			if ($commit_count) {
-				$text = $this->escapeText("[");
-				$text .= $this->escapeLink($search['html_search_url'], $search['name']);
-				$text .= $this->escapeText("] ") . $this->renderEvent($events[0]);
+				$text = $this->searchLink($search) . $this->renderEvent($events[0]);
 				return $this->sendMessage($text);
 			}
 
@@ -119,6 +117,14 @@
 				'ok'		=> true,
 				'status'	=> "Nothing found to report",
 			);
+		}
+
+		private function searchLink($search) {
+			$text = $this->escapeText("[");
+			$text .= $this->escapeLink($search['html_search_url'], $search['name']);
+			$text .= $this->escapeText("] ");
+
+			return $text;
 		}
 
 		private function renderEvent($e) {
