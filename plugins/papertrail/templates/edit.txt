@@ -1,0 +1,15 @@
+
+
+<form action="{$this->getEditUrl()}&save=1" method="post">
+
+<p>Channel to post to: <select name="channel">
+{foreach from=$channels key='chan_id' item='chan_name'}
+	<option value="{$chan_id|escape}"{if $chan_id==$this->icfg.channel} selected{/if}>{$chan_name|escape}</option>
+{/foreach}
+</select></p>
+
+<p>Bot name: <input type="text" name="botname" value="{$this->icfg.botname|escape}" /></p>
+<p>Event sample: <input type="text" name="event_sample" value="{$this->icfg.event_sample|escape}" /></p>
+
+<p><input type="submit" value="Save Changes" class="btn" /></p>
+</form>
