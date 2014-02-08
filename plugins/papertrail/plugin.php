@@ -91,7 +91,7 @@
 			if ($num_events > 1) {
 
 				$text = $this->searchLink($search) . $this->escapeText("{$num_events} new events");
-				if ($sample) {
+				if ($sample && $sample < $num_events) {
 					$text .= $this->escapeText(" (showing the latest {$sample})");
 				}
 				$text .= $this->escapeText(":");
