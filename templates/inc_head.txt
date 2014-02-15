@@ -5,6 +5,7 @@
 <link id="favicon" rel="shortcut icon" href="images/favicon_32.png" sizes="16x16 32x32 48x48" type="image/png" />
 <link href="style.css" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
 

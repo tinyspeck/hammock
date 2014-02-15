@@ -5,6 +5,25 @@ body {
 	line-height: 1.5rem;
 }
 
+* {
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  color: #0088cc;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #005580;
+  text-decoration: underline;
+}
+
+
 #header {
 position: fixed;
 top: 0;
@@ -23,12 +42,12 @@ box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 #header-inner {
-	width: 800px;
+	width: 940px;
 	margin: 16px auto 10px auto;
 }
 
 #page-inner {
-	width: 800px;
+	width: 940px;
 	margin: 80px auto 80px auto;
 	xborder: 1px solid black;
 	xpadding: 1em;
@@ -178,4 +197,139 @@ white-space: normal;
 form {
 	margin: 0;
 	padding: 0;
+}
+
+.col_left {
+  width: 198px;
+  margin-right: 2rem;
+  padding-right: 0.5rem;
+  float: left;
+}
+.col_right {
+  width: 700px;
+  float: left;
+}
+
+
+/* Add Services Grid */
+.service {
+  width: 226px;
+  float: left;
+  margin: 0 0.6rem 0.6rem 0;
+  border: 1px solid #DDD;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  -webkit-transitionDISABLED: background 0.1s, color 0.1s 0.2s ease-out;
+  -moz-transitionDISABLED: background 0.1s, color 0.1s 0.2s ease-out;
+  -o-transitionDISABLED: background 0.1s, color 0.1s 0.2s ease-out;
+  transitionDISABLED: background 0.1s, color 0.1s 0.2s ease-out;
+  -webkit-transitionDISABLED: background 0.1s, color 0.1s;
+  -moz-transitionDISABLED: background 0.1s, color 0.1s;
+  -o-transitionDISABLED: background 0.1s, color 0.1s;
+  transitionDISABLED: background 0.1s, color 0.1s;
+  line-height: 1.25rem;
+  color: #555459;
+  padding: 0.9rem;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+.service .icon {
+  margin: 0 auto 1rem;
+  display: block;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+}
+.service:hover {
+  cursor: default;
+  background: #f1f7fa;
+}
+.service h4,
+.service h4 a {
+  color: #555459;
+  -webkit-transitionDISABLED: color 0.1s ease-out;
+  -moz-transitionDISABLED: color 0.1s ease-out;
+  -o-transitionDISABLED: color 0.1s ease-out;
+  transitionDISABLED: color 0.1s ease-out;
+  cursor: pointer;
+}
+.service:hover h4,
+.service:hover h4 a {
+  color: #2a80b9;
+}
+.service h4:hover {
+  text-decoration: underline;
+}
+.service button,
+.service .btn {
+  width: 100%;
+}
+
+.no_right_margin {
+  margin-right: 0 !important;
+}
+
+
+ul,
+ol {
+  padding: 0;
+  margin: 0 0 10px 25px;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+
+li {
+  line-height: 20px;
+}
+
+ul.unstyled,
+ol.unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+
+ul.inline,
+ol.inline {
+  margin-left: 0;
+  list-style: none;
+}
+
+ul.inline > li,
+ol.inline > li {
+  display: inline-block;
+  *display: inline;
+  padding-right: 5px;
+  padding-left: 5px;
+  *zoom: 1;
+}
+
+
+
+/* Sidebar Nav */
+ul.sidebar_nav {
+  list-style-type: none;
+  margin: 0 0 1rem;
+}
+ul.sidebar_nav li {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: bold;
+  font-family: 'Lato', sans-serif;
+  color: #555459;
+}
+.sidebar_nav i {
+  width: 1.75rem;
+  display: inline-block;
+  text-align: center;
+  padding: 0 0.5rem 0 0;
+  font-size: 18px;
+}
+.sidebar_nav a:hover i {
+  text-decoration: none;
 }
