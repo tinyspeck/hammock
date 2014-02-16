@@ -94,6 +94,20 @@ in the future.
 The first argument is the message to post. The second optional array argument can 
 contain a `channel` to post to and a `username` to post as.
 
+To add [attachments]((https://api.slack.com/docs/attachments) to a message, simply 
+pass an array of attachment hashes as `$extra['attachments']`:
+
+	$extra['attachments'] = array(
+		array(
+			"text" => "Attachment 1",
+			"color" => "#ff0000",
+		),
+		array(
+			"text" => "Attachment 2",
+			"color" => "#0000ff",
+		),
+	);
+
 ### escapeText($str)
 
 Takes any text string and returns one escaped to display as-is in Slack

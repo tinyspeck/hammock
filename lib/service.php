@@ -92,6 +92,7 @@
 
 			if (isset($extra['channel' ])) $params['channel' ] = $extra['channel' ];
 			if (isset($extra['username'])) $params['username'] = $extra['username'];
+			if (isset($extra['attachments'])) $params['attachments'] = json_encode($extra['attachments']);
 
 			$ret = api_call('chat.postMessage', $params);
 
