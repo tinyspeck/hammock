@@ -52,7 +52,7 @@ class testflight extends SlackServicePlugin
   public function onHook($req) {
       $log_message = '';
       
-      $tf_payload = json_decode($req['post'], true);
+      $tf_payload = json_decode($req['post_body'], true);
       
       if ($tf_payload && count($tf_payload)) {
         # we have a payload
