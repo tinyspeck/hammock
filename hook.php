@@ -22,12 +22,18 @@
 		return $m[1].StrToUpper($m[2]);
 	}
 
+    # check for input based body as well
+    # as mentioned here, http://www.php.net/manual/en/wrappers.php.php
+    $post_body = file_get_contents("php://input");
+    if (strlen($post_body) > 0) {
+        $_POST = $post_body;
+    }
+
 	$req = array(
 		'headers'	=> $headers,
 		'get'		=> $_GET,
 		'post'		=> $_POST,
 	);
-
 
 	#
 	# log to a file (this is temporary)
