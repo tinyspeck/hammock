@@ -1,0 +1,29 @@
+
+{if $smarty.get.newtoken}
+<p class="alert">Your token has been updated - the webhook URL has changed!</p>
+{/if}
+
+<h3>Your TestFlight Hook URL</h3>
+<p><code>{$this->getHookUrl()}</code></p>
+
+<h3>Setting up TestFlight</h3>
+<ol>
+  <li>1. Select App To Create Integration For</li>
+  <li>2. Select 'App Integrations' on the left hand pane</li>
+  <li>3. Under the Web Hook section, click add new</li>
+  <li>4. Paste in web hook url and hit save<li>
+</ol>
+
+<h3>Current Configuration</h3>
+<dl>
+    <dt><strong>Post to channel:</strong></dt>
+    <dd>{$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</dd>
+
+    <dt><strong>Bot name:</strong></dt>
+    <dd>{$this->icfg.botname|escape}</dd>
+
+    <dt><strong>Bot icon:</strong></dt>
+    <dd><img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon"></dd>
+</dl>
+
+<p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
