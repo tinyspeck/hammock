@@ -77,9 +77,10 @@ passing in information about the request:
 
 	function onHook($req){
 
-		# GET vars     : $req['get']
-		# POST vars    : $req['post']
-		# HTTP headers : $req['headers']
+		# GET vars      : $req['get']
+		# POST vars     : $req['post']
+		# Raw POST body : $req['post_body']
+		# HTTP headers  : $req['headers']
 	}
 
 Your code should _only_ use the data passed in `$req` and not use superglobals like
