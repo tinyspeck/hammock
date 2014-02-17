@@ -36,7 +36,8 @@
 
 	if (!count($_POST)){
 
-		$req['post_body'] = file_get_contents("php://input");
+		$body = file_get_contents("php://input");
+		if (strlen($body)) $req['post_body'] = $body;
 	}
 
 
