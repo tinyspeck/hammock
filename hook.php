@@ -22,18 +22,23 @@
 		return $m[1].StrToUpper($m[2]);
 	}
 
-    # check for input based body as well
-    # as mentioned here, http://www.php.net/manual/en/wrappers.php.php
-    $post_body = file_get_contents("php://input");
-    if (strlen($post_body) > 0) {
-        $_POST = $post_body;
-    }
-
 	$req = array(
 		'headers'	=> $headers,
 		'get'		=> $_GET,
 		'post'		=> $_POST,
 	);
+
+	
+	#
+	# if the body has been posted as something other than 'application/x-www-form-urlencoded'
+	# or 'multipart/form-data', capture the entire post body as a string
+	#
+
+	if (!count($_POST)){
+
+		$req['post_body'] = file_get_contents("php://input");
+	}
+
 
 	#
 	# log to a file (this is temporary)
