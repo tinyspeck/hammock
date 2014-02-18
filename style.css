@@ -333,3 +333,45 @@ ul.sidebar_nav li {
 .sidebar_nav a:hover i {
   text-decoration: none;
 }
+
+/* Services */
+.service_group a {
+  color: #555459 !important;
+  -webkit-transitionDISABLED: 0.1s 0.2s ease-out;
+  -moz-transitionDISABLED: 0.1s 0.2s ease-out;
+  -o-transitionDISABLED: 0.1s 0.2s ease-out;
+  transitionDISABLED: 0.1s 0.2s ease-out;
+  -webkit-transitionDISABLED: 0.1s;
+  -moz-transitionDISABLED: 0.1s;
+  -o-transitionDISABLED: 0.1s;
+  transitionDISABLED: 0.1s;
+}
+.service_group:hover a {
+  color: #2a80b9 !important;
+}
+.service_group a:hover {
+  color: #439fe0 !important;
+}
+.service_icon {
+  margin: 0px 0.5rem 0 0;
+  display: block;
+  float: left;
+  width: 24px;
+  height: 24px;
+}
+.service_summary strong {
+  font-weight: 500;
+}
+
+.mini {
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  color: #666;
+}
+.block {
+  display: block;
+}
+
+.large_bottom_margin {
+margin-bottom: 2rem !important;
+}

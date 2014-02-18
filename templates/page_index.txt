@@ -4,17 +4,31 @@
 
 <div class="col_right">
 
-{if $instances|@count}
-<b>Existing services</b>
+	<h2>Existing Integrations</h2>
 
-<ul>
-{foreach from=$instances item='obj'}
-	<li>
-		<img src="plugins/{$obj->id}/icon_32.png" width="24" height="24" class="service_icon" style="margin: 4px 0.5rem 0 0; display: block; float: left; width: 18px; height: 18px;">
-		{$obj->name} : <a href="view.php?id={$obj->iid|urlencode}">{$obj->getLabel()}</a></li>
-{/foreach}
-</ul>
+{foreach from=$instances item='row'}
+	<div class="service_group large_bottom_margin">
+
+		<h3 class="service_group_name small_bottom_margin">
+			<img src="{$row.plugin->icon_48}" width="24" height="24" class="service_icon" />
+			{$row.plugin->name|escape}
+		</h3>
+
+		<ul>
+{foreach from=$row.instances item='obj'}
+			<li class="service_summary small_bottom_margin">
+				<a href="view.php?id={$obj->iid|urlencode}">{$obj->getLabel()}</a>
+{if 0}
+				<span class="service_meta mini block">
+					Created by <a href="/team/myles" class="bold">myles</a>
+					on Nov 02, 2013
+				</span>
 {/if}
+			</li>
+{/foreach}
+		</ul>
+	</div>
+{/foreach}
 
 {if $auth|@count}
 <b>Things to configure</b>

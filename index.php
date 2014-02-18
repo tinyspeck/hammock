@@ -6,6 +6,11 @@
 
 	load_plugins();
 
+
+	#
+	# if we have no service instances, redirect to new.php
+	#
+
 	$instance_data = $data->get_all('instances');
 
 	if (!count($instance_data)){
@@ -13,11 +18,31 @@
 		exit;
 	}
 
-	$instances = array();
-	foreach ($instance_data as $k => $instance){
-		$instances[] = getPluginInstance($k);
-	}
-	$smarty->assign('instances', $instances);
 
+	#
+	# get instances and group by service
+	#
+
+	$instance_groups = array();
+
+	foreach ($instance_data as $k => $instance){
+		$inst = getPluginInstance($k);
+		$inst->icon_48 = $inst->iconUrl(48);
+		$instance_groups[$inst->id]['plugin'] = $inst;
+		$instance_groups[$inst->id]['instances'][] = $inst;
+	}
+
+	usort($instance_groups, 'local_sort');
+
+	function local_sort($a, $b){
+		return strcasecmp($a['plugin']->name, $b['plugin']->name);
+	}
+
+	$smarty->assign('instances', $instance_groups);
+
+
+	#
+	# output
+	#
 
 	$smarty->display('page_index.txt');
