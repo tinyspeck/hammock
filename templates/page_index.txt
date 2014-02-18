@@ -18,10 +18,10 @@
 {foreach from=$row.instances item='obj'}
 			<li class="service_summary small_bottom_margin">
 				<a href="view.php?id={$obj->iid|urlencode}">{$obj->getLabel()}</a>
-{if 0}
+{if $obj->icfg.creator_id}
 				<span class="service_meta mini block">
-					Created by <a href="/team/myles" class="bold">myles</a>
-					on Nov 02, 2013
+					Created by <a href="{$obj->icfg.creator_url}" class="bold">{$obj->icfg.creator_name}</a>
+					on {'M j, Y'|date:$obj->icfg.created}
 				</span>
 {/if}
 			</li>

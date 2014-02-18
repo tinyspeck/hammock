@@ -28,6 +28,13 @@
 	foreach ($instance_data as $k => $instance){
 		$inst = getPluginInstance($k);
 		$inst->icon_48 = $inst->iconUrl(48);
+
+		if ($inst->icfg['creator_id']){
+			$u = $GLOBALS['data']->get('users', $inst->icfg['creator_id']);
+			$inst->icfg['creator_name'] = $u['user'];
+			$inst->icfg['creator_url'] = "{$u['url']}team/{$u['user']}";
+		}
+
 		$instance_groups[$inst->id]['plugin'] = $inst;
 		$instance_groups[$inst->id]['instances'][] = $inst;
 	}

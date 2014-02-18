@@ -6,7 +6,6 @@
 
 	load_plugins();
 
-
 	if ($_POST['done']){
 
 		$instance = createPluginInstance($_POST['plugin']);
@@ -14,6 +13,9 @@
 
 		$instance->onParentInit();
 		$instance->onInit();
+
+		$instance->icfg['created'] = time();
+		$instance->icfg['creator_id'] = $GLOBALS['cfg']['user']['user_id'];
 
 		$instance->saveConfig();
 
