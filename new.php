@@ -7,18 +7,30 @@
 	load_plugins();
 
 
+	#
+	# get list of services and sort them
+	#
+
 	$services = array();
-	$set = array();
 
 	foreach (array_keys($plugins_services) as $k){
 		$temp = new $k();
 		$temp->id = $k;
-		$set[] = $temp;
-		if (count($set) == 3){ $services[] = $set; $set = array(); }
+		$services[] = $temp;
 	}
-	if (count($set)) $services[] = $set;
 
-	$smarty->assign('services', $services);
+	usort($services, 'local_sort');
+
+	function local_sort($a, $b){
+		return strcasecmp($a->name, $b->name);
+	}
+
+	$smarty->assign('services', split_sets($services, 3));
+
+
+	#
+	# load auth services
+	#
 
 	$auth = array();
 	foreach (array_keys($plugins_auth) as $k){
@@ -28,5 +40,9 @@
 	}
 	$smarty->assign('auth', $auth);
 
+
+	#
+	# output
+	#
 
 	$smarty->display('page_new.txt');
