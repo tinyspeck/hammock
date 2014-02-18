@@ -200,5 +200,10 @@
 				'error'	=> 'onHook not implemented',
 			);
 		}
+
+		function iconUrl($size=32){
+			if (!in_array($size, array(32,48,64,128))) $size = 32;
+			return "plugins/{$this->id}/icon_{$size}.png";
+		}
 	}
 
