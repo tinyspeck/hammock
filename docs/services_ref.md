@@ -108,6 +108,9 @@ pass an array of attachment hashes as `$extra['attachments']`:
 		),
 	);
 
+The optional `unfurl_links`, `icon_url` & `icon_emoji` properties match that of the
+`chat.postMessage` [API method](https://api.slack.com/methods/chat.postMessage).
+
 ### escapeText($str)
 
 Takes any text string and returns one escaped to display as-is in Slack
