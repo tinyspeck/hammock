@@ -90,9 +90,24 @@
 				'channel'	=> '#general',
 			);
 
-			if (isset($extra['channel' ])) $params['channel' ] = $extra['channel' ];
-			if (isset($extra['username'])) $params['username'] = $extra['username'];
-			if (isset($extra['attachments'])) $params['attachments'] = json_encode($extra['attachments']);
+			$map_params = array(
+				'channel',
+				'username',
+				'attachments',
+				'unfurl_links',
+				'icon_url',
+				'icon_emoji',
+			);
+
+			foreach ($map_params as $p){
+				if (isset($extra[$p])){
+					if ($p == 'attachments'){
+						$params[$p] = json_encode($extra[$p]);
+					}else{
+						$params[$p] = $extra[$p];
+					}
+				}
+			}
 
 			$ret = api_call('chat.postMessage', $params);
 
