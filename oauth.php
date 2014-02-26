@@ -71,7 +71,7 @@
 	$cookie = $info['user_id'].'-'.$info['secret'];
 	$expire = time() + (365 * 24 * 60 * 60);
 
-	setcookie($cfg['cookie_name'], $cookie, $expire, $cfg['cookie_path'], $cfg['cookie_domain']);
+	setcookie($cfg['cookie_name'], $cookie, $expire, $cfg['cookie_path'], $cfg['cookie_domain'], isset($_SERVER["HTTPS"]), true);
 
 	$data->set('users', $info['user_id'], $info);
 
