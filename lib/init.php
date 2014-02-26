@@ -172,6 +172,10 @@
 			$GLOBALS['smarty']->assign('first_time', 1);
 		}
 
+		if (!strpos($GLOBALS['cfg']['cookie_domain'], '.')){
+			$GLOBALS['smarty']->assign('bad_cookie_domain', 1);
+		}
+
 		$GLOBALS['smarty']->assign('oauth_url', $oauth_url);
 		$GLOBALS['smarty']->display('page_login.txt');
 		exit;
