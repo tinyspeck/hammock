@@ -1,23 +1,31 @@
 {include file='inc_head.txt}
 
-{if $first_time}
+{if $bad_cookie_domain}
 
-<p style="text-align: center; padding: 2em 0 1em 0">
-	It looks like you're setting up Hammock for the first time.
-	You'll need to authenticate against a Slack account to start adding integrations.
-</p>
+	<p style="text-align: center; padding: 2em 0 1em 0">
+		<code>$cfg.cookie_domain</code> must contain a period.<br />
+		Please read the note in <code>lib/config.php</code>.
+	</p>
 
-<p style="text-align: center; padding: 0 0 2em 0">
-	Once you have chosen a Slack team, all users will need to sign into that team.
-</p>
+{elseif $first_time}
+
+	<p style="text-align: center; padding: 2em 0 1em 0">
+		It looks like you're setting up Hammock for the first time.
+		You'll need to authenticate against a Slack account to start adding integrations.
+	</p>
+
+	<p style="text-align: center; padding: 0 0 2em 0">
+		Once you have chosen a Slack team, all users will need to sign into that team.
+	</p>
+
+	<p style="text-align: center"><a href="{$oauth_url}" class="btn">Authenticate</a></p>
 
 {else}
 
-<p style="text-align: center; padding: 2em 0 2em 0">You'll need to log into your Slack account to continue.</p>
+	<p style="text-align: center; padding: 2em 0 2em 0">You'll need to log into your Slack account to continue.</p>
+
+	<p style="text-align: center"><a href="{$oauth_url}" class="btn">Authenticate</a></p>
 
 {/if}
-
-<p style="text-align: center"><a href="{$oauth_url}" class="btn">Authenticate</a></p>
-
 
 {include file='inc_foot.txt}
