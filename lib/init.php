@@ -176,3 +176,13 @@
 		$GLOBALS['smarty']->display('page_login.txt');
 		exit;
 	}
+
+	function split_sets($in, $size){
+		$out = array();
+		while (count($in)){
+			$out[] = array_slice($in, 0, $size);
+			$in = array_slice($in, $size);
+		}
+		return $out;
+        }
+

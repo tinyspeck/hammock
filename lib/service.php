@@ -88,6 +88,7 @@
 				'text'		=> $text,
 				'parse'		=> 'none',
 				'channel'	=> '#general',
+				'icon_url'	=> $this->iconUrl(48, true),
 			);
 
 			$map_params = array(
@@ -199,6 +200,12 @@
 				'ok'	=> false,
 				'error'	=> 'onHook not implemented',
 			);
+		}
+
+		function iconUrl($size=32, $abs=false){
+			if (!in_array($size, array(32,48,64,128))) $size = 32;
+			$pre = $abs ? $GLOBALS['cfg']['root_url'] : '';
+			return "{$pre}plugins/{$this->id}/icon_{$size}.png";
 		}
 	}
 

@@ -1,28 +1,34 @@
 {include file='inc_head.txt}
 
-<b>Add a new service</b>
+{include file='inc_left.txt' nav='index'}
 
-{if $services|@count}
-<ul>
-{foreach from=$services item='k'}
-	<li><a href="add.php?id={$k->id|urlencode}">{$k->name|escape}</a> - {$k->desc|escape} </li>
-{/foreach}
-</ul>
-{else}
-<p>You don't have any service plugins installed.</p>
+<div class="col_right">
+
+	<h2>Existing Integrations</h2>
+
+{foreach from=$instances item='row'}
+	<div class="service_group large_bottom_margin">
+
+		<h3 class="service_group_name small_bottom_margin">
+			<img src="{$row.plugin->icon_48}" width="24" height="24" class="service_icon" />
+			{$row.plugin->name|escape}
+		</h3>
+
+		<ul>
+{foreach from=$row.instances item='obj'}
+			<li class="service_summary small_bottom_margin">
+				<a href="view.php?id={$obj->iid|urlencode}">{$obj->getLabel()}</a>
+{if $obj->icfg.creator_id}
+				<span class="service_meta mini block">
+					Created by <a href="{$obj->icfg.creator_url}" class="bold">{$obj->icfg.creator_name}</a>
+					on {'M j, Y'|date:$obj->icfg.created}
+				</span>
 {/if}
-
-{if $instances|@count}
-<b>Existing services</b>
-
-<ul>
-{foreach from=$instances item='obj'}
-	<li>
-		<img src="plugins/{$obj->id}/icon_32.png" width="24" height="24" class="service_icon" style="margin: 4px 0.5rem 0 0; display: block; float: left; width: 18px; height: 18px;">
-		{$obj->name} : <a href="view.php?id={$obj->iid|urlencode}">{$obj->getLabel()}</a></li>
+			</li>
 {/foreach}
-</ul>
-{/if}
+		</ul>
+	</div>
+{/foreach}
 
 {if $auth|@count}
 <b>Things to configure</b>
@@ -33,5 +39,7 @@
 {/foreach}
 </ul>
 {/if}
+
+</div>
 
 {include file='inc_foot.txt}

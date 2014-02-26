@@ -1,0 +1,31 @@
+{include file='inc_head.txt}
+
+{include file='inc_left.txt' nav='new'}
+
+<div class="col_right">
+
+	<h2>Add Service Integrations</h2>
+
+{foreach from=$services item='set'}
+	<div style="clear: left">
+{foreach from=$set item='k' name='inner'}
+	<form method="POST" action="add.php?id={$k->id|urlencode}" class="service{if $smarty.foreach.inner.last} no_right_margin{/if}">
+
+		<img src="plugins/{$k->id|escape}/icon_64.png" width="64" height="64" class="icon" />
+
+		<h4>{$k->name|escape}</h4>
+		<p>{$k->desc|escape}</p>
+	
+		<button type="submit" class="btn btn-small btn-primary"><i class="icon-plus-sign" style="margin-right: 0.25rem;"></i> {$k->name|escape}</button>
+	</form>
+{/foreach}
+	</div>
+{/foreach}
+
+{if !$services|@count}
+	<p>You don't have any service plugins installed.</p>
+{/if}
+
+</div>
+
+{include file='inc_foot.txt}

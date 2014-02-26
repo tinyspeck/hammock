@@ -1,0 +1,18 @@
+<div class="col_left">
+
+	<h2>Integrations</h2>
+
+	<ul class="sidebar_nav large_bottom_margin">
+{if $nav=='new'}
+		<li><i class="icon-plus-sign"></i>Add New Integration</li>
+{else}
+		<li><a href="new.php"><i class="icon-plus-sign"></i>Add New Integration</a></li>
+{/if}
+{if $nav=='index'}
+		<li><i class="icon-wrench"></i>Existing Integrations</li>
+{else}
+		<li><a href="./"><i class="icon-wrench"></i>Existing Integrations</a></li>
+{/if}
+	</ul>
+
+</div>
