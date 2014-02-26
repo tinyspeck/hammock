@@ -108,7 +108,7 @@
 				return $this->sendMessage($text);
 			}
 
-			if ($commit_count) {
+			if ($num_events) {
 				$text = $this->searchLink($search) . $this->renderEvent($events[0]);
 				return $this->sendMessage($text);
 			}
