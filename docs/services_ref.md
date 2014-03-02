@@ -33,7 +33,7 @@ configured to use templates from the `templates` sub-directory of your plugin.
 It already hs the plugin instance assigned as `$this`.
 
 Since UI methods expect HTML to be returned rather than output directly, be
-usre to use `->fetch()` rather than `->display()`.
+sure to use `->fetch()` rather than `->display()`.
 
 
 ## Methods to override
