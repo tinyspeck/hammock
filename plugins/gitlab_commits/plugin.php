@@ -45,6 +45,8 @@ class gitlab_commits extends SlackServicePlugin {
     }
 
     function onHook($req) {
+        global $cfg;
+
         if (!$this->icfg['channel']) {
             return array(
                 'ok'    => false,
@@ -88,7 +90,7 @@ class gitlab_commits extends SlackServicePlugin {
                 'channel'     => $this->icfg['channel'],
                 'username'    => $this->icfg['botname'],
                 'attachments' => $fields,
-                'icon_url'    => $this->cfg['root_url'] . 'plugins/gitlab_commits/icon_128.png'
+                'icon_url'    => $cfg['root_url'] . 'plugins/gitlab_commits/icon_128.png'
             ]);
         }
 
