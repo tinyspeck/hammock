@@ -46,6 +46,8 @@ class atlassian_stash_commits extends SlackServicePlugin {
     }
 
     function onHook($req) {
+        global $cfg;
+
         if (!$this->icfg['channel']) {
             return array(
                 'ok'    => false,
@@ -95,7 +97,7 @@ class atlassian_stash_commits extends SlackServicePlugin {
             $this->postToChannel($message, [
                 'channel'     => $this->icfg['channel'],
                 'username'    => $this->icfg['botname'],
-                'icon_url'    => $this->cfg['root_url'] . 'plugins/atlassian_stash_commits/icon_128.png',
+                'icon_url'    => $cfg['root_url'] . 'plugins/atlassian_stash_commits/icon_128.png',
                 'attachments' => array_reverse($fields)
             ]);
         }
