@@ -91,12 +91,6 @@ class atlassian_stash_commits extends SlackServicePlugin {
 		    count($fields)
 	    );
 
-	    file_put_contents(__DIR__ . '/hook.log', json_encode([
-		    'message' => $message,
-	        'commits' => $fields,
-	        'author'  => $author
-        ], JSON_PRETTY_PRINT));
-
         if (count($fields) > 0) {
             $this->postToChannel($message, [
                 'channel'     => $this->icfg['channel'],
