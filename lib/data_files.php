@@ -52,7 +52,17 @@
 
 			$data = array();
 			if (file_exists($path)){
+				$fh = fopen($path, 'r');
+				if (!$fh) die("Failed to open data file for reading");
+
+				$flag = 0;
+				$ok = flock($fh, LOCK_SH);
+				if (!$ok) die("Failed to locl data file for reading");
+
 				include($path);
+				flock($fh, LOCK_UN);
+				fclose($fh);
+
 				if (!is_array($data)) $data = array();
 			}
 			return $data;
