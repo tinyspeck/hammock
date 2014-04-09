@@ -1,0 +1,35 @@
+<form action="{$this->getEditUrl()}&save=1" method="post">
+
+<h4>Basecamp Authentication</h4>
+<p>
+  <label for="basecamp_url">Basecamp Classic URL:</label><br>
+  <input type="text" name="basecamp_url" id="basecamp_url" size="80" placeholder="https://myteam.basecamphq.com"{if $this->icfg.basecamp_url != ''} value="{$this->icfg.basecamp_url}"{/if}>
+</p>
+<p>
+  <label for="basecamp_url">Basecamp Classic API Token:</label><br>
+  <input type="text" name="basecamp_token" id="basecamp_token" size="80" {if $this->icfg.basecamp_token != ''} value="{$this->icfg.basecamp_token}"{/if}>
+</p>
+<hr>
+<h4>What to Post</h4>
+<p>
+  Slack Channel to read from: <br>
+  <select name="channel">
+  {foreach from=$channels key='chan_id' item='chan_name'}
+    <option value="{$chan_id|escape}"{if $chan_id==$this->icfg.channel} selected{/if}>{$chan_name|escape}</option>
+  {/foreach}
+  </select>
+</p>
+<p>
+  Basecamp Project to post to: <br>
+  {if $projects !== false}
+    <select name="project">
+    {foreach from=$projects key='key' item='value'}
+      <option value="{$value->id}::{$value->name}" {if $value->id == $this->icfg.project}selected{/if}>{$value->name}</option>
+    {/foreach}
+    </select>
+  {else}
+    <div class="alert alert-error">Enter a correct Basecamp URL and API Token before selecting a project.</div>
+  {/if}
+</p>
+<p><input type="submit" value="Save Changes" class="btn" /></p>
+</form>
