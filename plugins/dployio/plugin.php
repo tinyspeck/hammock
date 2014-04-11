@@ -76,11 +76,11 @@ class dployio extends SlackServicePlugin {
             $dploy_payload->server
         );
 
-        $this->postToChannel($message, [
+        $this->postToChannel($message, array(
             'channel'     => $this->icfg['channel'],
             'username'    => $this->icfg['botname'],
             'icon_url'    => $cfg['root_url'] . 'plugins/dployio/icon_128.png'
-        ]);
+        ));
     }
 
     function getLabel() {

@@ -70,7 +70,7 @@ class atlassian_stash_commits extends SlackServicePlugin {
 	    $project = $this->icfg['base_url'] . '/projects/' . $stash_payload->repository->project->key . '/repos/' . $stash_payload->repository->slug;
 
 	    foreach($commits as $commit) {
-            $fields[] = [
+            $fields[] = array(
                 'text' => sprintf(
                     '<%s|%s> - %s (%s files changed)',
                     $project . '/commits/' . $commit->toCommit->id,
@@ -79,7 +79,7 @@ class atlassian_stash_commits extends SlackServicePlugin {
                     $commit->changes->size
                 ),
                 'color' => 'good',
-            ];
+            );
 
 		    $author = $commit->toCommit->author->name;
 	    }
@@ -94,12 +94,12 @@ class atlassian_stash_commits extends SlackServicePlugin {
 	    );
 
         if (count($fields) > 0) {
-            $this->postToChannel($message, [
+            $this->postToChannel($message, array(
                 'channel'     => $this->icfg['channel'],
                 'username'    => $this->icfg['botname'],
                 'icon_url'    => $cfg['root_url'] . 'plugins/atlassian_stash_commits/icon_128.png',
                 'attachments' => array_reverse($fields)
-            ]);
+            ));
         }
 
         return array(

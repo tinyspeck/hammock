@@ -65,7 +65,7 @@ class gitlab_commits extends SlackServicePlugin {
 
         $fields = array();
         foreach ($gitlab_payload->commits as $commit) {
-            $fields[] = [
+            $fields[] = array(
                 'text' => sprintf(
                     '<%s|%s> - %s',
                     $commit->url,
@@ -73,7 +73,7 @@ class gitlab_commits extends SlackServicePlugin {
                     $commit->message
                 ),
                 'color' => 'good',
-            ];
+            );
         }
 
         $message = sprintf(
@@ -86,12 +86,12 @@ class gitlab_commits extends SlackServicePlugin {
         );
 
         if (count($fields) > 0) {
-            $this->postToChannel($message, [
+            $this->postToChannel($message, array(
                 'channel'     => $this->icfg['channel'],
                 'username'    => $this->icfg['botname'],
                 'attachments' => $fields,
                 'icon_url'    => $cfg['root_url'] . 'plugins/gitlab_commits/icon_128.png'
-            ]);
+            ));
         }
 
         return array(
