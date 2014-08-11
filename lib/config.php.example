@@ -18,6 +18,7 @@
 	# Where we should store cookies
 	# NOTE: the domain must contain a dot. if you want to use localhost,
 	# try `127.0.0.1`, or set up an alias in your /etc/hosts file.
+	# If running from a subdirectory, make sure to change 'cookie_path'
 
         $cfg['cookie_domain'] = 'myserver.com';
         $cfg['cookie_path'] = '/';
