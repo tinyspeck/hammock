@@ -20,7 +20,7 @@
 	# try `127.0.0.1`, or set up an alias in your /etc/hosts file.
 
         $cfg['cookie_domain'] = 'myserver.com';
-        $cfg['cookie_path'] = '/hammock/';
+        $cfg['cookie_path'] = '/';
         $cfg['cookie_name'] = 'hammock-auth';
 
 
