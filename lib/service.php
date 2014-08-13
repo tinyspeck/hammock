@@ -101,6 +101,7 @@
 			);
 
 			foreach ($map_params as $p){
+				error_log($p);
 				if (isset($extra[$p])){
 					error_log($extra[$p]);
 					if ($p == 'attachments'){
