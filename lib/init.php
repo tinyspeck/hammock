@@ -174,7 +174,7 @@
 
 		if (!strpos($GLOBALS['cfg']['cookie_domain'], '.')){
 			$GLOBALS['smarty']->assign('bad_cookie_domain', 1);
-			$GLOBALS['smarty']->assign('cookie_domain'), $GLOBALS['cfg']['cookie_domain']);
+			//$GLOBALS['smarty']->assign('cookie_domain'), $GLOBALS['cfg']['cookie_domain']);
 		}
 
 		$GLOBALS['smarty']->assign('oauth_url', $oauth_url);
