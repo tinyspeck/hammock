@@ -102,6 +102,7 @@
 
 			foreach ($map_params as $p){
 				if (isset($extra[$p])){
+					error_log($extra[$p]);
 					if ($p == 'attachments'){
 						$params[$p] = json_encode($extra[$p]);
 					}else{
