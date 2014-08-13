@@ -57,7 +57,7 @@
         	$this->postToChannel($message, array(
         		'channel'	=> $this->icfg['channel'],
         		'username'	=> $this->icfg['botname'],
-        		'icon_url'	=> $cfg['root_url'].'plugins/yo/icon_128.png'
+        		'icon_url'	=> $this->icfg['icon_url']
         	));
 		}
 
