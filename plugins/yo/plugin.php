@@ -20,7 +20,7 @@
 	        }
 
 			$this->icfg['botname'] = "Yo";
-			$this->icfg['icon_url'] = $GLOBALS['cfg']['root_url'] . '/plugins/yo/icon_48.png';
+			$this->icfg['icon_url'] = $GLOBALS['cfg']['root_url'] . 'plugins/yo/icon_48.png';
 		}
 
 		function onView() {
