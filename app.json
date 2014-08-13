@@ -1,0 +1,27 @@
+{
+  "name": "Hammock",
+  "description": "Run Slack integrations on your own server.",
+  "keywords": [
+    "productivity",
+    "chat",
+    "Slack"
+  ],
+  "website": "https://slack.com/",
+  "repository": "https://github.com/tinyspeck/hammock",
+  "logo": "https://cdn.rawgit.com/tinyspeck/hammock/master/images/logo.png",
+  "env": {
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php.git#redis",
+    "HAMMOCK_ROOT": {
+      "description": "URL to this app. You can set this later.",
+    },
+    "HAMMOCK_CLIENT_ID": {
+      "description": "Your Slack client ID."
+    },
+    "HAMMOCK_CLIENT_SECRET": {
+      "description": "Your Slack client secret."
+    }
+  },
+  "addons": [
+    "redistogo"
+  ]
+}
