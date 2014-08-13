@@ -12,7 +12,7 @@
   "env": {
     "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php.git#redis",
     "HAMMOCK_ROOT": {
-      "description": "URL to this app. You can set this later.",
+      "description": "URL to this app. You can set this later."
     },
     "HAMMOCK_CLIENT_ID": {
       "description": "Your Slack client ID."
