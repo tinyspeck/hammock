@@ -4,7 +4,8 @@
 
 	<p style="text-align: center; padding: 2em 0 1em 0">
 		<code>$cfg.cookie_domain</code> must contain a period.<br />
-		Please read the note in <code>lib/config.php</code>.
+		Please read the note in <code>lib/config.php</code>.<br />
+		{$GLOBALS['cfg']['cookie_domain']}
 	</p>
 
 {elseif $first_time}
