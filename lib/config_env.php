@@ -19,7 +19,7 @@
 	$url_bits = parse_url($cfg['root_url']);
 
 	$cfg['cookie_domain']	= $url_bits['host'];
-	print($cfg['cookie_domain']);
+	error_log($cfg['cookie_domain']);
 	$cfg['cookie_path']	= $url_bits['path'];
 	$cfg['cookie_name']	= 'hammock-auth';
 	$cfg['slack_root']	= "https://slack.com/";
