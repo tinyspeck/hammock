@@ -3,4 +3,4 @@
 <p><a href="http://www.justyo.co/">Yo</a> is a single-tap, zero character communication tool for your mobile devices.</p>
 <p>This integration will post notifications in a Slack channel when a Yo is received.</p>
 <p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
-<p><a href="{$this->getHookUrl()}" class="btn">Hook</a></p>
+<p>Use <code>{$this->getHookUrl()}</code> as the Callback URL for your <a href="http://yoapi.justyo.com">Yo API account.</p>
