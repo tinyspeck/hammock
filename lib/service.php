@@ -101,9 +101,9 @@
 			);
 
 			foreach ($map_params as $p){
-				error_log($p);
+				error_log("Param: ".$p);
 				if (isset($extra[$p])){
-					error_log($extra[$p]);
+					error_log("Value: ".$extra[$p]);
 					if ($p == 'attachments'){
 						$params[$p] = json_encode($extra[$p]);
 					}else{
