@@ -20,7 +20,6 @@
 	        }
 
 			$this->icfg['botname'] = "Yo";
-			$this->icfg['icon_url'] = $GLOBALS['cfg']['root_url'] . 'plugins/yo/icon_32.png';
 		}
 
 		function onView() {
@@ -57,7 +56,7 @@
         	$this->postToChannel($message, array(
         		'channel'	=> $this->icfg['channel'],
         		'username'	=> $this->icfg['botname'],
-        		'icon_url'	=> $this->icfg['icon_url']
+        		'icon_url'	=> $GLOBALS['cfg']['root_url'] . 'plugins/yo/icon_48.png',
         	));
 		}
 
