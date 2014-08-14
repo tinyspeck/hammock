@@ -88,7 +88,7 @@
 				'text'		=> $text,
 				'parse'		=> 'none',
 				'channel'	=> '#general',
-				'icon_url'	=> $this->iconUrl(48, true),
+				'icon_url'	=> $this->iconUrl(32, true),
 			);
 
 			$map_params = array(
