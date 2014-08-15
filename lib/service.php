@@ -110,7 +110,10 @@
 					}
 				}
 			}
-
+			if (isset($extra['icon_emoji'])){
+				unset($params['icon_url']);
+			}
+			
 			$ret = api_call('chat.postMessage', $params);
 
 			return $ret;
