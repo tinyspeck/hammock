@@ -59,8 +59,11 @@
 			if ($payload['attachments']){
 				$attachments = array();
 				$i = 0;
-				foreach ($payload['attachments'] as $key => $value){
-					$attachments[$key] = $value;
+				foreach ($payload['attachments'] as $a){
+					foreach ($a as $key => $value){
+						$attachments[$i][$key] = $value;
+					}
+					$i++;
 				}
 			}
 
