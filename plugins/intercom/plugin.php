@@ -1,6 +1,6 @@
 <?php
 
-	class IntercomPlugin extends SlackServicePlugin {
+	class intercom extends SlackServicePlugin {
 
 		public $name = "Intercom";
 		public $desc = "The easiest way to see and talk to your users.";
