@@ -43,8 +43,9 @@
 		}
 
 		function onHook($request){
-
+error_log("hooked");
 			if ($request['post']['payload']) {
+error_log("POST payload found");
 				$payload = json_decode($request['post']['payload'], true);
 			} else {
 				$payload = json_decode($request['post_body'], true);
@@ -55,7 +56,7 @@
 			}
 
 			$message = $payload['text'];
-
+error_log("message is ". $message);
 			if ($payload['attachments']){
 				$attachments = array();
 				$i = 0;
