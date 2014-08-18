@@ -19,7 +19,7 @@
         	}
 
         	$this->icfg['botname'] = "svn";
-        	$this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/icon_48.png';
+        	$this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/subversion/icon_48.png';
 		}
 
 		function onView() {
