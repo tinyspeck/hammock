@@ -1,0 +1,9 @@
+<p class="bold">{$desc}</p>
+
+<p><a href="http://subversion.apache.org/">Subversion</a> is an open source version control system. This integration will post commits to a channel in Slack.</p>
+<p>Use <code>{$this->getHookUrl()}</code> as the Callback URL.</p>
+
+<h3>Current Settings</h3>
+<p>Channel:<br/>{$this->icfg.channel_name|escape}</p>
+<p>Botname & Icon:<br/>{$this->icfg.botname|escape}&nbsp;<img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon">
+<p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
