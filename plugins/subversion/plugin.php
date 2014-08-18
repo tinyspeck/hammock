@@ -19,7 +19,7 @@
         	}
 
         	$this->icfg['botname'] = "svn";
-        	$this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/intercom/icon_48.png';
+        	$this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/subversion/icon_48.png';
 		}
 
 		function onView() {
@@ -59,6 +59,7 @@
 				'channel'	=> $this->icfg['channel'],
 				'username'	=> $this->icfg['botname'],
 				'icon_url'	=> $this->icfg['icon_url'],
+				'icon_emoji'	=> ":yeezus:",
 			));
 		}
 
