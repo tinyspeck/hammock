@@ -54,7 +54,7 @@
 			}
 
 			$message = $this->transform($payload);
-
+error_log($this->icfg['icon_url']);
 			$this->postToChannel($message, array(
 				'channel'	=> $this->icfg['channel'],
 				'username'	=> $this->icfg['botname'],
