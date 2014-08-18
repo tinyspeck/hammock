@@ -203,9 +203,99 @@
 		}
 
 		function iconUrl($size=32, $abs=false){
+error_log("iconUrl being set");
 			if (!in_array($size, array(32,48,64,128))) $size = 32;
 			$pre = $abs ? $GLOBALS['cfg']['root_url'] : '';
 			return "{$pre}plugins/{$this->id}/icon_{$size}.png";
+		}
+	}
+
+	class SlackSimpleServicePlugin extends SlackServicePlugin {
+
+		function onInit() {
+		    $channels = $this->getChannelsList();
+
+		    foreach ($channels as $k => $v) {
+		        if ($v == '#testinghammock') {
+		            $this->icfg['channel']      = $k;
+		            $this->icfg['channel_name'] = $v;
+		        }
+		    }
+
+		    $this->icfg['botname'] = $name;
+		}
+
+		function onView() {
+		    return $this->smarty->fetch('view.txt');
+		}
+
+		function onEdit() {
+		    $channels = $this->getChannelsList();
+		    if ($_GET['save']) {
+		        $this->icfg['channel']      = $_POST['channel'];
+		        $this->icfg['channel_name'] = $channels[$_POST['channel']];
+		        $this->icfg['botname']      = $_POST['botname'];
+		        $this->saveConfig();
+
+		        header("location: {$this->getViewUrl()}&saved=1");
+		        exit;
+		    }
+		    $this->smarty->assign('channels', $channels);
+		    return $this->smarty->fetch('edit.txt');
+		}
+
+		function onHook($request){
+
+			if ($request['post']['payload']) {
+				$payload = json_decode($request['post']['payload'], true);
+			} else {
+				$payload = json_decode($request['post_body'], true);
+			}
+
+			if (!$payload){
+				return array('ok' => false, 'error' => "invalid_payload");
+			}
+
+			$message = $this->defaultMessageFilter($payload);
+
+			$this->postToChannel($message, array(
+	            'channel'	=> $this->icfg['channel'],
+	            'username'	=> $this->icfg['botname'],
+	        ));
+		}
+		#
+		# This filters an incoming payload to only include the fields we
+		# support in simple plugins. The contents of the fields are filtered
+		# by postMessage when posting the message to channel.
+		#
+		private function defaultMessageFilter($payload){
+			$out = array();
+
+			if($payload['text']) $out['text'] = $payload['text'];
+
+			if($payload['attachments']) {
+				$out['attachments'] = array();
+				foreach ($payload['attachments'] as $attach){
+					if (!is_array($attach)) continue;
+					$clean = array();
+					$fields = array(
+						'fallback',
+						'text',
+						'pretext',
+						'title',
+						'color',
+						'fields',
+						'mrkdwn_in'
+					);
+
+					foreach ($fields as $field){
+						if (isset($attach[$field])) $clean[$field] = $attach[$field];
+					}
+					$out['attachments'][] = $clean;
+				}
+			}
+
+			return $out;
 		}
 	}
 
