@@ -72,7 +72,6 @@
 				'username'		=> $this->icfg['botname'],
 				'icon_url'		=> $this->icfg['icon_url'],
 				'attachments'	=> $attachments,
-				'icon_emoji'	=> ":yeezus:",
 			));
 		}
 
