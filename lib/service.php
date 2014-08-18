@@ -87,7 +87,7 @@
 			$params = array(
 				'channel'	=> '#general',
 				'text'		=> $text,
-				'username'	=> 'bot',
+				'username'	=> '',
 				'icon_url'	=> $this->iconUrl(48, true),
 			);
 
