@@ -93,9 +93,10 @@
 
 			$map_params = array(
 				'channel',
+				'username',
+				'icon_url',
 				'attachments',
 				'unfurl_links',
-				'icon_url',
 				'icon_emoji',
 				'parse',
 			);
