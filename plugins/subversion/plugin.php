@@ -12,14 +12,13 @@
 			$channels = $this->getChannelsList();
 
 			foreach ($channels as $k => $v) {
-	            if ($v == '#yo') {
+	            if ($v == '#testinghammock') {
 	                $this->icfg['channel']      = $k;
 	                $this->icfg['channel_name'] = $v;
 	            }
         	}
 
         	$this->icfg['botname'] = "svn";
-        	$this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/subversion/icon_48.png';
 		}
 
 		function onView() {

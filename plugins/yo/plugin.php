@@ -13,7 +13,7 @@ class yo extends SlackServicePlugin {
         $channels = $this->getChannelsList();
 
         foreach ($channels as $k => $v) {
-            if ($v == '#yo') {
+            if ($v == '#testinghammock') {
                 $this->icfg['channel']      = $k;
                 $this->icfg['channel_name'] = $v;
             }

@@ -20,7 +20,7 @@
         	}
 
         	$this->icfg['botname'] = "Intercom";
-        	$this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/subversion/icon_48.png';
+        	$this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/intercom/icon_48.png';
 		}
 
 		function onView() {
