@@ -20,9 +20,6 @@ class yo extends SlackServicePlugin {
         }
 
         $this->icfg['botname'] = "Yo";
-
-
-        
         $this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/yo/icon_48.png';
     }
 
