@@ -85,25 +85,23 @@
 			);
 
 			$params = array(
-				'channel'	=> '#general',
 				'text'		=> $text,
-				'username'	=> '',
+				'parse'		=> 'none',
+				'channel'	=> '#general',
 				'icon_url'	=> $this->iconUrl(48, true),
 			);
 
 			$map_params = array(
 				'channel',
 				'username',
-				'icon_url',
 				'attachments',
 				'unfurl_links',
+				'icon_url',
 				'icon_emoji',
-				'parse',
 			);
 
 			foreach ($map_params as $p){
 				if (isset($extra[$p])){
-error_log($p ." : ".$extra[$p]);
 					if ($p == 'attachments'){
 						$params[$p] = json_encode($extra[$p]);
 					}else{

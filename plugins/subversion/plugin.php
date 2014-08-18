@@ -19,6 +19,7 @@
         	}
 
         	$this->icfg['botname'] = "svn";
+        	$this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/subversion/icon_48.png';
 		}
 
 		function onView() {
@@ -53,7 +54,7 @@
 			}
 
 			$message = $this->transform($payload);
-error_log($this->icfg['icon_url']);
+
 			$this->postToChannel($message, array(
 				'channel'	=> $this->icfg['channel'],
 				'username'	=> $this->icfg['botname'],
