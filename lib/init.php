@@ -117,7 +117,7 @@
 		$team = $GLOBALS['data']->get('metadata', 'team');
 
 		$url = $GLOBALS['cfg']['slack_root']."api/".$method."?token=".$team['token'];
-
+error_log($url);
 		foreach ($args as $k => $v) $url .= '&'.urlencode($k).'='.urlencode($v);
 
 		$ret = SlackHTTP::get($url);

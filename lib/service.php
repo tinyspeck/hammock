@@ -112,7 +112,7 @@
 			}
 
 			$ret = api_call('chat.postMessage', $params);
-error_log($ret);
+
 			return $ret;
 		}
 
