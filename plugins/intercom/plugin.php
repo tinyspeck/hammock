@@ -43,7 +43,7 @@
 		}
 
 		function onHook($request){
-error_log("hooked");
+error_log(gettype($request));
 			if ($request['post']['payload']) {
 error_log("POST payload found");
 				$payload = json_decode($request['post']['payload'], true);
