@@ -90,7 +90,7 @@
 				'channel'	=> '#general',
 				'icon_url'	=> $this->iconUrl(48, true),
 			);
-
+error_log("params set: icon_url is " . $params['icon_url']);
 			$map_params = array(
 				'channel',
 				'username',
