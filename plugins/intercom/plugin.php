@@ -43,24 +43,19 @@
 		}
 
 		function onHook($request){
-for ($i=0; $i < count($request); $i++) { 
-	error_log(gettype($request[$i]));
-}
+
 			if ($request['post']['payload']) {
-error_log("POST payload found");
 				$payload = json_decode($request['post']['payload'], true);
 			} else {
-error_log("no POST");
 				$payload = json_decode($request['post_body'], true);
 			}
 
 			if (!$payload){
-error_log("no payload");
 				return array('ok' => false, 'error' => "invalid_payload");
 			}
-error_log("what");
+
 			$message = $payload['text'];
-error_log("message is ". $message);
+
 			if ($payload['attachments']){
 				$attachments = array();
 				$i = 0;
@@ -75,6 +70,7 @@ error_log("message is ". $message);
 			$this->postToChannel($message, array(
 				'channel'		=> $this->icfg['channel'],
 				'username'		=> $this->icfg['botname'],
+				'icon_url'		=> $this->icfg['icon_url'],
 				'attachments'	=> $attachments,
 			));
 		}
