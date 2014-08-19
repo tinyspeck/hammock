@@ -43,7 +43,10 @@
 
         function onHook($request){
 
-            if ($request['post']) $payload = $request['post'];
+            if ($request['post']) {
+            	echo "post";
+            	$payload = $request['post'];
+            }
 			else $payload = $request['post_body'];
 dumper($payload);
 			if (!$payload) return array('ok' => false, 'error' => "invalid_payload");
