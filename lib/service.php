@@ -263,6 +263,11 @@
 	            'username'	=> $this->icfg['botname'],
 	        ));
 		}
+
+		function getLabel() {
+        	return "Post to {$this->icfg['channel_name']} as {$this->icfg['botname']}";
+    	}
+
 		#
 		# This filters an incoming payload to only include the fields we
 		# support in simple plugins. The contents of the fields are filtered
