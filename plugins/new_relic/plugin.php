@@ -44,8 +44,9 @@
         function onHook($request){
 error_log("hooked");
             $payload = $request['post'];
+error_log("hello?");
 			if (!$payload || !is_array($payload)) return array('ok' => false, 'error' => "invalid_payload");
-
+error_log("well that worked.");
 			if (isset($payload['alert'])){
 				$decoded_payload = json_decode($payload['alert'], true);
 				if (!$decoded_payload) return array('ok' => false, 'error' => "invalid_payload");
