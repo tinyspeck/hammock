@@ -1,6 +1,6 @@
 <?php
 
-	class airbrake extends SlackSimpleServicePlugin {
+	class airbrake extends SlackServicePlugin {
 		public $name = "Airbrake";
 		public $desc = "Error monitoring and handling.";
 
@@ -49,7 +49,7 @@
                 return array('ok' => false, 'error' => "invalid_payload");
             }
             $message = $payload['text'];
-            
+
             if ($payload['attachments']){
                 $attachments = array();
                 $i = 0;
