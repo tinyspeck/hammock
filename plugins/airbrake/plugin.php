@@ -15,7 +15,7 @@
             }
 
             $this->icfg['botname'] = $name;
-            $this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/' . $this->id . '/icon_48.png';
+            $this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/airbrake/icon_48.png';
         }
 
         function onView() {

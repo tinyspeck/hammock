@@ -1,0 +1,11 @@
+<p class="bold">{$desc}</p>
+
+<p><a href="https://newrelic.com">New Relic</a> is a web and mobile application performance monitoring service that lets your team keep an eye on application health and availability.</p>
+<p>This integration will allow you to receive updates in a Slack channel when an alert is triggered in New Relic. If you would like web, transaction, server and mobile alerts to be posted in separate channels, you will need to set up separate integrations.</p>
+<p class="alert alert-info">To add this integration, you will need to be an Owner of your New Relic account.</p>
+<p>Use <code>{$this->getHookUrl()}</code> as the Callback URL.</p>
+
+<h3>Current Settings</h3>
+<p>Channel:<br/>{$this->icfg.channel_name|escape}</p>
+<p>Botname & Icon:<br/>{$this->icfg.botname|escape}&nbsp;<img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon">
+<p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
