@@ -44,7 +44,8 @@
         function onHook($request){
 error_log("hooked");
             $payload = $request['post'];
-error_log("hello?");
+dumper($payload);
+error_log(gettype($payload));
 			if (!$payload || !is_array($payload)) return array('ok' => false, 'error' => "invalid_payload");
 error_log("well that worked.");
 			if (isset($payload['alert'])){
