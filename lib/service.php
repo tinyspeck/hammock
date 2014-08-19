@@ -64,7 +64,7 @@
 			$this->smarty = $s;
 		}
 
-                function saveConfig(){
+        function saveConfig(){
 			$cfg = $this->icfg;
 			$cfg['plugin'] = $this->id;
 			$GLOBALS['data']->set('instances', $this->iid, $cfg);

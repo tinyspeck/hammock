@@ -49,6 +49,7 @@
                 return array('ok' => false, 'error' => "invalid_payload");
             }
             $message = $payload['text'];
+            
             if ($payload['attachments']){
                 $attachments = array();
                 $i = 0;
