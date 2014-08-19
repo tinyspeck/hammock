@@ -14,7 +14,7 @@
                 }
             }
 
-            $this->icfg['botname'] = $name;
+            $this->icfg['botname'] = "New Relic";
             $this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/new_relic/icon_48.png';
         }
 
