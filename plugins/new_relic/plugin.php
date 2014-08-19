@@ -44,12 +44,12 @@
         function onHook($request){
 
             if ($request['post']) {
-            	echo "post";
-            	$payload = $request['post'];
-            }
-			else $payload = $request['post_body'];
-dumper($payload);
-			if (!$payload) return array('ok' => false, 'error' => "invalid_payload");
+				$payload = json_decode($request['post'], true);
+			} else {
+				$payload = json_decode($request['post_body'], true);
+			}
+
+			if (!$payload || !is_array($payload)) return array('ok' => false, 'error' => "invalid_payload");
 
 			if (isset($payload['alert'])){
 				$decoded_payload = json_decode($payload['alert'], true);
