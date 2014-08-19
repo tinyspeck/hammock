@@ -262,7 +262,7 @@
 	            'channel'		=> $this->icfg['channel'],
 	            'username'		=> $this->icfg['botname'],
 	            'attachments'	=> $attachments,
-	            'icon_emoji'	=> ":yolo:",
+	            'icon_url'		=> $this->icfg['icon_url'],
 	        ));
 		}
 
