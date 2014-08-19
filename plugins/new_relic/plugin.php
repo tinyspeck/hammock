@@ -42,7 +42,7 @@
         }
 
         function onHook($request){
-
+dumper($request);
             if ($request['post']) {
 				$payload = json_decode($request['post'], true);
 			} else {
