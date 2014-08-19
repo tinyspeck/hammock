@@ -45,7 +45,7 @@
 
             if ($request['post']) $payload = $request['post'];
 			else $payload = $request['post_body'];
-
+dumper($payload);
 			if (!$payload) return array('ok' => false, 'error' => "invalid_payload");
 
 			if (isset($payload['alert'])){
