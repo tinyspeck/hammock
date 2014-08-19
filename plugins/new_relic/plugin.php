@@ -48,8 +48,11 @@
 			} else {
 				$payload = json_decode($request['post_body'], true);
 			}
-
-			if (!$payload || !is_array($payload)) return array('ok' => false, 'error' => "invalid_payload");
+dumper($payload);
+			if (!$payload || !is_array($payload)) {
+				echo "failure motherfucker";	
+				return array('ok' => false, 'error' => "invalid_payload");
+			}
 
 			if (isset($payload['alert'])){
 				$decoded_payload = json_decode($payload['alert'], true);
