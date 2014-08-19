@@ -86,18 +86,18 @@
 
 			$params = array(
 				'text'		=> $text,
-				'parse'		=> 'none',
 				'channel'	=> '#general',
+				'username'	=> 'bot',
 				'icon_url'	=> $this->iconUrl(48, true),
 			);
 
 			$map_params = array(
 				'channel',
 				'username',
-				'attachments',
-				'unfurl_links',
 				'icon_url',
 				'icon_emoji',
+				'attachments',
+				'unfurl_links',
 			);
 
 			foreach ($map_params as $p){
