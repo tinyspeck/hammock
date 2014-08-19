@@ -7,7 +7,7 @@
 		public $cfg = array(
 		    'has_token' => true,
 		);
-		
+
 		function onInit() {
             $channels = $this->getChannelsList();
 
@@ -58,7 +58,7 @@
 			}
 
 			$ret = $this->buildMessageData($decoded_payload);
-			if (!$ret['ok']) return array('ok' => true);
+			if (!$ret['ok']) return array('ok' => false, 'error' => 'invalid message data');
 
             $this->postToChannel($ret['message']['text'], array(
                 'channel'       => $this->icfg['channel'],
@@ -66,6 +66,7 @@
                 'attachments'   => $ret['message']['attachments'],
                 'icon_url'      => $this->icfg['icon_url'],
             ));
+            error_log("posted");
         }
 
         function getLabel() {
