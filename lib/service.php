@@ -101,7 +101,7 @@
 			);
 
 			foreach ($map_params as $p){
-				if (isset($extra[$p])){
+				if (!empty($extra[$p])){
 					if ($p == 'attachments'){
 						$params[$p] = json_encode($extra[$p]);
 					}else{
@@ -255,12 +255,13 @@
 			if (!$payload){
 				return array('ok' => false, 'error' => "invalid_payload");
 			}
-
-			$message = $this->defaultMessageFilter($payload);
+			$message = $payload['text'];
+			$attachments = $this->defaultMessageFilter($payload);
 
 			$this->postToChannel($message, array(
-	            'channel'	=> $this->icfg['channel'],
-	            'username'	=> $this->icfg['botname'],
+	            'channel'		=> $this->icfg['channel'],
+	            'username'		=> $this->icfg['botname'],
+	            'attachments'	=> $attachments,
 	        ));
 		}
 
@@ -275,8 +276,6 @@
 		#
 		private function defaultMessageFilter($payload){
 			$out = array();
-
-			if($payload['text']) $out['text'] = $payload['text'];
 
 			if($payload['attachments']) {
 				$out['attachments'] = array();
