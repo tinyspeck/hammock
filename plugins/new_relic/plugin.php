@@ -1,6 +1,6 @@
 <?php
 
-	class NewRelicPlugin extends SlackServicePlugin {
+	class new_relic extends SlackServicePlugin {
 		public $name = "New Relic";
 		public $desc = "Real-time application performance management.";
 
