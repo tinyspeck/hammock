@@ -42,33 +42,32 @@
         }
 
         function onHook($request){
-error_log("hooked");
-            $payload = $request['post'];
-dumper($payload);
-error_log(gettype($payload));
+
+            if ($request['post']) $payload = $request['post'];
+			else $payload = $request['post_body'];
+
 			if (!$payload || !is_array($payload)) return array('ok' => false, 'error' => "invalid_payload");
-error_log("well that worked.");
+
 			if (isset($payload['alert'])){
 				$decoded_payload = json_decode($payload['alert'], true);
 				if (!$decoded_payload) return array('ok' => false, 'error' => "invalid_payload");
 				$decoded_payload['event'] = 'alert';
 
-			}else if (isset($payload['deployment'])){
+			} else if (isset($payload['deployment'])){
 				$decoded_payload = json_decode($payload['deployment'], true);
 				if (!$decoded_payload) return array('ok' => false, 'error' => "invalid_payload");
 				$decoded_payload['event'] = 'deployment';
 			}
-error_log("payload sorted");
+
 			$ret = $this->buildMessageData($decoded_payload);
 			if (!$ret['ok']) return array('ok' => false, 'error' => 'invalid message data');
-error_log("ret sorted");
+
             $this->postToChannel($ret['message']['text'], array(
                 'channel'       => $this->icfg['channel'],
                 'username'      => $this->icfg['botname'],
                 'attachments'   => $ret['message']['attachments'],
                 'icon_url'      => $this->icfg['icon_url'],
             ));
-error_log("posted");
         }
 
         function getLabel() {
