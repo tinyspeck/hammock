@@ -109,8 +109,10 @@
 					}
 				}
 			}
+			echo "params pre-api call";
 			dumper($params);
 			$ret = api_call('chat.postMessage', $params);
+			echo "ret post-api call";
 			dumper($ret);
 			return $ret;
 		}
