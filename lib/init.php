@@ -119,9 +119,10 @@
 		$url = $GLOBALS['cfg']['slack_root']."api/".$method."?token=".$team['token'];
 
 		foreach ($args as $k => $v) $url .= '&'.urlencode($k).'='.urlencode($v);
-
+		$url .= '&pretty=1';
+		dumper($url);
 		$ret = SlackHTTP::get($url);
-
+		dumper($ret);
 		if ($ret['ok'] && $ret['code'] == '200'){
 			return array(
 				'ok'	=> true,
