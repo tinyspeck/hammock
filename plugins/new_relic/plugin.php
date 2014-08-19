@@ -42,7 +42,7 @@
         }
 
         function onHook($request){
-
+error_log("hooked");
             $payload = $request['post'];
 			if (!$payload || !is_array($payload)) return array('ok' => false, 'error' => "invalid_payload");
 
