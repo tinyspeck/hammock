@@ -111,7 +111,7 @@
 			}
 
 			$ret = api_call('chat.postMessage', $params);
-
+			dumper($ret);
 			return $ret;
 		}
 
