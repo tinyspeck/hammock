@@ -86,18 +86,18 @@
 
 			$params = array(
 				'text'		=> $text,
+				'parse'		=> 'none',
 				'channel'	=> '#general',
-				'username'	=> 'bot',
 				'icon_url'	=> $this->iconUrl(48, true),
 			);
 
 			$map_params = array(
 				'channel',
 				'username',
-				'icon_url',
-				'icon_emoji',
 				'attachments',
 				'unfurl_links',
+				'icon_url',
+				'icon_emoji',
 			);
 
 			foreach ($map_params as $p){
@@ -262,6 +262,7 @@
 	            'channel'		=> $this->icfg['channel'],
 	            'username'		=> $this->icfg['botname'],
 	            'attachments'	=> $attachments,
+	            'icon_emoji'	=> ":yolo:",
 	        ));
 		}
 

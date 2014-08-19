@@ -59,6 +59,7 @@
 				'channel'	=> $this->icfg['channel'],
 				'username'	=> $this->icfg['botname'],
 				'icon_url'	=> $this->icfg['icon_url'],
+				'icon_emoji'=> ":yeezus:",
 			));
 		}
 
