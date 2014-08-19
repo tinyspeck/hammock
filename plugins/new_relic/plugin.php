@@ -43,13 +43,7 @@
 
         function onHook($request){
 dumper($request);
-            if ($request['post']) {
-            	echo "post";
-				$payload = json_decode($request['post'], true);
-			} else {
-				echo "post body";
-				$payload = json_decode($request['post_body'], true);
-			}
+            $payload = $request['post'];
 dumper($payload);
 			if (!$payload || !is_array($payload)) {
 				echo "failure motherfucker";	
