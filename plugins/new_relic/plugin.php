@@ -56,17 +56,17 @@ error_log("hooked");
 				if (!$decoded_payload) return array('ok' => false, 'error' => "invalid_payload");
 				$decoded_payload['event'] = 'deployment';
 			}
-
+error_log("payload sorted");
 			$ret = $this->buildMessageData($decoded_payload);
 			if (!$ret['ok']) return array('ok' => false, 'error' => 'invalid message data');
-
+error_log("ret sorted");
             $this->postToChannel($ret['message']['text'], array(
                 'channel'       => $this->icfg['channel'],
                 'username'      => $this->icfg['botname'],
                 'attachments'   => $ret['message']['attachments'],
                 'icon_url'      => $this->icfg['icon_url'],
             ));
-            error_log("posted");
+error_log("posted");
         }
 
         function getLabel() {
@@ -159,6 +159,7 @@ error_log("hooked");
 					break;
 
 				case 'deployment':
+error_log("deploygotyodude");
 					$old_tz = date_default_timezone_get();
 					date_default_timezone_set('UTC');
 
@@ -178,7 +179,7 @@ error_log("hooked");
 			if (!$attachment['fallback']){
 				$attachment['fallback'] = $text;
 			}
-
+error_log("we ready");
 			return array('ok' => true,
 						 'message' => array(
 							 'text' => $text,
