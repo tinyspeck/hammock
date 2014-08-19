@@ -44,8 +44,10 @@
         function onHook($request){
 dumper($request);
             if ($request['post']) {
+            	echo "post";
 				$payload = json_decode($request['post'], true);
 			} else {
+				echo "post body";
 				$payload = json_decode($request['post_body'], true);
 			}
 dumper($payload);
