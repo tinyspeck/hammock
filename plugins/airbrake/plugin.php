@@ -4,6 +4,10 @@
 		public $name = "Airbrake";
 		public $desc = "Error monitoring and handling.";
 
+        public $cfg = array(
+            'has_token' => true,
+        );
+
         function onInit() {
             $channels = $this->getChannelsList();
 

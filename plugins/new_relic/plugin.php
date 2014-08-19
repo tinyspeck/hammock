@@ -4,6 +4,10 @@
 		public $name = "New Relic";
 		public $desc = "Real-time application performance management.";
 
+		public $cfg = array(
+		    'has_token' => true,
+		);
+		
 		function onInit() {
             $channels = $this->getChannelsList();
 
