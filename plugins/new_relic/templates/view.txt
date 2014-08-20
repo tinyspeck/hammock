@@ -8,7 +8,7 @@
     <p><a href="#atsm">Setup Application, Transaction, and Server Monitoring</a></p>
     <p><a href="#mmda">Setup Mobile Monitoring and Deployment Alerts</a></p>
 
-    <div id="atsm" height="60px"></div>
+    <div id="atsm" height="60px">&nbsp;</div>
     <div style="border-radius: 0.5rem; border: 1px solid grey; padding: 20px 0 0 20px; margin-bottom:30px;">
         <h3>Application, Transaction, and Server Monitoring</h3>
         <p>We'll create a webhook to send alerts from applications, key transactions or servers.</p>
@@ -30,7 +30,7 @@
         <p class="large_bottom_margin"><img src="../plugins/new_relic/new_relic_settings_step8.png" style="border-radius: 0.5rem; border: 1px solid #DDD;"></p>
     </div>
 
-    <div id="mmda" height="60px"></div>
+    <div id="mmda" height="60px">&nbsp;</div>
     <div style="border-radius: 0.5rem; border: 1px solid grey; padding: 20px 0 0 20px;">
         <h3>Mobile Monitoring and Deployment Alerts</h3>
 
