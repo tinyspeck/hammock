@@ -1,3 +1,10 @@
+<style>
+.success { background: #36a64f; }
+.success:hover, .success:focus, .success:active { background: #3ebd5a; }
+.warning { background: #daa038; }
+.warning:hover, .warning:focus, .warning:active { background: #e8ac3c; }
+</style>
+
 <form method="POST" id="service_config" action="{$this->getEditUrl()}&save=1" class="stacked">
 
     <p>Modify which channel this integration posts to, and customize the bot appearance.</p>
@@ -18,8 +25,8 @@
         <input type="text" name="botname" value="{$this->icfg.botname|escape}"/>
     </p>
     <p>
-        <input type="submit" value="Save Changes" class="btn-success" />
-        <a href="{$this->getViewUrl()}" class="btn-warning">Go Back</a>
+        <input type="submit" value="Save Changes" class="btn success" />
+        <a href="{$this->getViewUrl()}" class="btn warning">Go Back</a>
     </p>
 
 </form>
