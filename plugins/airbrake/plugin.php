@@ -40,7 +40,7 @@
                 exit;
             }
             $this->smarty->assign('channels', $channels);
-            return $this->smarty->fetch('edit.html');
+            return $this->smarty->fetch('edit.txt');
         }
 
         function onHook($request){
