@@ -17,9 +17,7 @@
         <h4>Botname</h4>
         <input type="text" name="botname" value="{$this->icfg.botname|escape}"/>
     </p>
-    <p>
-        <input type="submit" value="Save Changes" class="btn-success" /><br/>
-        <a href="{$this->getViewUrl()}" class="btn-warning" style="margin-top:20px;">Go Back</a>
-    </p>
+    <p><input type="submit" value="Save Changes" class="btn-success" /></p>
+    <p><a href="{$this->getViewUrl()}" class="btn-warning">Go Back</a></p>
 
 </form>
