@@ -1,10 +1,26 @@
-<p class="bold">{$desc}</p>
 
-<p><a href="http://www.justyo.co/">Yo</a> is a single-tap, zero character communication tool for your mobile devices.</p>
-<p>This integration will post notifications in a Slack channel when a Yo is received.</p>
 <p>Use <code>{$this->getHookUrl()}</code> as the Callback URL for your <a href="http://yoapi.justyo.com">Yo API account.</a></p>
 
 <h3>Current Settings</h3>
 <p>Channel:<br/>{$this->icfg.channel_name|escape}</p>
 <p>Botname & Icon:<br/>{$this->icfg.botname|escape}&nbsp;<img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon">
 <p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
+
+<p><img src="../plugins/yo/icon_128.png" alt="bot icon" style="padding-left: 1rem;">
+<p style="font-weight:bold">{$desc}</p>
+<div style="width:85%">
+    <p><a href="http://www.justyo.co/">Yo</a> is a single-tap, zero character communication tool for your mobile devices.</p>
+    <p>This integration will post notifications in a Slack channel when a Yo is received.</p>
+
+    <h3>Setup Instructions</h3>
+    <p>We'll guide you through the steps necessary to configure Yo so it can start sending data to Slack.</p>
+
+    <h4>Step 1</h4>
+    <p>You'll need a Yo API account for this integration. Go to <a href="http://yoapi.justyo.co/">http://yoapi.justyo.co/</a> and use <code>{$this->getHookURL()}</code> as the <strong>Callback URL</strong>. Enter your other details to finish creating your account.</p>
+    <p class="large_bottom_margin"><img src="../plugins/yo/yo_step1.png" style="border-radius: 0.5rem; border: 1px solid #DDD;"></p>
+
+    <h4>Step 2</h4>
+    <p class="large_bottom_margin">Now when someone sends a Yo to your newly created account, it will be posted to Slack.</p>
+
+    <p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
+</div>
