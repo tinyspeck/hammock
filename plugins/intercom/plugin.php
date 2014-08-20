@@ -43,13 +43,13 @@
 		}
 
 		function onHook($request){
-dumper($request);
+
 			if ($request['post']['payload']) {
 				$payload = json_decode($request['post']['payload'], true);
 			} else {
 				$payload = json_decode($request['post_body'], true);
 			}
-dumper($payload);
+
 			if (!$payload){
 				return array('ok' => false, 'error' => "invalid_payload");
 			}
