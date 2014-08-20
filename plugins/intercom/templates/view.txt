@@ -1,0 +1,24 @@
+<p><img src="../plugins/intercom/icon_128.png" alt="bot icon" style="padding-left: 1rem;">
+<p style="font-weight:bold">{$this->desc}</p>
+<div style="width:85%">
+    <p><a href="https://www.intercom.io/">Intercom</a> is a platform for web and mobile businesses to see who is using their product, and how they're using it, engage users with targeted email and in-app messages, ask for feedback based on user-behavior, and provide better and faster customer support.</p>
+    <p>This integration allows your team to receive updates in a Slack channel when you receive new messages and replies from your users. You can also be notified of admin activity like adding notes and assigning conversations to teammates, keeping you aware of activity in your team’s inbox.</p>
+    <hr>
+    <h3>Setup Instructions</h3>
+    <p>We'll guide you through the steps necessary to configure Intercom so it can start sending data to Slack.</p>
+
+    <h4>Step 1</h4>
+    <p>In Intercom, click on the gear icon in the top navigation and go to your <strong>App Settings</strong>.</p>
+    <p class="large_bottom_margin"><img src="../plugins/intercom/intercom_step1.png" style="border-radius: 0.5rem; border: 1px solid #DDD;"></p>
+
+    <h4>Step 2</h4>
+    <p>Click <strong>Slack Integration</strong> in the left navigation, and then press the <strong>Add Slack Integration</strong> button to set it up.</p>
+    <p class="large_bottom_margin"><img src="../plugins/intercom/intercom_step2.png" style="border-radius: 0.5rem; border: 1px solid #DDD;"></p>
+
+    <h4>Step 3</h4>
+    <p>Enter <code>{$this->getHookURL()}</code> as the Slack Webhook URL and choose which notifications you want to see in Slack by selecting the checkboxes. Press the <strong>Add Integration</strong> button when you're done.</p>
+    <p>You can change your notification settings at any time by clicking <strong>Edit</strong> in the Slack Integration settings in Intercom.</p>
+    <p class="large_bottom_margin"><img src="../plugins/intercom/intercom_step3.png" style="border-radius: 0.5rem; border: 1px solid #DDD;"></p>
+
+    <p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
+</div>
