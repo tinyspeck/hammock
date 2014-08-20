@@ -1,12 +1,23 @@
-<form action="{$this->getEditUrl()}&save=1" method="post">
+<form method="POST" id="service_config" action="{$this->getEditUrl()}&save=1" class="stacked">
 
-<p>Channel to post to: <select name="channel">
-{foreach from=$channels key='chan_id' item='chan_name'}
-	<option value="{$chan_id|escape}"{if $chan_id==$this->icfg.channel} selected{/if}>{$chan_name|escape}</option>
-{/foreach}
-</select></p>
+    <p>Modify which channel this integration posts to, and customize the bot appearance.</p>
+    <p>
+        <label style="font-weight:bold;">Which channel should we post exceptions to?</label><br/>
+        <select name="channel">
+        {foreach from=$channels key='chan_id' item='chan_name'}
+            <option value="{$chan_id|escape}"{if $chan_id==$this->icfg.channel} selected{/if}>{$chan_name|escape}</option>
+        {/foreach}
+        </select>
+    </p>
+    <p>
+        <h4>Icon</h4>
+        <img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon"><br/>
+        <input type="text" name="icon" placeholder="Alternate icon URL" style="margin:10px 0 30px 0;"/>
+        <br/>
+        <h4>Botname</h4>
+        <input type="text" name="botname" value="{$this->icfg.botname|escape}"/>
+    </p>
+    <p><input type="submit" value="Save Changes" class="btn-success" /></p>
+    <p><a href="{$this->getViewUrl()}" class="btn-warning">Go Back</a></p>
 
-<p>Bot name: <input type="text" name="botname" value="{$this->icfg.botname|escape}" /></p>
-
-<p><input type="submit" value="Save Changes" class="btn" /></p>
 </form>
