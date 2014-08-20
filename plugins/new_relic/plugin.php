@@ -42,9 +42,9 @@
         }
 
         function onHook($request){
-dumper($request);
+
             $payload = $request['post'];
-dumper($payload);
+
 			if (!$payload || !is_array($payload)) {
 				echo "failure motherfucker";	
 				return array('ok' => false, 'error' => "invalid_payload");
@@ -162,7 +162,7 @@ dumper($payload);
 					break;
 
 				case 'deployment':
-error_log("deploygotyodude");
+
 					$old_tz = date_default_timezone_get();
 					date_default_timezone_set('UTC');
 
@@ -182,7 +182,7 @@ error_log("deploygotyodude");
 			if (!$attachment['fallback']){
 				$attachment['fallback'] = $text;
 			}
-error_log("we ready");
+
 			return array('ok' => true,
 						 'message' => array(
 							 'text' => $text,
