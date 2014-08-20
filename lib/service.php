@@ -88,7 +88,7 @@
 				'text'		=> $text,
 				'parse'		=> 'none',
 				'channel'	=> '#general',
-				'icon_url'	=> $this->iconUrl(48, true),
+				'icon_url'	=> $this->iconUrl(32, true),
 			);
 
 			$map_params = array(
@@ -102,6 +102,7 @@
 
 			foreach ($map_params as $p){
 				if (isset($extra[$p])){
+					error_log($p." : ".$extra[$p]);
 					if ($p == 'attachments'){
 						$params[$p] = json_encode($extra[$p]);
 					}else{
@@ -109,7 +110,10 @@
 					}
 				}
 			}
-
+			if (isset($extra['icon_emoji'])){
+				unset($params['icon_url']);
+			}
+			
 			$ret = api_call('chat.postMessage', $params);
 
 			return $ret;
