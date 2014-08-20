@@ -1,4 +1,4 @@
-<form method="POST" id="service_config" action="{$this->getSaveUrl()}" class="stacked">
+<form method="POST" id="service_config" action="{$this->getEditUrl()}&save=1" class="stacked">
     <h3>Integration Settings</h3>
     <p>Modify which channel this integration posts to, and customize the bot appearance.</p>
         <p>
