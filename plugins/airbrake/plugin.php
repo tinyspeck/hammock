@@ -32,6 +32,8 @@
                 $this->icfg['channel']      = $_POST['channel'];
                 $this->icfg['channel_name'] = $channels[$_POST['channel']];
                 $this->icfg['botname']      = $_POST['botname'];
+                if (isset($_POST['icon']))
+                    $this->icfg['icon_url'] = $_POST['icon'];
                 $this->saveConfig();
 
                 header("location: {$this->getViewUrl()}&saved=1");

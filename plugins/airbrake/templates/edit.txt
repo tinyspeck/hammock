@@ -2,23 +2,25 @@
     <h3>Integration Settings</h3>
     <p>Modify which channel this integration posts to, and customize the bot appearance.</p>
         <p>
-            <label class="block">Which channel should we post exceptions to?</label>
+            <label style="font-weight:bold;">Which channel should we post exceptions to?</label>
             <select name="channel">
             {foreach from=$channels key='chan_id' item='chan_name'}
                 <option value="{$chan_id|escape}"{if $chan_id==$this->icfg.channel} selected{/if}>{$chan_name|escape}</option>
             {/foreach}
             </select>
         </p>
-
+        <br/>
         <p>
-            <label class="block">Bot appearance: Care to change it?</label>
-            <div style="border-radius: 0.25rem; border: 1px solid #DDD; padding: 0.5rem;" class="dense_theme warm_white_bg bottom_margin">
-                <h4>Icon</h4>
-                <img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon" style="padding-left: 1rem;">
-                <input type="text" name="icon" />
-                <h4>Botname</h4>
-                <p style="font-weight:bold;">{$this->icfg.botname|escape}</p>
-                <input type="text" name="botname" />
-            </div>
+            <label class="block">Botname & Icon</label>
+            <h4>Icon</h4>
+            <img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon">
+            <input type="text" name="icon" placeholder="Alternate icon URL" style="margin: 0 0 15px 25px;" />
+            <br/>
+            <h4>Botname</h4>
+            <input type="text" name="botname" value="{$this->icfg.botname|escape}"/>
+        </p>
+        <br/>
+        <p>
+            <input type="submit" value="Save Changes" class="btn" />
         </p>
 </form>
