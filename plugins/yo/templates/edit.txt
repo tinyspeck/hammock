@@ -12,7 +12,7 @@
     <p>
         <h4>Icon</h4>
         <img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon"><br/>
-        <input type="text" name="icon" placeholder="Alternate icon URL" style="margin:10px 0 10px 0;"/>
+        <input type="text" name="icon" placeholder="Alternate icon URL" style="margin:10px 0 30px 0;"/>
         <br/>
         <h4>Botname</h4>
         <input type="text" name="botname" value="{$this->icfg.botname|escape}"/>
