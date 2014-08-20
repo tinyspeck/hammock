@@ -18,7 +18,8 @@
         <input type="text" name="botname" value="{$this->icfg.botname|escape}"/>
     </p>
     <p>
-        <input type="submit" value="Save Changes" class="btn" />
+        <input type="submit" value="Save Changes" class="btn-success" />
+        <a href="{$this->getViewUrl()}" class="btn-warning">Go Back</a>
     </p>
 
 </form>
