@@ -3,7 +3,7 @@
 <div style="width:85%">
     <p><a href="http://www.justyo.co/">Yo</a> is a single-tap, zero character communication tool for your mobile devices.</p>
     <p>This integration will post notifications in a Slack channel when a Yo is received.</p>
-
+    <hr>
     <h3>Setup Instructions</h3>
     <p>We'll guide you through the steps necessary to configure Yo so it can start sending data to Slack.</p>
 
