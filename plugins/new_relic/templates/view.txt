@@ -4,8 +4,9 @@
     <p><a href="https://newrelic.com">New Relic</a> is a web and mobile application performance monitoring service that lets your team keep an eye on application health and availability.</p>
     <p>This integration will allow you to receive updates in a Slack channel when an alert is triggered in New Relic. If you would like web, transaction, server and mobile alerts to be posted in separate channels, you will need to set up separate integrations.</p>
     <p class="alert alert-info">To add this integration, you will need to be an Owner of your New Relic account.</p>
-
-    <div style="border-radius: 0.5rem; border: 1px solid black;">
+    <p><a href="#atsm">Setup Application, Transaction, and Server Monitoring</a></p>
+    <p.<a href="#mmda">Setup Mobile Monitoring and Deployment Alerts</a></p>
+    <div id="atsm" style="border-radius: 0.5rem; border: 1px solid grey; padding: 20px 0 0 20px; margin-bottom:30px;">
         <h3>Application, Transaction, and Server Monitoring</h3>
         <p>We'll create a webhook to send alerts from applications, key transactions or servers.</p>
 
@@ -26,7 +27,7 @@
         <p class="large_bottom_margin"><img src="../plugins/new_relic/new_relic_settings_step8.png" style="border-radius: 0.5rem; border: 1px solid #DDD;"></p>
     </div>
 
-    <div style="border-radius: 0.5rem; border: 1px solid black;">
+    <div id="mmda" style="border-radius: 0.5rem; border: 1px solid grey; padding: 20px 0 0 20px;">
         <h3>Mobile Monitoring and Deployment Alerts</h3>
 
         <p>Alerts from mobile applications and deployments will need to be configured separately.</p>
