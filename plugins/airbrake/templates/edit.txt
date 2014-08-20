@@ -19,7 +19,7 @@
     </p>
     <p>
         <input type="submit" value="Save Changes" class="btn-success" /><br/>
-        <a href="{$this->getViewUrl()}" class="btn-warning">Go Back</a>
+        <a href="{$this->getViewUrl()}" class="btn-warning" style="margin-top:20px;">Go Back</a>
     </p>
 
 </form>
