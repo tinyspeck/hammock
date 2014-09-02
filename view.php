@@ -25,7 +25,10 @@
 	$instance->checkRequirements();
 
 	$smarty->assign('instance', $instance);
-	$smarty->assign('html', $instance->onView());
+	$smarty->assign('name', $instance::NAME);
+	$smarty->assign('icon', $instance->iconUrl(128, "service", true));
+	$smarty->assign('asset', $instance->getAssets());
+	$smarty->assign('html', $instance->smarty->fetch('edit.txt'));
 
 	$smarty->display('page_view.txt');
 

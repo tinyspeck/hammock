@@ -14,13 +14,16 @@
 	$services = array();
 
 	foreach (array_keys($plugins_services) as $k){
-		$temp = new $k();
+		$t = makeClass($k);
+		$temp = new $t();
 		$temp->id = $k;
+		$temp->name = $temp::NAME;
+		$temp->desc = $temp::DESC;
+		$temp->tt 	= $temp::TOOLTIP;
 		$services[] = $temp;
 	}
 
 	usort($services, 'local_sort');
-
 	function local_sort($a, $b){
 		return strcasecmp($a->name, $b->name);
 	}
