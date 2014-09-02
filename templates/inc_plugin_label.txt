@@ -1,0 +1,4 @@
+<p>
+    <label for="label">Label</label><br />
+    <input type="text" class="input-xlarge" id="label" name="label" value="{$service_label|escape}" placeholder="Optional description">
+</p>
