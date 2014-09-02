@@ -40,10 +40,9 @@
 		if ($dh = opendir($dir)){
 			while (($file = readdir($dh)) !== false){
 
-				if (is_dir("{$dir}/{$file}") && is_file("{$dir}/{$file}/plugin.php")){
+				if (is_dir("{$dir}/{$file}") && is_file("{$dir}/{$file}/{$file}.php")){
 
-					if ((include("{$dir}/{$file}/plugin.php"))){
-
+					if ((include("{$dir}/{$file}/{$file}.php"))){
 						$GLOBALS['plugins'][$file] = 1;
 					}
 				}
@@ -55,21 +54,27 @@
 		$GLOBALS['plugins_auth'    ] = array();
 
 		foreach ($GLOBALS['plugins'] as $k => $v){
-			if (is_subclass_of($k, 'SlackServicePlugin')) $GLOBALS['plugins_services'][$k] = 1;
-			if (is_subclass_of($k, 'SlackAuthPlugin'   )) $GLOBALS['plugins_auth'    ][$k] = 1;
+			if (is_subclass_of(makeClass($k), 'SlackServicePlugin')) $GLOBALS['plugins_services'][$k] = 1;
+			if (is_subclass_of($k, 'SlackAuthPlugin')) $GLOBALS['plugins_auth'][$k] = 1;
 		}
 	}
 
-	function createPluginInstance($class_name){
+	function createPluginInstance($plugin_name){
+		$class_name = makeClass($plugin_name);
 		$obj = new $class_name();
-		$obj->id = $class_name;
+		$obj->id = $plugin_name;
 
 		$obj->smarty = new Smarty();
-		$obj->smarty->compile_id = "plugins|{$class_name}";
-		$obj->smarty->template_dir = HAMMOCK_ROOT."/plugins/{$class_name}/templates";
+		$obj->smarty->compile_id = "plugins|{$plugin_name}";
+		$obj->smarty->template_dir = HAMMOCK_ROOT."/plugins/{$plugin_name}/templates";
 		$obj->smarty->compile_dir = HAMMOCK_ROOT."/data/templates_c";
+		$obj->smarty->register_function('hidden_fields', 'smarty_hidden_fields');
+		$obj->smarty->register_function('channel_select', 'channel_select');
+		$obj->smarty->register_function('bot_config', 'smarty_bot_config');
+		$obj->smarty->register_function('label', 'smarty_label_config');
+		#requires a slight change in templates, $asset instead of {asset}{/asset}
+		$obj->smarty->assign('asset', $obj->getAssets());
 		$obj->smarty->assign_by_ref('this', $obj);
-
 		return $obj;
 	}
 
@@ -188,5 +193,65 @@
 			$in = array_slice($in, $size);
 		}
 		return $out;
-        }
+    	}
+
+	# Smarty functions for templates (subject to change with template changes)
+    	function channel_select($params, &$smarty){
+		$instance = $smarty->get_template_vars('this');
+		$GLOBALS['smarty']->assign("channels", $instance->getChannelsList());
+		return $GLOBALS['smarty']->fetch('inc_channel_select.txt');
+	}
+
+	function smarty_hidden_fields($params, &$smarty){
+		$instance = $smarty->get_template_vars('this');
+
+		$fields = array();
+		if ($instance->id){
+			$fields[] = '<input type="hidden" name="edit_service" value="1" />';
+		} else {
+			$fields[] = '<input type="hidden" name="add_service" value="1" />';
+		}
+		$fields[] = '<input type="hidden" name="uid" value="'.$instance->iid.'"/>';
+		return implode($fields);
+	}
+
+	function smarty_bot_config($params, &$smarty){
+		$instance = $smarty->get_template_vars('this');
+
+		$GLOBALS['smarty']->assign("default_bot_name", constant(get_class($instance)."::DEFAULT_BOT_NAME"));
+		$GLOBALS['smarty']->assign("service_bot_name", $instance->icfg['bot_name']);
+		$GLOBALS['smarty']->assign("service_bot_name_changeable", true);
+		$GLOBALS['smarty']->assign("service_id", $instance->id);
+
+		$service_icons = array();
+		$assets_dir = $instance->getAssets();
+
+		if (file_exists($assets_dir."service_48.png")){
+			$service_icons['image_48'] = $assets_dir."service_48.png";
+		}else if (file_exists($assets_dir."service_64.png")){
+			$service_icons['image_64'] = $assets_dir."service_48.png";
+		}
+
+		$GLOBALS['smarty']->assign("service_icons", $service_icons);
+		return $GLOBALS['smarty']->fetch('inc_bot_config.txt');
+	}
+
+	function smarty_label_config($params, &$smarty){
+		$instance = $smarty->get_template_vars('this');
+
+		$GLOBALS['smarty']->assign("service_label", $instance->icfg['label']);
+
+		return $GLOBALS['smarty']->fetch('inc_plugin_label.txt');
+	}
+
+	# For the directory vs pluginName issue (may become irrelevant later)
+	function makeClass($plugin_name){
+		$name = "";
+		$words = explode("_", $plugin_name);
+		foreach ($words as $word) {
+			$name .= ucfirst($word);
+		}
+		return $name . "Plugin";
+
+	}
 

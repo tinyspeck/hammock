@@ -1,8 +1,13 @@
 <?php
 	class SlackServicePlugin {
 
-		public $name = "NO NAME";
-		public $desc = "NO DESC";
+		#
+		# A plugin should provide these constants:
+		#
+		const NAME = 'NO NAME'; # the display name for this plugin
+		const DESC = 'NO DESC'; # a two line description, used in /services/new
+		const TOOLTIP = '';     # a short tooltip, used in /services/new
+		const DEFAULT_BOT_NAME = "BOT"; # the default bot name to use
 
 		public $id;	# class ID
 		public $iid;	# instance ID
@@ -47,14 +52,17 @@
 			return $url;
 		}
 
-		function getEditUrl(){
-
-			return $GLOBALS['cfg']['root_url'] . 'edit.php?id=' . $this->iid;
+		function getSaveUrl(){
+			return $GLOBALS['cfg']['root_url'] . 'add.php?id=' . $_GET['id'];
 		}
 
 		function getViewUrl(){
 
 			return $GLOBALS['cfg']['root_url'] . 'view.php?id=' . $this->iid;
+		}
+
+		function getAssets(){
+			return $GLOBALS['cfg']['root_url'] . "plugins/{$this->id}/assets/";
 		}
 
 		function dump(){
@@ -64,7 +72,7 @@
 			$this->smarty = $s;
 		}
 
-                function saveConfig(){
+        	function saveConfig(){
 			$cfg = $this->icfg;
 			$cfg['plugin'] = $this->id;
 			$GLOBALS['data']->set('instances', $this->iid, $cfg);
@@ -76,37 +84,38 @@
 			$GLOBALS['data']->del('instances', $this->iid);
 		}
 
-		function postToChannel($text, $extra){
+		function postMessage($channel, $message, $extras = array()){
 
-			$this->log[] = array(
-				'type' => 'message_post',
-				'text' => $text,
-				'extra' => $extra,
-			);
+			$params = array();
 
-			$params = array(
-				'text'		=> $text,
-				'parse'		=> 'none',
-				'channel'	=> '#general',
-				'icon_url'	=> $this->iconUrl(48, true),
-			);
+			if (!$channel) return array('ok' => false, 'error' => "no channel");
+			$params['channel'] = $channel;
 
-			$map_params = array(
-				'channel',
-				'username',
-				'attachments',
+			if (!$message['text'] && !$message['attachments']) return array('ok' => false, 'error' => "no text");
+
+			if ($message['text']) $params['text'] = $message['text'];
+			if ($message['attachments']) $params['attachments'] = json_encode($message['attachments']);
+			
+			$this->icfg['bot_name'] ? $params['username'] = $this->icfg['bot_name'] : $this::DEFAULT_BOT_NAME;
+
+			$this->icfg['bot_icon'] ? $params['icon_url'] = $this->icfg['bot_icon'] : $params['icon_url'] = $this->iconUrl(48, "bot", true);
+
+			$extra_params = array(
+				'text',
+				'parse',
+				'link_names',
 				'unfurl_links',
-				'icon_url',
 				'icon_emoji',
 			);
 
-			foreach ($map_params as $p){
-				if (isset($extra[$p])){
+			foreach ($extra_params as $p){
+				if (isset($extras[$p])){
 					if ($p == 'attachments'){
-						$params[$p] = json_encode($extra[$p]);
+						$params[$p] = json_encode($extras[$p]);
 					}else{
-						$params[$p] = $extra[$p];
+						$params[$p] = $extras[$p];
 					}
+					error_log($params[$p]);
 				}
 			}
 
@@ -156,6 +165,17 @@
 			return api_channels_list();
 		}
 
+		function getChannelName($channel){
+			$channels = $this->getChannelsList();
+
+			foreach ($channels as $k => $v) {
+			    if ($k == $this->icfg['channel']) {
+			    	return $v;
+			    }
+			}
+			return "Unknown channel";
+		}
+
 		function onLiveHook($req){
 
 			if ($this->cfg['has_token']){
@@ -172,8 +192,27 @@
 			return $this->onHook($req);
 		}
 
+		function iconUrl($size=32, $type, $abs=false){
+			if (!in_array($size, array(32,48,64,128))) $size = 32;
+			$pre = $abs ? $GLOBALS['cfg']['root_url'] : '';
+			return "{$pre}plugins/{$this->id}/assets/{$type}_{$size}.png";
+		}
 
-		# things to override
+		function onHook($request){
+			# handle an incoming hook here
+			return array(
+				'ok'	=> false,
+				'error'	=> 'onHook not implemented',
+			);
+		}
+
+		function onInit(){
+			# set default options in $this->icfg here
+			$this->smarty->assign('DESC', constant(get_class($this)."::DESC"));
+			$this->icfg['bot_name'] = $this::DEFAULT_BOT_NAME;
+		}
+		
+		# Obsolete functions
 
 		function onView(){
 
@@ -190,22 +229,6 @@
 			return "No label ({$this->iid})";
 		}
 
-		function onInit(){
-			# set default options in $this->icfg here
-		}
 
-		function onHook($request){
-			# handle an incoming hook here
-			return array(
-				'ok'	=> false,
-				'error'	=> 'onHook not implemented',
-			);
-		}
 
-		function iconUrl($size=32, $abs=false){
-			if (!in_array($size, array(32,48,64,128))) $size = 32;
-			$pre = $abs ? $GLOBALS['cfg']['root_url'] : '';
-			return "{$pre}plugins/{$this->id}/icon_{$size}.png";
-		}
 	}
-
