@@ -1,0 +1,34 @@
+<label>Message Appearance</label>
+<div style="border-radius: 0.25rem; border: 1px solid #DDD; padding: 0.5rem;" class="warm_white_bg bottom_margin">
+    <div class="message automated bot_message show_user avatar">
+
+        <img src="{$icon}" width="36" style="float:left; margin-right:10px;"/>
+
+        <span class="message_sender">
+            <a onclick="$('#bot_name_block').slideToggle(100); return false;">{if $service_bot_name}{$service_bot_name|escape}{else}{$default_bot_name|escape}{/if}</a>
+        </span>
+        <span class="message_content">
+            This is how your bot message will appear.
+            You can {if $service_bot_name_changeable}<a onclick="$('#bot_name_block').slideToggle(100); return false;" class="bold">change the name of your bot</a>, and also{/if}
+            {if $service_icons.image_48 || $service_icons.image_64}
+                <a onclick="$('#bot_icon_block').slideToggle(100); return false;" class="bold">change the icon</a>
+            {else}
+                <a onclick="$('#bot_icon_block').slideToggle(100); return false;" class="bold">add a custom icon</a>
+            {/if}
+            for it.
+        </span>
+    </div>
+</div>
+
+{if $service_bot_name_changeable}
+<p id="bot_name_block" style="display: none;">
+    <label class="block" for="bot_name">What would you like to name your bot?</label>
+    <input type="text" name="bot_name" value="{if $service_bot_name}{$service_bot_name|escape}{else}{$default_bot_name|escape}{/if}">
+</p>
+<p id="bot_icon_block" style="display: none;">
+    <label class="block" for="bot_icon">Put in the URL for a new icon, please</label>
+    <input type="text" name="bot_icon">
+</p>
+{/if}
+
+<p class="large_bottom_margin"></p>
