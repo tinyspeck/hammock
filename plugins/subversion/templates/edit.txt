@@ -1,0 +1,44 @@
+{if $error}
+	<div class="alert alert-error"><i class="fa fa-exclamation-circle small_right_margin"></i> Oops! That didn't work! Try again.</div>
+{/if}
+
+{include file="description.txt"}
+
+<hr>
+
+<h3 class="large_top_margin small_bottom_margin">Setup Instructions</h3>
+
+<p>Install and customize <a href="https://github.com/tinyspeck/services-examples/blob/master/subversion.pl">our example SVN post-commit handler</a> as a starting point.</p>
+
+<form method="POST" id="service_config" action="{$this->getSaveUrl()}" class="stacked">
+	{hidden_fields}
+
+	<h3 class="large_top_margin small_bottom_margin">Integration Settings</h3>
+	{if $this->id}
+		<p>
+			<label for="label">Label</label><br />
+			<input type="text" class="input-xlarge" id="label" name="label" value="{$this->icfg.label|escape}" placeholder="Optional description of this integration">
+		</p>
+	{/if}
+
+	<p>
+		<label class="block">Which channel should we post commits to?</label>
+		{channel_select}
+	</p>
+
+	{bot_config}
+
+	<button type="submit" class="btn btn-small">Save Settings</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
