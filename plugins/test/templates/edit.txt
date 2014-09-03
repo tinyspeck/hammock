@@ -1,0 +1,45 @@
+{if $error}
+	<div class="alert alert-error"><i class="fa fa-exclamation-circle small_right_margin"></i> Oops! That didn't work! Try again.</div>
+{/if}
+
+{include file="description.txt"}
+
+<hr>
+
+<div id="service_setup" class="accordion_section">
+	<a class="accordion_expand btn btn-outline btn-small" onclick="TS.web.toggleSection('service_setup');">{if !$smarty.get.added}Expand{else}Close{/if}</a>
+	<h3><a onclick="TS.web.toggleSection('service_setup');">Setup Instructions</a></h3>
+	<p>We'll guide you through the steps necessary to configure Test so it can start sending data to Slack.</p>
+
+	<div class="accordion_subsection" style="{if !$smarty.get.added}display:none;{/if}">
+		<h4>Step 1</h4>
+		<p>Here's the hook: <code>{$this->getHookURL()}</code>. Test it.</p>
+	</div>
+</div>
+
+<form method="POST" id="service_config" action="{$this->getSaveUrl()}" class="stacked">
+	{hidden_fields}
+
+	<div id="service_settings" class="accordion_section">
+		<a class="accordion_expand btn btn-outline btn-small" onclick="TS.web.toggleSection('service_settings');">{if $smarty.get.added}Expand{else}Close{/if}</a>
+
+		<h3><a onclick="TS.web.toggleSection('service_settings');">Integration Settings</a></h3>
+		<p>Modify which channel this integration posts to, and customize the bot appearance.</p>
+
+		<div class="accordion_subsection" style="{if $smarty.get.added}display:none;{/if}">
+			{label}
+			<p>
+				<label class="block">Which channel should we post notifications to?</label>
+				{channel_select}
+			</p>
+
+			{bot_config}
+		</div>
+	</div>
+
+	<span class="inline-block" id="add_integration_parent" data-toggle="tooltip" title="You must select a channel.">
+		<button type="submit" class="btn btn-small" id="save_integration">Save Integration</button>
+	</span>
+</form>
+
+
