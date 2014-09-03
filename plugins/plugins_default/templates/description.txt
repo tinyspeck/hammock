@@ -1,0 +1,3 @@
+<p class="bold">{$DESC}</p>
+
+<p>Your detailed description of how this plugin will work should go here.</p>
