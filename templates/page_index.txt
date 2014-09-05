@@ -20,7 +20,7 @@
 				{if $obj->icfg.label}
 					<a href="view.php?id={$obj->iid|urlencode}">{$obj->icfg.label}</a>
 				{else}
-					<a href="view.php?id={$obj->iid|urlencode}">{$obj->smarty->fetch('summary.txt')}</a>
+					<a href="view.php?id={$obj->iid|urlencode}">{$obj->summary}</a>
 				{/if}
 
 				{if $obj->icfg.creator_id}

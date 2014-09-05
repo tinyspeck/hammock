@@ -5,7 +5,7 @@
 	verify_auth();
 
 	load_plugins();
-
+	
 
 	#
 	# get list of services and sort them
@@ -16,10 +16,10 @@
 	foreach (array_keys($plugins_services) as $k){
 		$t = makeClass($k);
 		$temp = new $t();
-		$temp->id = $k;
+		$temp->id   = $k;
 		$temp->name = $temp::NAME;
 		$temp->desc = $temp::DESC;
-		$temp->tt 	= $temp::TOOLTIP;
+		$temp->tt   = $temp::TOOLTIP;
 		$services[] = $temp;
 	}
 

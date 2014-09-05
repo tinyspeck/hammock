@@ -17,11 +17,20 @@
 
 		private $log = array();
 
+		public $new_template;
+		public $edit_template;
+		public $summary_template;
+		public $description_template;
+
 		function SlackServicePlugin(){
-			if ($this->name == "NO NAME"){
+			if ($this::NAME == "NO NAME"){
 				$cn = get_class($this);
 				$this->name = "Unnamed ({$cn})";
 			}
+			$this->new_template = 'new.txt';
+			$this->edit_template = 'edit.txt';
+			$this->summary_template = 'summary.txt';
+			$this->description_template = 'description.txt';
 		}
 
 		function createInstanceId(){
@@ -42,6 +51,26 @@
 				if (!$auth->isUserAuthed()) die("You need to authenticate before continuing");
 			}
 		}
+
+		#These are called before their respective pages are rendered, to load custom
+		# JS/CSS files for individual plugins
+		
+		function onEdit(){
+			# Assign smarty variables or render different templates
+		}
+
+		function onNew(){
+			# Assign smarty variables or render different templates	
+		}
+
+		function onDescription(){
+			# Assign smarty variables or render different templates
+		}
+
+		function onSummary(){
+			# Assign smarty variables or render different templates
+		}
+
 
 		function getHookUrl(){
 
@@ -211,24 +240,4 @@
 			$this->smarty->assign('DESC', constant(get_class($this)."::DESC"));
 			$this->icfg['bot_name'] = $this::DEFAULT_BOT_NAME;
 		}
-		
-		# Obsolete functions
-
-		function onView(){
-
-			return "<p>No information for this plugin.</p>";
-		}
-
-		function onEdit(){
-
-			return "<p>No config for this plugin.</p>";
-		}
-
-		function getLabel(){
-
-			return "No label ({$this->iid})";
-		}
-
-
-
 	}

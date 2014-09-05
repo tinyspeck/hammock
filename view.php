@@ -25,10 +25,13 @@
 	$instance->checkRequirements();
 
 	$smarty->assign('instance', $instance);
+	$smarty->assign('id', $instance->id);
 	$smarty->assign('name', $instance::NAME);
 	$smarty->assign('icon', $instance->iconUrl(128, "service", true));
 	$smarty->assign('asset', $instance->getAssets());
-	$smarty->assign('html', $instance->smarty->fetch('edit.txt'));
+
+	$editpage = render_edit($GLOBALS['cfg']['team'], $instance);
+	$smarty->assign('html', $editpage);
 
 	$smarty->display('page_view.txt');
 

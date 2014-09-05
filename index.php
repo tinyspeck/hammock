@@ -28,6 +28,7 @@
 		$inst = getPluginInstance($k);
 		$inst->icon_48 = $inst->iconUrl(48, "bot", true);
 		$inst->name    = $inst::NAME;
+		$inst->summary = render_summary($GLOBALS['cfg']['team'], $inst);
 
 		if ($inst->icfg['creator_id']){
 			$u = $GLOBALS['data']->get('users', $inst->icfg['creator_id']);

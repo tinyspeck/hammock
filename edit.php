@@ -13,7 +13,10 @@
 
 	$instance->checkRequirements();
 	$smarty->assign('instance', $instance);
-	$smarty->assign('html', $instance->onEdit());
+
+	$editpage = render_edit($GLOBALS['cfg']['team'], $instance);
+
+	$smarty->assign('html', $editpage);
 
 	$smarty->display('page_edit.txt');
 

@@ -6,5 +6,5 @@
         <img src="../plugins/{$id}/assets/bot_72.png" width="72" height="72" class="icon" style="display:inline-block;"/>
         <h2 style="display:inline-block;margin-left:15px;">{$p_name}</h2>
         <h4>{$p_desc}</h4>
-        {$instance->smarty->fetch('new.txt')}
+        {$html}
 </div>

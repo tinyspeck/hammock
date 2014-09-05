@@ -47,7 +47,9 @@
 
 	$smarty->assign('instance', $instance);
 
-	$smarty->assign('newpage', $instance->smarty->fetch('new.txt'));
+	$newpage = render_new($GLOBALS['cfg']['team'], $instance);
+
+	$smarty->assign('html', $newpage);
 	$smarty->assign('id', $id);
 	$smarty->assign('p_name', $instance::NAME);
 	$smarty->assign('p_desc', $instance::DESC);
