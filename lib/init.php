@@ -30,8 +30,9 @@
 	$smarty->template_dir = HAMMOCK_ROOT."/templates";
 	$smarty->compile_dir = HAMMOCK_ROOT."/data/templates_c";
 	$smarty->assign_by_ref('cfg', $cfg);
-	$GLOBALS['smarty']->register_compiler_function('add_js', 'smarty_add_js');
-	$GLOBALS['smarty']->register_compiler_function('add_css', 'smarty_add_css');
+
+	$GLOBALS['_smarty_js_files'] = array();
+	$GLOBALS['_smarty_css_files'] = array();
 
 	function load_plugins(){
 
@@ -74,6 +75,10 @@
 		$obj->smarty->register_function('channel_select', 'channel_select');
 		$obj->smarty->register_function('bot_config', 'smarty_bot_config');
 		$obj->smarty->register_function('label', 'smarty_label_config');
+		$obj->smarty->register_compiler_function('add_js', 'smarty_add_js');
+		$obj->smarty->register_compiler_function('add_css', 'smarty_add_css');
+		$obj->smarty->register_function('output_js', 'smarty_output_js');
+		$obj->smarty->register_function('output_css', 'smarty_output_css');
 		#requires a slight change in templates, $asset instead of {asset}{/asset}
 		$obj->smarty->assign('asset', $obj->getAssets());
 		$obj->smarty->assign_by_ref('this', $obj);
@@ -290,18 +295,18 @@
 	}
 
         function smarty_add_js($tag_attrs, &$compiler){
-                $_params = $compiler->_parse_attrs($tag_attrs);
-                $group = $_params['group'] ? $_params['group'] : "'regular'";
-                $code = "\$GLOBALS['_smarty_js_files'][{$group}][] = {$_params['file']};";
-                return $code;
-        }
+		$_params = $compiler->_parse_attrs($tag_attrs);
+		$group = $_params['group'] ? $_params['group'] : "'regular'";
+		$code = "\$GLOBALS['_smarty_js_files'][{$group}][] = {$_params['file']};";
+		return $code;
+	}
 
-        function smarty_add_css($tag_attrs, &$compiler){
-                $_params = $compiler->_parse_attrs($tag_attrs);
-                $group = $_params['group'] ? $_params['group'] : "'regular'";
-                $code = "\$GLOBALS['_smarty_css_files'][{$group}][] = {$_params['file']};";
-                return $code;
-        }
+	function smarty_add_css($tag_attrs, &$compiler){
+		$_params = $compiler->_parse_attrs($tag_attrs);
+		$group = $_params['group'] ? $_params['group'] : "'regular'";
+		$code = "\$GLOBALS['_smarty_css_files'][{$group}][] = {$_params['file']};";
+		return $code;
+	}
 
         function smarty_output_js($args){
 
@@ -327,20 +332,6 @@
 
                 foreach ($files as $file){
                         $full = $GLOBALS['cfg']['root_url'] . "plugins/{$group}/assets/{$file}";
-                        echo "{$indent}\twindow.async_css_urls.push('{$full}')\n";
+                        echo "<link href=\"{$full}\" rel=\"stylesheet\" type=\"text/css\">\n";
                 }
-        }
-
-        function smarty_static_assets() {
-        	error_log("called");
-        	if ($GLOBALS['_smarty_css_files']) error_log("files exists");
-                $GLOBALS['_smarty_js_files'] = array();
-        	$GLOBALS['_smarty_css_files'] = array();
-        	if ($GLOBALS['_smarty_css_files']) error_log("files exists");
-        	if ($smarty->register_compiler_function('add_js' , 'smarty_add_js')) error_log("success js");
-        	else error_log("failure js");
-        	if ($smarty->register_compiler_function('add_css', 'smarty_add_css')) error_log("success css");
-        	else error_log("failure css");
-        	$GLOBALS['smarty']->register_function('output_js' , 'smarty_output_js');
-        	$GLOBALS['smarty']->register_function('output_css', 'smarty_output_css');
         }

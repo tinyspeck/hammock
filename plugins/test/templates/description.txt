@@ -1,3 +1,0 @@
-<p class="bold">{$DESC}</p>
-
-<p>This is a test plugin.</p>
