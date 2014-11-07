@@ -58,7 +58,7 @@
 	load_plugins();
 
 	$instance = getPluginInstance($_GET['id']);
-	if (is_object($instance)){
+	if ($instance instanceof SlackServicePlugin){
 
 		$ret = $instance->onLiveHook($req);
 		$out = $instance->getLog();
