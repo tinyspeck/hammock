@@ -1,4 +1,7 @@
-Hammock
+# DEPRECATED
+Please note that this project is no longer maintained.
+
+# Hammock
 =========
 
 Hammock is a standalone webapp for running [Slack](https://slack.com) integrations.
