@@ -44,6 +44,7 @@ the Heroku toolbelt already):
 
 All config options are loaded from the environment variables and data is stored in Redis.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Adding integrations
 
