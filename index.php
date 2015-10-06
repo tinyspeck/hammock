@@ -12,7 +12,6 @@
 	#
 
 	$instance_data = $data->get_all('instances');
-
 	if (!count($instance_data)){
 		header("location: new.php");
 		exit;
@@ -27,7 +26,9 @@
 
 	foreach ($instance_data as $k => $instance){
 		$inst = getPluginInstance($k);
-		$inst->icon_48 = $inst->iconUrl(48);
+		$inst->icon_48 = $inst->iconUrl(48, "bot", true);
+		$inst->name    = $inst::NAME;
+		$inst->summary = render_summary($GLOBALS['cfg']['team'], $inst);
 
 		if ($inst->icfg['creator_id']){
 			$u = $GLOBALS['data']->get('users', $inst->icfg['creator_id']);

@@ -1,0 +1,22 @@
+{if $error}
+	<div class="alert alert-error"><i class="fa fa-exclamation-circle small_right_margin"></i> Oops! That didn't work! Try again.</div>
+{/if}
+
+{include file="description.txt"}
+
+<hr>
+
+<form method="POST" id="service_config" action="{$this->getSaveUrl()}" class="stacked">
+	{hidden_fields}
+
+	<p>
+		<label class="block">Start by choosing a channel where New Relic alerts will be posted</label>
+		{channel_select}
+	</p>
+
+	<hr>
+
+	<span class="inline-block" id="add_integration_parent" data-toggle="tooltip" title="You must select a channel.">
+		<button type="submit" id="add_integration" class="btn disabled btn-success" disabled="disabled">Add New Relic Integration</button>
+	</span>
+</form>

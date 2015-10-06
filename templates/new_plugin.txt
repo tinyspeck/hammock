@@ -1,0 +1,10 @@
+{include file='inc_head.txt}
+
+{include file='inc_left.txt'}
+
+<div class="col_right">
+        <img src="../plugins/{$id}/assets/bot_72.png" width="72" height="72" class="icon" style="display:inline-block;"/>
+        <h2 style="display:inline-block;margin-left:15px;">{$p_name}</h2>
+        <h4>{$p_desc}</h4>
+        {$html}
+</div>

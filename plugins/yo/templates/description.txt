@@ -1,0 +1,4 @@
+<p class="bold">{$DESC}</p>
+
+<p><a href="http://www.justyo.co/">Yo</a> is a single-tap, zero character communication tool for your mobile devices.</p>
+<p>This integration will post notifications in a Slack channel when a Yo is received.</p>

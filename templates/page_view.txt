@@ -1,16 +1,16 @@
 {include file='inc_head.txt'}
 
-<h2>Service Instance</h2>
+{include file='inc_left.txt'}
 
 {*<div class="alert">
 	<strong>This integration has been disabled.</strong><br />
 	It will not process messages or respond to events until it is re-enabled.
 </div>*}
 
-{$html}
-
-<p>&nbsp;</p>
-
+<div class="col_right">
+	<h2><img src="{$icon}" class="top_icon"/>{$name}</h2>
+	{$html}
+</div>
 
 {* Change token *}
 
@@ -30,8 +30,8 @@
 
 
 {* Delete *}
-
-<div class="alert alert-error">
+<br/><br/>
+<div class="alert alert-error" style="overflow:hidden;">
 
 	<form action="{$instance->getViewUrl()}" method="post">
 	<input type="hidden" name="delete-instance" value="1" />

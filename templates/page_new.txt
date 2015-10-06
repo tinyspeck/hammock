@@ -4,17 +4,16 @@
 
 <div class="col_right">
 
-	<h2>Add Service Integrations</h2>
+	<h2 style="margin-bottom:50px;">Add Service Integrations</h2>
 
 {foreach from=$services item='set'}
 	<div style="clear: left">
 {foreach from=$set item='k' name='inner'}
-	<form method="POST" action="add.php?id={$k->id|urlencode}" class="service{if $smarty.foreach.inner.last} no_right_margin{/if}">
+	<form method="POST" action="add.php?id={$k->id|urlencode}" class="service{if $smarty.foreach.inner.last} no_right_margin{/if}" data-toggle="tooltip" title="{$k->tt|escape}">
+		<img src="plugins/{$k->id|escape}/assets/service_64.png" width="64" height="64" class="icon" />
 
-		<img src="plugins/{$k->id|escape}/icon_64.png" width="64" height="64" class="icon" />
-
-		<h4>{$k->name|escape}</h4>
-		<p>{$k->desc|escape}</p>
+		<h4 style="line-height:2rem;">{$k->name|escape}</h4>
+		<p style="line-height:2rem;">{$k->desc|escape}</p>
 	
 		<button type="submit" class="btn btn-small btn-primary"><i class="icon-plus-sign" style="margin-right: 0.25rem;"></i> {$k->name|escape}</button>
 	</form>

@@ -5,21 +5,25 @@
 <link id="favicon" rel="shortcut icon" href="images/favicon_32.png" sizes="16x16 32x32 48x48" type="image/png" />
 <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="style/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="style/style.css" rel="stylesheet" type="text/css">
+<script src="./style/jquery-1.11.1.min.js"></script>
+<script src="./style/bootstrap.min.js"></script>
+<script src="./style/javascript.js"></script>
 </head>
 <body>
 
 <div id="header">
 <div id="header-inner">
 {if $cfg.user.user_id}
-	<div style="float: right">
-		Logged in as <b>{$cfg.user.user|escape}</b>
-		[<a href="logout.php">logout</a>]
-	</div>
+        <div style="float: right">
+                Logged in as <b>{$cfg.user.user|escape}</b>
+                [<a href="logout.php">logout</a>]
+        </div>
 {/if}
 <h1>
-	<a href="./"><img src="./images/logo.png" id="slack_icon"></a>
-	<a href="./">Hammock</a>
+        <a href="./"><img src="./images/logo.png" id="slack_icon"></a>
+        <a href="./">Hammock</a>
 </h1>
 </div>
 </div>

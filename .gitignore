@@ -1,2 +1,3 @@
 lib/config.php
 data/*
+.DS_Store
