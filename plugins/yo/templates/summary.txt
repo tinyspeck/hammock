@@ -1,0 +1,1 @@
+Post notifications to <strong>{$this->getChannelName($this->icfg.channel)|escape|default:'<i>unconfigured</i>'}</strong> as <strong>{$this->icfg.bot_name|escape}</strong>

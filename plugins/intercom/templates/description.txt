@@ -1,0 +1,4 @@
+<p class="bold">{$DESC}</p>
+
+<p><a href="https://www.intercom.io/">Intercom</a> is a platform for web and mobile businesses to see who is using their product, and how they're using it, engage users with targeted email and in-app messages, ask for feedback based on user-behavior, and provide better and faster customer support.</p>
+<p>This integration allows your team to receive updates in a Slack channel when you receive new messages and replies from your users. You can also be notified of admin activity like adding notes and assigning conversations to teammates, keeping you aware of activity in your team’s inbox.</p>

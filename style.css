@@ -104,43 +104,44 @@ h2 {
 }
 
 .btn {
-background: #2a80b9;
-color: white !important;
-text-shadow: 0 1px rgba(0, 0, 0, 0.2);
--webkit-font-smoothing: antialiased;
-font-family: 'Lato', sans-serif;
-line-height: 1.2rem;
-font-weight: 900;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-text-decoration: none;
-border: none;
--webkit-border-radius: 0.25rem;
--moz-border-radius: 0.25rem;
-border-radius: 0.25rem;
--webkit-box-shadow: none;
--moz-box-shadow: none;
-box-shadow: none;
-vertical-align: bottom;
-white-space: nowrap;
-padding: 7px 14px 8px;
-font-size: 15px;
+  background: #2a80b9;
+  color: white !important;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.2rem;
+  font-weight: 900;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
+  border: none;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  vertical-align: bottom;
+  white-space: nowrap;
+  padding: 7px 14px 8px;
+  font-size: 15px;
 }
 
 .btn:hover, .btn:focus {
-background: #439fe0;
-color: white;
-outline: none;
+  background: #439fe0;
+  color: white;
+  outline: none;
+  text-decoration: none;
 }
 
 .btn:active, .btn.active {
-background: #439fe0;
-color: white;
--webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
--moz-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+  background: #439fe0;
+  color: white;
+  -webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
 }
 
 .btn-danger {
@@ -153,20 +154,85 @@ box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
 
 .btn-warning {
 	background: #daa038;
+  color: white !important;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.2rem;
+  font-weight: 900;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
+  border: none;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  vertical-align: bottom;
+  white-space: nowrap;
+  padding: 7px 14px 8px;
+  font-size: 15px;
 }
 
-.btn-warning:hover, .btn-warning:focus, .btn-warning:active {
-	background: #e8ac3c;
+.btn-warning:hover, .btn-warning:focus {
+  background: #e8ac3c;
+  color: white;
+  outline: none;
+  text-decoration: none;
+}
+
+.btn-warning:active {
+  background: #e8ac3c;
+  color: white;
+  -webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
 }
 
 .btn-success {
 	background: #36a64f;
+  color: white !important;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.2rem;
+  font-weight: 900;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
+  border: none;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  vertical-align: bottom;
+  white-space: nowrap;
+  padding: 7px 14px 8px;
+  font-size: 15px;
 }
 
-.btn-success:hover, .btn-success:focus, .btn-success:active {
-	background: #3ebd5a;
+.btn-success:hover, .btn-success:focus {
+  background: #3ebd5a;
+  color: white;
+  outline: none;
+  text-decoration: none;
 }
 
+.btn-success:active {
+  background: #3ebd5a;
+  color: white;
+  -webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.25);
+}
 .godblock {
 border: 1px solid #becccc;
 -moz-border-radius: 15px;

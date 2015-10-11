@@ -1,0 +1,3 @@
+<p class="bold">{$DESC}</p>
+
+<p><a href="http://subversion.apache.org/">Subversion</a> is an open source version control system. This integration will post commits to a channel in Slack.</p>

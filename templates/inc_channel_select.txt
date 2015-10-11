@@ -1,0 +1,9 @@
+<div id="channel_selector_container">
+    <select name="channel" id="channel">
+        <option value="0">Choose a channel...</option>
+        {foreach from=$channels key='chan_id' item='chan_name'}
+            <option value="{$chan_id|escape}"{if $chan_id==$instance->icfg.channel} selected{/if}>{$chan_name|escape}</option>
+        {/foreach}
+        </select>
+    </select>
+</div>
