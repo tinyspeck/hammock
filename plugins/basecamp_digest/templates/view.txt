@@ -1,0 +1,20 @@
+{if $smarty.get.newtoken}
+
+	<p class="alert">Your token has been updated - the webhook URL has changed!</p>
+{/if}
+
+<p>This is your hook URL:</p>
+<p><code>{$this->getHookUrl()}</code></p>
+<p><b>Read from channel:</b> {$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</p>
+<p><strong>Post to project: </strong>{ $this->icfg.project_name | escape }</p>
+
+<p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
+
+<div class="alert alert-info" style="background-color: #d9edf7;border-color: #bce8f1;color: #31708f;">
+	<p>Once you've selected a Slack channel and Basecamp project, you should set up a <a href="http://en.wikipedia.org/wiki/Cron" target="_blank">cron</a> job to fetch the hook URL every 24 hours. A cron entry like the one below would post an update to Basecamp at 11:58pm every day:</p>
+	<pre><code>
+		58 23 * * * /usr/bin/curl "{$this->getHookUrl()}"
+	</code></pre>
+</div>
+
+
